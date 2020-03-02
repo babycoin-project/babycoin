@@ -1,3 +1,4 @@
+// Copyright (c) 2020, The Evolution Network
 // Copyright (c) 2018-2019, The Arqma Network
 // Copyright (c) 2014-2018, The Monero Project
 // All rights reserved.
@@ -31,7 +32,7 @@
 #include <type_traits>
 
 //! Executes a LMDB command, and returns errors via `lmdb::error` enum.
-#define ARQMA_LMDB_CHECK(...)          \
+#define EVOLUTION_LMDB_CHECK(...)          \
     do                                 \
     {                                  \
         const int err = __VA_ARGS__ ;  \

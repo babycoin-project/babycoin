@@ -1,3 +1,4 @@
+// Copyright (c) 2020, The Evolution Network
 // Copyright (c) 2018-2019, The Arqma Network
 // Copyright (c) 2014-2018, The Monero Project
 //
@@ -34,8 +35,8 @@
 #include "blockchain_db/blockchain_db.h"
 #include "hardfork.h"
 
-#undef ARQMA_DEFAULT_LOG_CATEGORY
-#define ARQMA_DEFAULT_LOG_CATEGORY "hardfork"
+#undef EVOLUTION_DEFAULT_LOG_CATEGORY
+#define EVOLUTION_DEFAULT_LOG_CATEGORY "hardfork"
 
 using namespace cryptonote;
 

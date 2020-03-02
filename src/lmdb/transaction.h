@@ -1,3 +1,4 @@
+// Copyright (c) 2020, The Evolution Network
 // Copyright (c) 2018-2019, The Arqma Network
 // Copyright (c) 2018, The Monero Project
 // All rights reserved.
@@ -33,7 +34,7 @@
 #include "lmdb/error.h"
 
 //! Uses C++ type system to differentiate between cursors
-#define ARQMA_CURSOR(name)                                     \
+#define EVOLUTION_CURSOR(name)                                     \
     struct close_ ## name : ::lmdb::close_cursor {};           \
     using name = std::unique_ptr< MDB_cursor, close_ ## name >;
 
@@ -84,7 +85,7 @@ namespace lmdb
     open_cursor(MDB_txn& txn, MDB_dbi tbl) noexcept
     {
         MDB_cursor* cur = nullptr;
-        ARQMA_LMDB_CHECK(mdb_cursor_open(&txn, tbl, &cur));
+        EVOLUTION_LMDB_CHECK(mdb_cursor_open(&txn, tbl, &cur));
         return std::unique_ptr<MDB_cursor, D>{cur};
     }
 

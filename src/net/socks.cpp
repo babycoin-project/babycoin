@@ -1,3 +1,4 @@
+// Copyright (c) 2020, The Evolution Network
 // Copyright (c) 2018-2019, The Arqma Project
 // Copyright (c) 2018, The Monero Project
 //

@@ -1,3 +1,4 @@
+# Copyright (c) 2020, The Evolution Network
 # Copyright (c) 2018-2019, The Arqma Network
 # Copyright (c) 2017-2018, The Monero Project
 #
@@ -35,10 +36,10 @@ set(multisig_headers)
 set(multisig_private_headers
   multisig.h)
 
-arqma_private_headers(multisig
+evolution_private_headers(multisig
   ${multisig_private_headers})
 
-arqma_add_library(multisig
+evolution_add_library(multisig
   ${multisig_sources}
   ${multisig_headers}
   ${multisig_private_headers})

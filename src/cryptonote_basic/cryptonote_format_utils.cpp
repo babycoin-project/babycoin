@@ -1,3 +1,4 @@
+// Copyright (c) 2020, The Evolution Network
 // Copyright (c) 2018-2019, The Arqma Network
 // Copyright (c) 2014-2018, The Monero Project
 //
@@ -42,8 +43,8 @@
 
 using namespace epee;
 
-#undef ARQMA_DEFAULT_LOG_CATEGORY
-#define ARQMA_DEFAULT_LOG_CATEGORY "cn"
+#undef EVOLUTION_DEFAULT_LOG_CATEGORY
+#define EVOLUTION_DEFAULT_LOG_CATEGORY "cn"
 
 #define ENCRYPTED_PAYMENT_ID_TAIL 0x8d
 
@@ -938,13 +939,13 @@ namespace cryptonote
     switch (std::atomic_load(&default_decimal_point))
     {
       case 9:
-        return "arq";
+        return "evo";
       case 6:
-        return "milliarq";
+        return "millievo";
       case 3:
-        return "microarq";
+        return "microevo";
       case 0:
-        return "nanoarq";
+        return "nanoevo";
       default:
         ASSERT_MES_AND_THROW("Invalid decimal point specification: " << default_decimal_point);
     }

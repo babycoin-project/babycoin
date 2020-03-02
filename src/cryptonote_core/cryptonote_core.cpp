@@ -1,3 +1,4 @@
+// Copyright (c) 2020, The Evolution Network
 // Copyright (c) 2018-2019, The Arqma Network
 // Copyright (c) 2014-2018, The Monero Project
 //
@@ -54,8 +55,8 @@ using namespace epee;
 #include "common/notify.h"
 #include "version.h"
 
-#undef ARQMA_DEFAULT_LOG_CATEGORY
-#define ARQMA_DEFAULT_LOG_CATEGORY "cn"
+#undef EVOLUTION_DEFAULT_LOG_CATEGORY
+#define EVOLUTION_DEFAULT_LOG_CATEGORY "cn"
 
 DISABLE_VS_WARNINGS(4355)
 
@@ -156,7 +157,7 @@ namespace cryptonote
   };
   static const command_line::arg_descriptor<std::string> arg_check_updates = {
     "check-updates"
-  , "Check for new versions of arqma: [disabled|notify|download|update]"
+  , "Check for new versions of evolution: [disabled|notify|download|update]"
   , "notify"
   };
   static const command_line::arg_descriptor<bool> arg_fluffy_blocks = {
@@ -466,8 +467,8 @@ namespace cryptonote
       if (boost::filesystem::exists(old_files / "blockchain.bin"))
       {
         MWARNING("Found old-style blockchain.bin in " << old_files.string());
-        MWARNING("ArQmA now uses a new format. You can either remove blockchain.bin to start syncing");
-        MWARNING("the blockchain anew, or use arqma-blockchain-export and arqma-blockchain-import to");
+        MWARNING("Evolution now uses a new format. You can either remove blockchain.bin to start syncing");
+        MWARNING("the blockchain anew, or use evolution-blockchain-export and evolution-blockchain-import to");
         MWARNING("convert your existing blockchain.bin to the new format. See README.md for instructions.");
         return false;
       }
@@ -1160,7 +1161,7 @@ namespace cryptonote
   //-----------------------------------------------------------------------------------------------
   size_t core::get_block_sync_size(uint64_t height) const
   {
-    static const uint64_t quick_height = m_nettype == TESTNET ? 0 : m_nettype == MAINNET ? 300000 : 0;
+    static const uint64_t quick_height = m_nettype == TESTNET ? 0 : m_nettype == MAINNET ? 215000 : 0;
     if(block_sync_size > 0)
       return block_sync_size;
     if(height >= quick_height)
@@ -1620,36 +1621,26 @@ namespace cryptonote
         main_message = "The daemon will start synchronizing with the network. This may take a long time to complete.";
       MGINFO_CYAN(ENDL <<
       "\n \n"
-      "WWWWWWWWWWWWWWWWWWWWWWWWWWWW@=WWWWWWWWWWWWWWWWWWWWWWWWWWWWW\n"
-      "WWWWWWWWWWWWWWWWWWWWWWWWW@+::.--+@WWWWWWWWWWWWWWWWWWWWWWWWW\n"
-      "WWWWWWWWWWWWWWWWWWWWWW=:::-:+W=----:#WWWWWWWWWWWWWWWWWWWWWW\n"
-      "WWWWWWWWWWWWWWWWWW@+::+@W+:#WWWW:-=@+--*@WWWWWWWWWWWWWWWWWW\n"
-      "WWWWWWWWWWWWWWW#:+:#WWWW::@WWWWWW#--@WW=--:#WWWWWWWWWWWWWWW\n"
-      "WWWWWWWWWWW@+::+@WWWWW#::WWWWWWWWWW+-*WWWW@:--*WWWWWWWWWWWW\n"
-      "WWWWWWWW#:+:=WWWWWWWW=+*WWWWWWWWWWWW@--@WWWWWW=--:=WWWWWWWW\n"
-      "WWWW@++:+@WWWWWWWWWW+:#WWWWWWWWWWWWWWW*-+WWWWWWWW@:-:*@WWWW\n"
-      "WWW@:-@WWWWWWWWWWWW::@WWWWWWWWWWWWWWWWWW:-#WWWWWWWW@::-WWWW\n"
-      "WWW@:-:WWWWWWWWWW#++WWWWWWWWWWWWWWWWWWWWW#-:WWWWW#+:#:-WWWW\n"
-      "WWW@:-:=WWWWWWWW*+=WWWWWWWWWWWWWWWWWWWWWWWW+-=W*+:@WW:-WWWW\n"
-      "WWW@:++-@WWWWWW+:#WWWWWWWWWWWWWWWWWWWWWWWW@=+::*WWWWW:-WWWW\n"
-      "WWW@:+W::WWWW@+:WWWWWWWWWWWWWWWWWW@=++++::*#*+:*WWWWW+:WWWW\n"
-      "WWW@:+W#:=WW#++WWWWWWWWWWW@=*+++::*#@WWWWWW@++=:#WWWW+:WWWW\n"
-      "WWW@:+WW*:@*+=WWWW@=*++++:*#@WWWWWWWWWWWWWW+:@W*:@WWW+:WWWW\n"
-      "WWW@+*WWW::++++++:*#@WWWWWWWWWWWWWWWWWWWWW=+#WWW::WWW+:WWWW\n"
-      "WWW@+*WWW+:-:*@WWWWWWWWWWWWWWWWWWWWWWWWWW@+*WWWW@:*WW+:WWWW\n"
-      "WWW@+*WW*+@*:++:+=WWWWWWWWWWWWWWWWWWWWWWW+:WWWWWW=:#W+:WWWW\n"
-      "WWW@+*W*+@WW@:+WW#::+#WWWWWWWWWWWWWWWWWW=+#WWWWWWW*:@+:WWWW\n"
-      "WWW@+*=+#WWWWW+:#WWWW=::+#WWWWWWWWWWWWW@+=WWWWWWWWW+++:WWWW\n"
-      "WWW@+++#WWWWWWW#:*WWWWWW@*:+*#WWWWWWWWW*+WWWWWWWWWW@:+:WWWW\n"
-      "WWW@++=WWWWWWWWWW+:@WWWWWWWW@+:+=@WWWW=+@WWWWWWWWWWW=::WWWW\n"
-      "WWWW+:*@WWWWWWWWWW=:=WWWWWWWWWWW#+++##+=WW@@#=****+++:+WWWW\n"
-      "WWWWWW@*++=WWWWWWWW@++@WWWWWWWWWWWWW=+:++*=#@@W@=*+*@WWWWWW\n"
-      "WWWWWWWWWW=++*@WWWWWW=:#WWWWWWWWWWW=*#WWWWWW@**+=WWWWWWWWWW\n"
-      "WWWWWWWWWWWWW@*++#WWWW@+*WWWWWWWW@**@WWWW=***@WWWWWWWWWWWWW\n"
-      "WWWWWWWWWWWWWWWWW#++*@WW*+@WWWWW#*=WW@**+#WWWWWWWWWWWWWWWWW\n"
-      "WWWWWWWWWWWWWWWWWWWW@*+*##:=WWW**##***@WWWWWWWWWWWWWWWWWWWW\n"
-      "WWWWWWWWWWWWWWWWWWWWWWW@=++++=****#WWWWWWWWWWWWWWWWWWWWWWWW\n"
-      "WWWWWWWWWWWWWWWWWWWWWWWWWWW#*:*@WWWWWWWWWWWWWWWWWWWWWWWWWWW" << ENDL);
+"WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW\n"
+"WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW\n"
+"WWWWWWWWWWWWWW#*******=@WWWWWWWWWWWWWWW\n"
+"WWWWWWWWWWWW=****=##=****@WWWWWWWWWWWWW\n"
+"WWWWWWWWWW=***=WWWWWWW@****@WWWWWWWWWWW\n"
+"WWWWWWWW=***=WWWWWWWWWWW@****@WWWWWWWWW\n"
+"WWWWWW=***=WWWW#*****=WWWW@***#WWWWWWWW\n"
+"WWWW=***=WWWW#*********#WWWW=**#WWWWWWW\n"
+"WWWW#*=WWWW#****#WWW#**=WWWW#**=WWWWWWW\n"
+"WWWWWWWWW@****#WWWW=***@WWWW***#WWWWWWW\n"
+"WWWWWWWW@***#WWWW=***#WWWW#***=WWWWWWWW\n"
+"WWWWWWWW=**#WWWW=**=WWWW#****@WWWW#WWWW\n"
+"WWWWWWWW=**#WWWW=**=WW#****#WWWW=***#WW\n"
+"WWWWWWWW@***@WWW@********#WWWW=***=WWWW\n"
+"WWWWWWWWW@***=@WWWW#==#@WWWW=***=WWWWWW\n"
+"WWWWWWWWWWW#***=@WWWWWWWWW=***=WWWWWWWW\n"
+"WWWWWWWWWWWWW#***=@WWWWW=***=WWWWWWWWWW\n"
+"WWWWWWWWWWWWWWW#**********=WWWWWWWWWWWW\n"
+"WWWWWWWWWWWWWWWWWW@####@WWWWWWWWWWWWWWW\n"
+"WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW" << ENDL);
       MGINFO_YELLOW(ENDL << "**********************************************************************" << ENDL
         << main_message << ENDL
         << ENDL
@@ -1716,7 +1707,7 @@ namespace cryptonote
   //-----------------------------------------------------------------------------------------------
   bool core::check_updates()
   {
-    static const char software[] = "arqma";
+    static const char software[] = "evolution";
 #ifdef BUILD_TAG
     static const char buildtag[] = BOOST_PP_STRINGIZE(BUILD_TAG);
 //    static const char subdir[] = "cli"; // because it can never be simple
@@ -1736,7 +1727,7 @@ namespace cryptonote
     if (!tools::check_updates(software, buildtag, version, hash))
       return false;
 
-    if (tools::vercmp(version.c_str(), ARQMA_VERSION) <= 0)
+    if (tools::vercmp(version.c_str(), EVOLUTION_VERSION) <= 0)
     {
       m_update_available = false;
       return true;

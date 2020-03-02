@@ -1,3 +1,4 @@
+// Copyright (c) 2020, The Evolution Network
 // Copyright (c) 2018-2019, The Arqma Network
 // Word list originally created as part of the Electrum project, Copyright (C) 2014 Thomas Voegtlin
 //

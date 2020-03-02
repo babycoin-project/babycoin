@@ -1,3 +1,4 @@
+// Copyright (c) 2020, The Evolution Network
 // Copyright (c) 2018-2019, The Arqma Network
 // Copyright (c) 2014-2018, The Monero Project
 //
@@ -750,8 +751,6 @@ namespace cryptonote
      */
     void set_reorg_notify(const std::shared_ptr<tools::Notify> &notify) { m_reorg_notify = notify; }
 
-
-    void set_zmq_block_notify(const std::shared_ptr<tools::Notify> &notify) {m_zmq_notify = notify; }
     /**
      * @brief Put DB in safe sync mode
      */
@@ -1083,7 +1082,6 @@ namespace cryptonote
 
     std::shared_ptr<tools::Notify> m_block_notify;
     std::shared_ptr<tools::Notify> m_reorg_notify;
-    std::shared_ptr<tools::Notify> m_zmq_notify;
 
     // for prepare_handle_incoming_blocks
     uint64_t m_prepare_height;
@@ -1457,7 +1455,7 @@ namespace cryptonote
      * @brief loads block hashes from compiled-in data set
      *
      * A (possibly empty) set of block hashes can be compiled into the
-     * Arqma daemon binary.  This function loads those hashes into
+     * Evolution daemon binary.  This function loads those hashes into
      * a useful state.
      *
      * @param get_checkpoints if set, will be called to get checkpoints data

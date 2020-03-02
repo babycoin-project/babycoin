@@ -1,3 +1,4 @@
+// Copyright (c) 2020, The Evolution Network
 // Copyright (c) 2018-2019, The Arqma Network
 // Copyright (c) 2016-2018, The Monero Project
 //
@@ -51,7 +52,7 @@ ZmqServer::ZmqServer(RpcHandler& h) :
     context(zmq_init(num_zmq_threads))
 {
   if(!context)
-    ARQMA_ZMQ_THROW("Unable to create ZMQ Context");
+    EVOLUTION_ZMQ_THROW("Unable to create ZMQ Context");
 }
 
 ZmqServer::~ZmqServer()
@@ -72,11 +73,11 @@ void ZmqServer::serve()
     
     while(1)
     {
-      const std::string message = ARQMA_UNWRAP(net::zmq::receive(socket.get()));
+      const std::string message = EVOLUTION_UNWRAP(net::zmq::receive(socket.get()));
       MDEBUG("Received RPC request: \"" << message << "\"");
       const std::string& response = handler.handle(message);
       
-      ARQMA_UNWRAP(net::zmq::send(epee::strspan<std::uint8_t>(response), socket.get()));
+      EVOLUTION_UNWRAP(net::zmq::send(epee::strspan<std::uint8_t>(response), socket.get()));
       MDEBUG("Sent RPC reply: \"" << response << "\"");
     }
   }
@@ -112,20 +113,20 @@ bool ZmqServer::addTCPSocket(boost::string_ref address, boost::string_ref port)
   rep_socket.reset(zmq_socket(context.get(), ZMQ_REP));
   if(!rep_socket)
   {
-    ARQMA_LOG_ZMQ_ERROR("ZMQ RPC Server socket create failed");
+    EVOLUTION_LOG_ZMQ_ERROR("ZMQ RPC Server socket create failed");
     return false;
   }
 
   if(zmq_setsockopt(rep_socket.get(), ZMQ_MAXMSGSIZE, std::addressof(max_message_size), sizeof(max_message_size)) != 0)
   {
-    ARQMA_LOG_ZMQ_ERROR("Failed to set maximum incoming message size");
+    EVOLUTION_LOG_ZMQ_ERROR("Failed to set maximum incoming message size");
     return false;
   }
 
   static constexpr const int linger_value = std::chrono::milliseconds{linger_timeout}.count();
   if (zmq_setsockopt(rep_socket.get(), ZMQ_LINGER, std::addressof(linger_value), sizeof(linger_value)) != 0)
   {
-    ARQMA_LOG_ZMQ_ERROR("Failed to set linger timeout");
+    EVOLUTION_LOG_ZMQ_ERROR("Failed to set linger timeout");
     return false;
   }
   
@@ -141,7 +142,7 @@ bool ZmqServer::addTCPSocket(boost::string_ref address, boost::string_ref port)
   
   if(zmq_bind(rep_socket.get(), bind_address.c_str()) < 0)
   {
-    ARQMA_LOG_ZMQ_ERROR("ZMQ RPC Server bind failed");
+    EVOLUTION_LOG_ZMQ_ERROR("ZMQ RPC Server bind failed");
     return false;
   }
   return true;

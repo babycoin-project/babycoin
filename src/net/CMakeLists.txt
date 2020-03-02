@@ -1,3 +1,4 @@
+# Copyright (c) 2020, The Evolution Network
 # Copyright (c) 2018-2019, The Arqma Project
 # Copyright (c) 2018, The Monero Project
 #
@@ -30,5 +31,5 @@
 set(net_sources error.cpp i2p_address.cpp parse.cpp socks.cpp socks_connect.cpp tor_address.cpp zmq.cpp)
 set(net_headers error.h i2p_address.h parse.h socks.h socks_connect.h tor_address.h zmq.h)
 
-arqma_add_library(net ${net_sources} ${net_headers})
+evolution_add_library(net ${net_sources} ${net_headers})
 target_link_libraries(net common epee ${Boost_ASIO_LIBRARY})

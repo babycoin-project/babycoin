@@ -1,3 +1,4 @@
+# Copyright (c) 2020, The Evolution Network
 # Copyright (c) 2018-2019, The Arqma Network
 # Copyright (c) 2016-2018, The Monero Project
 #
@@ -35,9 +36,9 @@ set(serialization_headers)
 set(serialization_private_headers
   json_object.h)
 
-arqma_private_headers(serialization
+evolution_private_headers(serialization
   ${serialization_private_headers})
-arqma_add_library(serialization
+evolution_add_library(serialization
   ${serialization_sources}
   ${serialization_headers}
   ${serialization_private_headers})

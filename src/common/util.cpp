@@ -1,3 +1,4 @@
+// Copyright (c) 2020, The Evolution Network
 // Copyright (c) 2018-2019, The Arqma Network
 // Copyright (c) 2014-2018, The Monero Project
 //
@@ -69,7 +70,6 @@ using namespace epee;
 #include "memwipe.h"
 #include "cryptonote_config.h"
 #include "net/http_client.h"                        // epee::net_utils::...
-#include "readline_buffer.h"
 
 #ifdef WIN32
 #ifndef STRSAFE_NO_DEPRECATE
@@ -89,8 +89,8 @@ using namespace epee;
 #include <boost/format.hpp>
 #include <openssl/sha.h>
 
-#undef ARQMA_DEFAULT_LOG_CATEGORY
-#define ARQMA_DEFAULT_LOG_CATEGORY "util"
+#undef EVOLUTION_DEFAULT_LOG_CATEGORY
+#define EVOLUTION_DEFAULT_LOG_CATEGORY "util"
 
 namespace
 {
@@ -679,10 +679,10 @@ std::string get_nix_version_display_string()
   {
     ub_ctx *ctx = ub_ctx_create();
     if (!ctx) return false; // cheat a bit, should not happen unless OOM
-    char *arqma = strdup("arqma"), *unbound = strdup("unbound");
-    ub_ctx_zone_add(ctx, arqma, unbound); // this calls ub_ctx_finalize first, then errors out with UB_SYNTAX
+    char *evolution = strdup("evolution"), *unbound = strdup("unbound");
+    ub_ctx_zone_add(ctx, evolution, unbound); // this calls ub_ctx_finalize first, then errors out with UB_SYNTAX
     free(unbound);
-    free(arqma);
+    free(evolution);
     // if no threads, bails out early with UB_NOERROR, otherwise fails with UB_AFTERFINAL id already finalized
     bool with_threads = ub_ctx_async(ctx, 1) != 0; // UB_AFTERFINAL is not defined in public headers, check any error
     ub_ctx_delete(ctx);
@@ -1059,7 +1059,7 @@ void closefrom(int fd)
     }
 #endif
   }
-
+  
   std::string get_human_readable_timestamp(uint64_t ts)
   {
     char buffer[64];
@@ -1071,7 +1071,7 @@ void closefrom(int fd)
     strftime(buffer, sizeof(buffer), "%Y-%m-%d %H:%M:%S", &tm);
     return std::string(buffer);
   }
-
+  
   std::string get_human_readable_timespan(uint64_t seconds)
   {
     if (seconds < 60)
@@ -1092,7 +1092,7 @@ void closefrom(int fd)
   std::string get_human_readable_bytes(uint64_t bytes)
   {
     // Use 1024 for "kilo", 1024*1024 for "mega" and so on instead of the more modern and standard-conforming
-    // 1000, 1000*1000 and so on, to be consistent with other Arqma code that also uses base 2 units
+    // 1000, 1000*1000 and so on, to be consistent with other Evolution code that also uses base 2 units
     struct byte_map
     {
         const char* const format;
@@ -1122,4 +1122,5 @@ void closefrom(int fd)
     const std::uint64_t divisor = size->bytes / 1024;
     return (boost::format(size->format) % (double(bytes) / divisor)).str();
   }
-}
+
+ }

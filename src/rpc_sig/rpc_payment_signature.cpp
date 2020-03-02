@@ -1,3 +1,4 @@
+// Copyright (c) 2020, The Evolution Network
 // Copyright (c) 2019, The Arqma Network
 // Copyright (c) 2018-2019, The Monero Project
 //
@@ -34,8 +35,8 @@
 #include "string_tools.h"
 #include "rpc_payment_signature.h"
 
-#undef ARQMA_DEFAULT_LOG_CATEGORY
-#define ARQMA_DEFAULT_LOG_CATEGORY "daemon.rpc.payment"
+#undef EVOLUTION_DEFAULT_LOG_CATEGORY
+#define EVOLUTION_DEFAULT_LOG_CATEGORY "daemon.rpc.payment"
 
 #define TIMESTAMP_LEEWAY (60 * 1000000) /* 60 seconds, in microseconds */
 

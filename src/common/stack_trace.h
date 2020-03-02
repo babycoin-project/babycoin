@@ -1,3 +1,4 @@
+// Copyright (c) 2020, The Evolution Network
 // Copyright (c) 2018-2019, The Arqma Network
 // Copyright (c) 2016-2018, The Monero Project
 //
@@ -27,8 +28,8 @@
 // STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF
 // THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#ifndef ARQMA_EXCEPTION_H
-#define ARQMA_EXCEPTION_H
+#ifndef EVOLUTION_EXCEPTION_H
+#define EVOLUTION_EXCEPTION_H
 
 #include <string>
 

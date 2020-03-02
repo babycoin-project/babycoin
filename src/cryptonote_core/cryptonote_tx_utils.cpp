@@ -1,3 +1,4 @@
+// Copyright (c) 2020, The Evolution Network
 // Copyright (c) 2018-2019, The Arqma Network
 // Copyright (c) 2014-2018, The Monero Project
 //
@@ -168,7 +169,7 @@ namespace cryptonote
     tx.version = config::tx_settings::CURRENT_TX_VERSION;
 
     //lock
-    tx.unlock_time = height + config::blockchain_settings::ARQMA_BLOCK_UNLOCK_CONFIRMATIONS;
+    tx.unlock_time = height + config::blockchain_settings::EVOLUTION_BLOCK_UNLOCK_CONFIRMATIONS;
     tx.vin.push_back(in);
 
     tx.invalidate_hashes();
@@ -655,8 +656,8 @@ namespace cryptonote
     CHECK_AND_ASSERT_MES(r, false, "failed to parse coinbase tx from hard coded blob");
     r = parse_and_validate_tx_from_blob(tx_bl, bl.miner_tx);
     CHECK_AND_ASSERT_MES(r, false, "failed to parse coinbase tx from hard coded blob");
-    bl.major_version = config::blockchain_settings::ARQMA_GENESIS_BLOCK_MAJOR_VERSION;
-    bl.minor_version = config::blockchain_settings::ARQMA_GENESIS_BLOCK_MINOR_VERSION;
+    bl.major_version = config::blockchain_settings::EVOLUTION_GENESIS_BLOCK_MAJOR_VERSION;
+    bl.minor_version = config::blockchain_settings::EVOLUTION_GENESIS_BLOCK_MINOR_VERSION;
     bl.timestamp = 0;
     bl.nonce = config::GENESIS_NONCE;
     miner::find_nonce_for_given_block(NULL, bl, 1, 0);

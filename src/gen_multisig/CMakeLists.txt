@@ -1,3 +1,4 @@
+# Copyright (c) 2020, The Evolution Network
 # Copyright (c) 2018-2019, The Arqma Network
 # Copyright (c) 2017-2018, The Monero Project
 #
@@ -30,7 +31,7 @@
 set(gen_multisig_sources
   gen_multisig.cpp)
 
-arqma_add_executable(gen_multisig
+evolution_add_executable(gen_multisig
   ${gen_multisig_sources})
 target_link_libraries(gen_multisig
   PRIVATE
@@ -51,5 +52,5 @@ add_dependencies(gen_multisig
   version)
 set_property(TARGET gen_multisig
   PROPERTY
-    OUTPUT_NAME "arqma-gen-trusted-multisig")
+    OUTPUT_NAME "evolution-gen-trusted-multisig")
 install(TARGETS gen_multisig DESTINATION bin)

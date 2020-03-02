@@ -1,3 +1,4 @@
+# Copyright (c) 2020, The Evolution Network
 # Copyright (c) 2018-2019, The Arqma Network
 # Copyright (c) 2014-2018, The Monero Project
 #
@@ -50,9 +51,9 @@ set(mnemonics_private_headers
   esperanto.h
   lojban.h)
 
-arqma_private_headers(mnemonics
+evolution_private_headers(mnemonics
   ${mnemonics_private_headers})
-arqma_add_library(mnemonics
+evolution_add_library(mnemonics
   ${mnemonics_sources}
   ${mnemonics_headers}
   ${mnemonics_private_headers})

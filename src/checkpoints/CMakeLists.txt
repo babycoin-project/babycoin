@@ -1,5 +1,6 @@
-# Copyright (c) 2018-2020, The Arqma Network
-# Copyright (c) 2014-2020, The Monero Project
+# Copyright (c) 2020, The Evolution Network
+# Copyright (c) 2018-2019, The Arqma Network
+# Copyright (c) 2014-2018, The Monero Project
 #
 # All rights reserved.
 #
@@ -45,9 +46,9 @@ set(checkpoints_headers)
 set(checkpoints_private_headers
   checkpoints.h)
 
-arqma_private_headers(checkpoints
+evolution_private_headers(checkpoints
   ${checkpoints_private_headers})
-arqma_add_library(checkpoints
+evolution_add_library(checkpoints
   ${checkpoints_sources}
   ${checkpoints_headers}
   ${checkpoints_private_headers})

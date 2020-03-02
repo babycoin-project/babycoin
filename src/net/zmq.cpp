@@ -1,3 +1,4 @@
+// Copyright (c) 2020, The Evolution Network
 // Copyright (c) 2019, The Arqma Network
 // Copyright (c) 2019, The Monero Project
 //
@@ -176,7 +177,7 @@ namespace zmq
     expect<std::string> receive(void* const socket, const int flags)
     {
         std::string payload{};
-        ARQMA_CHECK(retry_op(do_receive{}, payload, socket, flags));
+        EVOLUTION_CHECK(retry_op(do_receive{}, payload, socket, flags));
         return {std::move(payload)};
     }
 

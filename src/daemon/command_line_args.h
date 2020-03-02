@@ -1,3 +1,4 @@
+// Copyright (c) 2020, The Evolution Network
 // Copyright (c) 2018-2019, The Arqma Network
 // Copyright (c) 2014-2018, The Monero Project
 //
@@ -36,7 +37,7 @@
 
 namespace daemon_args
 {
-  std::string const WINDOWS_SERVICE_NAME = "ArQmA-Network Node";
+  std::string const WINDOWS_SERVICE_NAME = "Evolution-Network Node";
 
   const command_line::arg_descriptor<std::string, false, true, 2> arg_config_file = {
     "config-file"
@@ -52,6 +53,12 @@ namespace daemon_args
                 std::string(CRYPTONOTE_NAME ".conf")).string();
       return val;
     }
+  };
+
+  const command_line::arg_descriptor<unsigned> arg_make_genesis_tx = {
+    "make-genesis-tx"
+  , "Makes a new genesis transaction (useful for making a new coin based off of this project)\n1 for Mainnet, 2 for Testnet, 3 for Stagenet"
+  , 0
   };
   const command_line::arg_descriptor<std::string, false, true, 2> arg_log_file = {
     "log-file"
@@ -96,10 +103,10 @@ namespace daemon_args
   , "Max number of threads to use for a parallel job"
   , 0
   };
-  
+
   const command_line::arg_descriptor<bool> arg_public_node = {
     "public-node"
-  , "Allow Arq-Net Users to use this Arqma Node as a Remote-Node (restricted RPC mode, view-only commands) and advertise it over P2P Network Protocol"
+  , "Allow -Net Users to use this Evolution Node as a Remote-Node (restricted RPC mode, view-only commands) and advertise it over P2P Network Protocol"
   , false
   };
 

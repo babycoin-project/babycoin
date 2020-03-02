@@ -1,3 +1,4 @@
+# Copyright (c) 2020, The Evolution Network
 # Copyright (c) 2018-2019, The Arqma Network
 # Copyright (c) 2014-2018, The Monero Project
 #
@@ -59,9 +60,9 @@ if(CMAKE_BUILD_TYPE STREQUAL "Debug")
   add_definitions(-DDEBUG_TMPDIR_LOG=1)
 endif()
 
-arqma_private_headers(daemonizer
+evolution_private_headers(daemonizer
   ${daemonizer_private_headers})
-arqma_add_library(daemonizer
+evolution_add_library(daemonizer
   ${daemonizer_sources}
   ${daemonizer_headers}
   ${daemonizer_private_headers})

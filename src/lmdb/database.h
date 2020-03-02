@@ -1,3 +1,4 @@
+// Copyright (c) 2020, The Evolution Network
 // Copyright (c) 2018-2019, The Arqma Network
 // Copyright (c) 2018, The Monero Project
 // All rights reserved.
@@ -119,18 +120,18 @@ namespace lmdb
                 if (!txn)
                     return txn.error();
 
-                ARQMA_PRECOND(*txn != nullptr);
+                EVOLUTION_PRECOND(*txn != nullptr);
                 const auto wrote = f(*(*txn));
                 if (wrote)
                 {
-                    ARQMA_CHECK(commit(std::move(*txn)));
+                    EVOLUTION_CHECK(commit(std::move(*txn)));
                     return wrote;
                 }
                 if (wrote != lmdb::error(MDB_MAP_FULL))
                     return wrote;
 
                 txn->reset();
-                ARQMA_CHECK(this->resize());
+                EVOLUTION_CHECK(this->resize());
             }
             return {lmdb::error(MDB_MAP_FULL)};
         }

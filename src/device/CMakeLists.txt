@@ -1,3 +1,4 @@
+# Copyright (c) 2020, The Evolution Network
 # Copyright (c) 2018-2019, The Arqma Network
 # Copyright (c) 2014-2017, The Monero Project
 #
@@ -58,10 +59,10 @@ set(device_headers
 
 set(device_private_headers)
 
-arqma_private_headers(device
+evolution_private_headers(device
   ${device_private_headers})
 
-arqma_add_library(device
+evolution_add_library(device
   ${device_sources}
   ${device_headers}
   ${device_private_headers})

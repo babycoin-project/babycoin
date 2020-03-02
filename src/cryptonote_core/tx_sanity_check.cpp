@@ -1,3 +1,4 @@
+// Copyright (c) 2020, The Evolution Network
 // Copyright (c) 2019, The Arqma Network
 // Copyright (c) 2019, The Monero Project
 //
@@ -34,8 +35,8 @@
 #include "blockchain.h"
 #include "tx_sanity_check.h"
 
-#undef ARQMA_DEFAULT_LOG_CATEGORY
-#define ARQMA_DEFAULT_LOG_CATEGORY "verify"
+#undef EVOLUTION_DEFAULT_LOG_CATEGORY
+#define EVOLUTION_DEFAULT_LOG_CATEGORY "verify"
 
 namespace cryptonote
 {

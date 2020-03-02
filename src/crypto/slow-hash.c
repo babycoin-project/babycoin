@@ -1,3 +1,4 @@
+// Copyright (c) 2020, The Evolution Network
 // Copyright (c) 2018-2019, The Arqma Network
 // Copyright (c) 2014-2018, The Monero Project
 //
@@ -369,7 +370,7 @@ STATIC INLINE int force_software_aes(void)
   if (use != -1)
     return use;
 
-  const char *env = getenv("ARQMA_USE_SOFTWARE_AES");
+  const char *env = getenv("EVOLUTION_USE_SOFTWARE_AES");
   if (!env) {
     use = 0;
   }

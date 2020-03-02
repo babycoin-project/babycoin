@@ -1,5 +1,6 @@
-# Copyright (c) 2018-2020, The Arqma Network
-# Copyright (c) 2014-2020, The Monero Project
+# Copyright (c) 2020, The Evolution Network
+# Copyright (c) 2018-2019, The Arqma Network
+# Copyright (c) 2014-2018, The Monero Project
 #
 # All rights reserved.
 #
@@ -46,7 +47,7 @@ endif()
 cmake_minimum_required(VERSION 3.5.0)
 message(STATUS "CMake version ${CMAKE_VERSION}")
 
-project(arqma)
+project(evolution)
 
 function (die msg)
   if (NOT WIN32)
@@ -308,7 +309,7 @@ endif()
 option(STATIC "Link libraries statically" ${DEFAULT_STATIC})
 
 # On older installations of g++ STDC_FORMAT_MACROS must be defined before inttype.h is included.
-# Fixes the error: expected ‘)’ before ‘PRIx64’
+# Fixes the error: expected ‘)’ before ‘PRIx64’ 
 if(WIN32 OR MSVC OR MINGW)
   add_definitions(-D__STDC_FORMAT_MACROS)
 endif()
@@ -359,7 +360,7 @@ if(SANITIZE)
 endif()
 
 # Set default blockchain storage location:
-# memory was the default in Cryptonote before Arqma implemented LMDB, it still works but is unnecessary.
+# memory was the default in Cryptonote before Evolution implemented LMDB, it still works but is unnecessary.
 # set(DATABASE memory)
 set(DATABASE lmdb)
 
@@ -716,7 +717,6 @@ else()
   if (WIN32)
     add_linker_flag_if_supported(-Wl,--dynamicbase LD_SECURITY_FLAGS)
     add_linker_flag_if_supported(-Wl,--nxcompat LD_SECURITY_FLAGS)
-    add_linker_flag_if_supported(-Wl,--high-entropy-va LD_SECURITY_FLAGS)
   endif()
 
   message(STATUS "Using C security hardening flags: ${C_SECURITY_FLAGS}")
@@ -833,7 +833,7 @@ else()
     set(DEBUG_FLAGS "${DEBUG_FLAGS} -O0 ")
   endif()
 
-  # At least some CLANGs default to not enough for Arqma
+  # At least some CLANGs default to not enough for Evolution
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -ftemplate-depth=900")
 
   if(NOT DEFINED USE_LTO_DEFAULT)

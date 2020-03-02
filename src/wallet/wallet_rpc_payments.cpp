@@ -1,3 +1,4 @@
+// Copyright (c) 2020, The Evolution Network
 // Copyright (c) 2019, the Arqma Network
 // Copyright (c) 2018-2019, The Monero Project
 //
@@ -44,8 +45,8 @@
 #include "common/i18n.h"
 #include "common/util.h"
 
-#undef ARQMA_DEFAULT_LOG_CATEGORY
-#define ARQMA_DEFAULT_LOG_CATEGORY "wallet.wallet2.rpc_payments"
+#undef EVOLUTION_DEFAULT_LOG_CATEGORY
+#define EVOLUTION_DEFAULT_LOG_CATEGORY "wallet.wallet2.rpc_payments"
 
 #define RPC_PAYMENT_POLL_PERIOD 10 /* seconds*/
 

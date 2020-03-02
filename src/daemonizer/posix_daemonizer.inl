@@ -1,3 +1,4 @@
+// Copyright (c) 2020, The Evolution Network
 // Copyright (c) 2018-2019, The Arqma Network
 // Copyright (c) 2014-2018, The Monero Project
 //
@@ -101,7 +102,7 @@ namespace daemonizer
     }
     else
     {
-      //LOG_PRINT_L0("ArQmA '" << ARQMA_RELEASE_NAME << "' (v" << ARQMA_VERSION_FULL);
+      //LOG_PRINT_L0("Evolution '" << EVOLUTION_RELEASE_NAME << "' (v" << EVOLUTION_VERSION_FULL);
       return executor.run_interactive(vm);
     }
   }

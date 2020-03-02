@@ -1,5 +1,6 @@
-// Copyright (c) 2018-2019, The Arqma Network
-// Copyright (c) 2014-2018, The Monero Project
+// Copyright (c) 2020, The Evolution Project
+// Copyright (c) 2018-2020, The Arqma Network
+// Copyright (c) 2014-2020, The Monero Project
 //
 // All rights reserved.
 //
@@ -65,8 +66,8 @@
 #include <miniupnp/miniupnpc/upnpcommands.h>
 #include <miniupnp/miniupnpc/upnperrors.h>
 
-#undef ARQMA_DEFAULT_LOG_CATEGORY
-#define ARQMA_DEFAULT_LOG_CATEGORY "net.p2p"
+#undef EVOLUTION_DEFAULT_LOG_CATEGORY
+#define EVOLUTION_DEFAULT_LOG_CATEGORY "net.p2p"
 
 #define NET_MAKE_IP(b1,b2,b3,b4)  ((LPARAM)(((DWORD)(b1)<<24)+((DWORD)(b2)<<16)+((DWORD)(b3)<<8)+((DWORD)(b4))))
 
@@ -460,31 +461,30 @@ namespace nodetool
     std::set<std::string> full_addrs;
     if (nettype == cryptonote::TESTNET)
     {
-      full_addrs.insert("139.99.106.122:29993");
-      full_addrs.insert("77.93.206.172:29993");
-      full_addrs.insert("77.103.229.42:29993");
+      full_addrs.insert("5.172.219.174:43461");
+      full_addrs.insert("51.158.65.16:43461"); //eu
+      full_addrs.insert("207.244.120.53:43461"); //us
+      full_addrs.insert("galaxia-project.go.ro:43461");
+
     }
     else if (nettype == cryptonote::STAGENET)
     {
-      full_addrs.insert("77.93.206.172:39993");
-      full_addrs.insert("51.158.65.16:39993");
-      full_addrs.insert("77.103.229.42:39993");
-      full_addrs.insert("139.99.106.122:39993");
-      full_addrs.insert("144.217.242.16:39993");
+      full_addrs.insert("5.172.219.174:44461");
+      full_addrs.insert("51.158.65.16:44461"); //eu
+      full_addrs.insert("207.244.120.53:44461"); //us
+      full_addrs.insert("galaxia-project.go.ro:44461");
+
     }
     else if (nettype == cryptonote::FAKECHAIN)
     {
     }
     else
     {
-      full_addrs.insert("144.217.242.16:19993");
-      full_addrs.insert("207.244.120.39:19993");
-      full_addrs.insert("92.222.70.207:19993");
-      full_addrs.insert("77.103.229.42:19993");
-      full_addrs.insert("77.93.206.170:19993");
-      full_addrs.insert("51.15.50.83:19993");
-      full_addrs.insert("51.158.65.16:19993");
-      full_addrs.insert("51.15.253.177:19993");
+      full_addrs.insert("5.172.219.174:52921");
+      full_addrs.insert("51.158.65.16:52921"); //eu
+      full_addrs.insert("207.244.120.53:52921"); //us
+      full_addrs.insert("galaxia-project.go.ro:52921");
+
     }
     return full_addrs;
   }
@@ -1645,7 +1645,7 @@ namespace nodetool
         --i;
         continue;
       }
-      
+
 #ifdef CRYPTONOTE_PRUNING_DEBUG_SPOOF_SEED
       be.pruning_seed = tools::make_pruning_seed(1 + (be.adr.as<epee::net_utils::ipv4_network_address>().ip()) % (1ul << CRYPTONOTE_PRUNING_LOG_STRIPES), CRYPTONOTE_PRUNING_LOG_STRIPES);
 #endif
@@ -1737,7 +1737,7 @@ namespace nodetool
     }
     rsp.connections_count = get_connections_count();
     rsp.incoming_connections_count = (rsp.connections_count - get_outgoing_connections_count());
-    rsp.version = ARQMA_VERSION_FULL;
+    rsp.version = EVOLUTION_VERSION_FULL;
     rsp.os_version = tools::get_os_version_string();
     m_payload_handler.get_stat_info(rsp.payload_info);
     return 1;
@@ -2226,7 +2226,7 @@ namespace nodetool
         public_zone->second.m_net_server.get_config_object().del_out_connections(current - count);
     }
   }
-  
+
   template<class t_payload_net_handler>
   uint32_t node_server<t_payload_net_handler>::get_max_out_public_peers() const
   {
@@ -2248,7 +2248,7 @@ namespace nodetool
         public_zone->second.m_net_server.get_config_object().del_in_connections(current - count);
     }
   }
-  
+
   template<class t_payload_net_handler>
   uint32_t node_server<t_payload_net_handler>::get_max_in_public_peers() const
   {

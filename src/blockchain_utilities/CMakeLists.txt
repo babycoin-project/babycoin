@@ -1,5 +1,6 @@
-# Copyright (c) 2018-2020, The Arqma Network
-# Copyright (c) 2014-2020, The Monero Project
+# Copyright (c) 2020, The Evolution Network
+# Copyright (c) 2018-2019, The Arqma Network
+# Copyright (c) 2014-2018, The Monero Project
 #
 # All rights reserved.
 #
@@ -39,7 +40,7 @@ set(blockchain_import_private_headers
   bootstrap_serialization.h
   )
 
-arqma_private_headers(blockchain_import
+evolution_private_headers(blockchain_import
 	  ${blockchain_import_private_headers})
 
 set(blockchain_export_sources
@@ -54,7 +55,7 @@ set(blockchain_export_private_headers
   bootstrap_serialization.h
   )
 
-arqma_private_headers(blockchain_export
+evolution_private_headers(blockchain_export
 	  ${blockchain_export_private_headers})
 
 
@@ -68,7 +69,7 @@ set(blockchain_blackball_private_headers
   bootstrap_serialization.h
   )
 
-arqma_private_headers(blockchain_blackball
+evolution_private_headers(blockchain_blackball
 	  ${blockchain_blackball_private_headers})
 
 set(blockchain_usage_sources
@@ -77,7 +78,7 @@ set(blockchain_usage_sources
 
 set(blockchain_usage_private_headers)
 
-arqma_private_headers(blockchain_usage
+evolution_private_headers(blockchain_usage
 	  ${blockchain_usage_private_headers})
 
 
@@ -87,7 +88,7 @@ set(blockchain_prune_known_spent_data_sources
 
 set(blockchain_prune_known_spent_data_private_headers)
 
-arqma_private_headers(blockchain_prune_known_spent_data
+evolution_private_headers(blockchain_prune_known_spent_data
          ${blockchain_prune_known_spent_data_private_headers})
 
 
@@ -97,7 +98,7 @@ set(blockchain_prune_sources
 
 set(blockchain_prune_private_headers)
 
-arqma_private_headers(blockchain_prune
+evolution_private_headers(blockchain_prune
          ${blockchain_prune_private_headers})
 
 
@@ -109,7 +110,7 @@ set(blockchain_ancestry_sources
 
 set(blockchain_ancestry_private_headers)
 
-arqma_private_headers(blockchain_ancestry
+evolution_private_headers(blockchain_ancestry
 	  ${blockchain_ancestry_private_headers})
 
 
@@ -120,12 +121,12 @@ set(blockchain_depth_sources
 
 set(blockchain_depth_private_headers)
 
-arqma_private_headers(blockchain_depth
+evolution_private_headers(blockchain_depth
 	  ${blockchain_depth_private_headers})
 
 
 
-arqma_add_executable(blockchain_import
+evolution_add_executable(blockchain_import
   ${blockchain_import_sources}
   ${blockchain_import_private_headers})
 
@@ -149,10 +150,10 @@ endif()
 
 set_property(TARGET blockchain_import
 	PROPERTY
-	OUTPUT_NAME "arqma-blockchain-import")
+	OUTPUT_NAME "evolution-blockchain-import")
 install(TARGETS blockchain_import DESTINATION bin)
 
-arqma_add_executable(blockchain_export
+evolution_add_executable(blockchain_export
   ${blockchain_export_sources}
   ${blockchain_export_private_headers})
 
@@ -170,10 +171,10 @@ target_link_libraries(blockchain_export
 
 set_property(TARGET blockchain_export
 	PROPERTY
-	OUTPUT_NAME "arqma-blockchain-export")
+	OUTPUT_NAME "evolution-blockchain-export")
 install(TARGETS blockchain_export DESTINATION bin)
 
-arqma_add_executable(blockchain_blackball
+evolution_add_executable(blockchain_blackball
   ${blockchain_blackball_sources}
   ${blockchain_blackball_private_headers})
 
@@ -192,11 +193,11 @@ target_link_libraries(blockchain_blackball
 
 set_property(TARGET blockchain_blackball
 	PROPERTY
-	OUTPUT_NAME "arqma-blockchain-mark-spent-outputs")
+	OUTPUT_NAME "evolution-blockchain-mark-spent-outputs")
 install(TARGETS blockchain_blackball DESTINATION bin)
 
 
-arqma_add_executable(blockchain_usage
+evolution_add_executable(blockchain_usage
   ${blockchain_usage_sources}
   ${blockchain_usage_private_headers})
 
@@ -214,10 +215,10 @@ target_link_libraries(blockchain_usage
 
 set_property(TARGET blockchain_usage
 	PROPERTY
-	OUTPUT_NAME "arqma-blockchain-usage")
+	OUTPUT_NAME "evolution-blockchain-usage")
 install(TARGETS blockchain_usage DESTINATION bin)
 
-arqma_add_executable(blockchain_ancestry
+evolution_add_executable(blockchain_ancestry
   ${blockchain_ancestry_sources}
   ${blockchain_ancestry_private_headers})
 
@@ -235,10 +236,10 @@ target_link_libraries(blockchain_ancestry
 
 set_property(TARGET blockchain_ancestry
 	PROPERTY
-	OUTPUT_NAME "arqma-blockchain-ancestry")
+	OUTPUT_NAME "evolution-blockchain-ancestry")
 install(TARGETS blockchain_ancestry DESTINATION bin)
 
-arqma_add_executable(blockchain_depth
+evolution_add_executable(blockchain_depth
   ${blockchain_depth_sources}
   ${blockchain_depth_private_headers})
 
@@ -256,10 +257,10 @@ target_link_libraries(blockchain_depth
 
 set_property(TARGET blockchain_depth
 	PROPERTY
-	OUTPUT_NAME "arqma-blockchain-depth")
+	OUTPUT_NAME "evolution-blockchain-depth")
 install(TARGETS blockchain_depth DESTINATION bin)
 
-arqma_add_executable(blockchain_prune_known_spent_data
+evolution_add_executable(blockchain_prune_known_spent_data
   ${blockchain_prune_known_spent_data_sources}
   ${blockchain_prune_known_spent_data_private_headers})
 
@@ -278,16 +279,16 @@ target_link_libraries(blockchain_prune_known_spent_data
 
 set_property(TARGET blockchain_prune_known_spent_data
 	PROPERTY
-	OUTPUT_NAME "arqma-blockchain-prune-known-spent-data")
+	OUTPUT_NAME "evolution-blockchain-prune-known-spent-data")
 install(TARGETS blockchain_prune_known_spent_data DESTINATION bin)
 
-arqma_add_executable(blockchain_prune
+evolution_add_executable(blockchain_prune
   ${blockchain_prune_sources}
   ${blockchain_prune_private_headers})
 
 set_property(TARGET blockchain_prune
 	PROPERTY
-	OUTPUT_NAME "arqma-blockchain-prune")
+	OUTPUT_NAME "evolution-blockchain-prune")
 install(TARGETS blockchain_prune DESTINATION bin)
 
 target_link_libraries(blockchain_prune

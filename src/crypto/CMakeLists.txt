@@ -1,3 +1,4 @@
+# Copyright (c) 2020, The Evolution Network
 # Copyright (c) 2018-2019, The Arqma Network
 # Copyright (c) 2014-2018, The Monero Project
 #
@@ -74,9 +75,9 @@ set(crypto_private_headers
   skein.h
   skein_port.h)
 
-arqma_private_headers(cncrypto
+evolution_private_headers(cncrypto
   ${crypto_private_headers})
-arqma_add_library(cncrypto
+evolution_add_library(cncrypto
   ${crypto_sources}
   ${crypto_headers}
   ${crypto_private_headers})
