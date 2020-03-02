@@ -279,7 +279,7 @@ application.
 
 * Change branch to last Release:
 
-	`cd evolution
+	`cd evolution && git checkout release-v0.1.0`  
 
 * Activate and update submodules:
 
@@ -437,7 +437,7 @@ You can also cross-compile Evolution static binaries on Linux for Windows and ma
 
 *** For `x86_64-apple-darwin14` you need to download SDK first ***    
 
-* ```git clone -b evolution https://github.com/malbit/MacOSX-SDKs.git contrib/depends/SDKs ```    
+* ```git clone -b arqma https://github.com/malbit/MacOSX-SDKs.git contrib/depends/SDKs ```    
 
 You can download SDK at https://github.com/malbit/MacOSX-SDKs/releases/download/MacOSX10.11.sdk.Evolution/MacOSX10.11.sdk.tar.gz and unpack it and put to contrib/depends/SDKs    
 
