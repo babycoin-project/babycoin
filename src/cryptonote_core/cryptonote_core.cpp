@@ -1621,26 +1621,12 @@ namespace cryptonote
         main_message = "The daemon will start synchronizing with the network. This may take a long time to complete.";
       MGINFO_CYAN(ENDL <<
       "\n \n"
-"WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW\n"
-"WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW\n"
-"WWWWWWWWWWWWWW#*******=@WWWWWWWWWWWWWWW\n"
-"WWWWWWWWWWWW=****=##=****@WWWWWWWWWWWWW\n"
-"WWWWWWWWWW=***=WWWWWWW@****@WWWWWWWWWWW\n"
-"WWWWWWWW=***=WWWWWWWWWWW@****@WWWWWWWWW\n"
-"WWWWWW=***=WWWW#*****=WWWW@***#WWWWWWWW\n"
-"WWWW=***=WWWW#*********#WWWW=**#WWWWWWW\n"
-"WWWW#*=WWWW#****#WWW#**=WWWW#**=WWWWWWW\n"
-"WWWWWWWWW@****#WWWW=***@WWWW***#WWWWWWW\n"
-"WWWWWWWW@***#WWWW=***#WWWW#***=WWWWWWWW\n"
-"WWWWWWWW=**#WWWW=**=WWWW#****@WWWW#WWWW\n"
-"WWWWWWWW=**#WWWW=**=WW#****#WWWW=***#WW\n"
-"WWWWWWWW@***@WWW@********#WWWW=***=WWWW\n"
-"WWWWWWWWW@***=@WWWW#==#@WWWW=***=WWWWWW\n"
-"WWWWWWWWWWW#***=@WWWWWWWWW=***=WWWWWWWW\n"
-"WWWWWWWWWWWWW#***=@WWWWW=***=WWWWWWWWWW\n"
-"WWWWWWWWWWWWWWW#**********=WWWWWWWWWWWW\n"
-"WWWWWWWWWWWWWWWWWW@####@WWWWWWWWWWWWWWW\n"
-"WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW" << ENDL);
+"███████╗██╗   ██╗ ██████╗ ██╗  ██╗ \n"
+"██╔════╝██║   ██║██╔═══██╗╚██╗██╔╝ \n"
+"█████╗  ██║   ██║██║   ██║ ╚███╔╝  \n"
+"██╔══╝  ╚██╗ ██╔╝██║   ██║ ██╔██╗  \n"
+"███████╗ ╚████╔╝ ╚██████╔╝██╔╝ ██╗ \n"
+"╚══════╝  ╚═══╝   ╚═════╝ ╚═╝  ╚═╝ " << ENDL);
       MGINFO_YELLOW(ENDL << "**********************************************************************" << ENDL
         << main_message << ENDL
         << ENDL

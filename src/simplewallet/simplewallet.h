@@ -54,7 +54,7 @@
 #undef EVOLUTION_DEFAULT_LOG_CATEGORY
 #define EVOLUTION_DEFAULT_LOG_CATEGORY "wallet.simplewallet"
 
-constexpr const char EVOLUTION_DONATION_ADDR[] = "ar46iCiw5uB7SjnYhL5EJLP1LpqGkZbCcWhWgdbLL1c4DicNuYi3ZeRJPi8FFmEhYnagbxRyaQKyTYBA95JqmPcr1XZytK9o3";
+constexpr const char EVOLUTION_DONATION_ADDR[] = "evzEFYNxCVhAAMTJiEVRi4EN39ox6W7BaQkwkwd7jitEhfHQ6zv3tQXSDcUwoUeLhyhqbNJNZvgvqPGvnBa7umRd3XWKx6rxeE";
 
 /*!
  * \namespace cryptonote
@@ -85,9 +85,9 @@ namespace cryptonote
     std::string get_commands_str();
     std::string get_command_usage(const std::vector<std::string> &args);
   private:
-    
+
     enum ResetType { ResetNone, ResetSoft, ResetHard, ResetSoftKeepKI };
-    
+
     bool handle_command_line(const boost::program_options::variables_map& vm);
 
     bool run_console_handler();
@@ -403,7 +403,7 @@ namespace cryptonote
     bool m_rpc_payment_mining_requested;
     bool m_daemon_rpc_payment_message_displayed;
     float m_rpc_payment_hash_rate;
-    
+
     std::unordered_map<std::string, uint32_t> m_claimed_cph;
   };
 }
