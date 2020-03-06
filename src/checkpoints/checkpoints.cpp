@@ -240,6 +240,7 @@ ADD_CHECKPOINT(2500, "b8d436665e3605bcecdbaa1259c1994e723b0408592a552cbc8e9dcf76
   bool checkpoints::load_checkpoints_from_dns(network_type nettype)
   {
     std::vector<std::string> records;
+    return false; //TODO set dns domains for adding checkpoints
 
     // All four ArQ-Net domains have DNSSEC on and valid
     static const std::vector<std::string> dns_urls = {
