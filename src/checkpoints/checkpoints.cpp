@@ -163,42 +163,43 @@ namespace cryptonote
   {
     if (nettype == TESTNET)
     {
-
+      ADD_CHECKPOINT(0, "20c1047c2411b076855977031bf8ccaed4bf544cd03cbc7dbebfef95891248a5");
       return true;
     }
     if (nettype == STAGENET)
     {
+      ADD_CHECKPOINT(0, "20c1047c2411b076855977031bf8ccaed4bf544cd03cbc7dbebfef95891248a5");
       return true;
     }
 
-//checkpoints here
-ADD_CHECKPOINT(0, "20c1047c2411b076855977031bf8ccaed4bf544cd03cbc7dbebfef95891248a5");
-ADD_CHECKPOINT(100, "5cce2e92c09a7c8a4a2a4100b94259046fce320115b20de5bb160697885b8c64");
-ADD_CHECKPOINT(200, "17287e3ad525a10a26d2e578be1083e5f9e99395d6fc2b2d9f5612413c46b8a1");
-ADD_CHECKPOINT(300, "242fba325963ffd574ade9021a32884b88c7096ec34a405f74bcd229eed463cf");
-ADD_CHECKPOINT(400, "9e0d9c8beb40720be43c5e51d357b70b9b03d9f4883fc983000b6c06480fa89a");
-ADD_CHECKPOINT(500, "62534533a6a66ba2357f327b2fdb584a8d9d860fb136c1a6303cfe9ff89c2d37");
-ADD_CHECKPOINT(600, "333feca60e428be7f0b693f7037e0c49f82dab3d6cd4f3f9f188a089852cb215");
-ADD_CHECKPOINT(700, "5f6f97b29e9a76e3b5b3c6d554fb0130ee30d238db4f9673017e5735f8f6b906");
-ADD_CHECKPOINT(800, "78803f7183211fc863cf80ecc28f233f46a4276082ce1ada7a87c55d8e6830a6");
-ADD_CHECKPOINT(900, "21d8e9b81188861512ddb81a726f2e5e187e2e2056b62060c320ac8dffb65cee");
-ADD_CHECKPOINT(1000, "09ed61ccdfdd16fdca5f9135a713992b54f8b75b67bb18464168129f3017b9df");
-ADD_CHECKPOINT(1100, "e46cdc377f9178b26a20b7b34c70eb14d403a495e94538a3fd2c8fc913a23fd8");
-ADD_CHECKPOINT(1200, "ff3c506d482f6b44077255c8e9c680e5a10fb6689e6ec2933e580804e1f306c9");
-ADD_CHECKPOINT(1300, "61c0c8a792b5d10b913f956235fcbb80dced65bc7ab0d426e2d61ff419fa4a02");
-ADD_CHECKPOINT(1400, "15b8f551f5ffcf7191bd4821e164976a6bde0a655f8b099a2bed965a41eac441");
-ADD_CHECKPOINT(1500, "68bd182d04dbd1764faae7255a6ac9b240bb526c361fb63c178ee02fa0ed1fd9");
-ADD_CHECKPOINT(1600, "6383d0ac0d1b1c78e1bd02c55d75a6d3eac27e28ac6b047f626dcb17fb80cb29");
-ADD_CHECKPOINT(1700, "8bfebd680da7675218173ff58ab1fb12355ea7a7f10e36be5f2ebb4dd5dd73f2");
-ADD_CHECKPOINT(1800, "2fa3aa2cbae9a354cf8accc39ba2aaae0e605ccf938197b13b98487affe98482");
-ADD_CHECKPOINT(1900, "d1e258005c45e103da748ed8c06f8690d0bccdcaccb3ecd457f6f420c1af130f");
-ADD_CHECKPOINT(2000, "bbdb1da79b03a0b87115152c332f0160c712bdf1c36c4af725afb5efce6baf2e");
-ADD_CHECKPOINT(2100, "9a478edf1c8f90dc869773bdfdd6d7d3ca671d8dd86254ef1b728d027e7e197f");
-ADD_CHECKPOINT(2200, "8e51174bca1180da4aa1df8a28dd72dce60cb89cb580e92c223c91ad3cd85a6a");
-ADD_CHECKPOINT(2300, "cb3ad658ce51c9917b21c4bf28408cef9d965f8fa0f08d4fa761d3d709d55a09");
-ADD_CHECKPOINT(2400, "39abe9246f343930f4f5a7d8abc6ecd588d8ad9fc3a892747e6a068119a5919b");
-ADD_CHECKPOINT(2500, "b8d436665e3605bcecdbaa1259c1994e723b0408592a552cbc8e9dcf765cc752");
-   return true;
+    //checkpoints here
+    ADD_CHECKPOINT(0, "20c1047c2411b076855977031bf8ccaed4bf544cd03cbc7dbebfef95891248a5");
+    ADD_CHECKPOINT(100, "5cce2e92c09a7c8a4a2a4100b94259046fce320115b20de5bb160697885b8c64");
+    ADD_CHECKPOINT(200, "17287e3ad525a10a26d2e578be1083e5f9e99395d6fc2b2d9f5612413c46b8a1");
+    ADD_CHECKPOINT(300, "242fba325963ffd574ade9021a32884b88c7096ec34a405f74bcd229eed463cf");
+    ADD_CHECKPOINT(400, "9e0d9c8beb40720be43c5e51d357b70b9b03d9f4883fc983000b6c06480fa89a");
+    ADD_CHECKPOINT(500, "62534533a6a66ba2357f327b2fdb584a8d9d860fb136c1a6303cfe9ff89c2d37");
+    ADD_CHECKPOINT(600, "333feca60e428be7f0b693f7037e0c49f82dab3d6cd4f3f9f188a089852cb215");
+    ADD_CHECKPOINT(700, "5f6f97b29e9a76e3b5b3c6d554fb0130ee30d238db4f9673017e5735f8f6b906");
+    ADD_CHECKPOINT(800, "78803f7183211fc863cf80ecc28f233f46a4276082ce1ada7a87c55d8e6830a6");
+    ADD_CHECKPOINT(900, "21d8e9b81188861512ddb81a726f2e5e187e2e2056b62060c320ac8dffb65cee");
+    ADD_CHECKPOINT(1000, "09ed61ccdfdd16fdca5f9135a713992b54f8b75b67bb18464168129f3017b9df");
+    ADD_CHECKPOINT(1100, "e46cdc377f9178b26a20b7b34c70eb14d403a495e94538a3fd2c8fc913a23fd8");
+    ADD_CHECKPOINT(1200, "ff3c506d482f6b44077255c8e9c680e5a10fb6689e6ec2933e580804e1f306c9");
+    ADD_CHECKPOINT(1300, "61c0c8a792b5d10b913f956235fcbb80dced65bc7ab0d426e2d61ff419fa4a02");
+    ADD_CHECKPOINT(1400, "15b8f551f5ffcf7191bd4821e164976a6bde0a655f8b099a2bed965a41eac441");
+    ADD_CHECKPOINT(1500, "68bd182d04dbd1764faae7255a6ac9b240bb526c361fb63c178ee02fa0ed1fd9");
+    ADD_CHECKPOINT(1600, "6383d0ac0d1b1c78e1bd02c55d75a6d3eac27e28ac6b047f626dcb17fb80cb29");
+    ADD_CHECKPOINT(1700, "8bfebd680da7675218173ff58ab1fb12355ea7a7f10e36be5f2ebb4dd5dd73f2");
+    ADD_CHECKPOINT(1800, "2fa3aa2cbae9a354cf8accc39ba2aaae0e605ccf938197b13b98487affe98482");
+    ADD_CHECKPOINT(1900, "d1e258005c45e103da748ed8c06f8690d0bccdcaccb3ecd457f6f420c1af130f");
+    ADD_CHECKPOINT(2000, "bbdb1da79b03a0b87115152c332f0160c712bdf1c36c4af725afb5efce6baf2e");
+    ADD_CHECKPOINT(2100, "9a478edf1c8f90dc869773bdfdd6d7d3ca671d8dd86254ef1b728d027e7e197f");
+    ADD_CHECKPOINT(2200, "8e51174bca1180da4aa1df8a28dd72dce60cb89cb580e92c223c91ad3cd85a6a");
+    ADD_CHECKPOINT(2300, "cb3ad658ce51c9917b21c4bf28408cef9d965f8fa0f08d4fa761d3d709d55a09");
+    ADD_CHECKPOINT(2400, "39abe9246f343930f4f5a7d8abc6ecd588d8ad9fc3a892747e6a068119a5919b");
+    ADD_CHECKPOINT(2500, "b8d436665e3605bcecdbaa1259c1994e723b0408592a552cbc8e9dcf765cc752");
+    return true;
   }
 
   bool checkpoints::load_checkpoints_from_json(const std::string &json_hashfile_fullpath)
@@ -240,11 +241,9 @@ ADD_CHECKPOINT(2500, "b8d436665e3605bcecdbaa1259c1994e723b0408592a552cbc8e9dcf76
   bool checkpoints::load_checkpoints_from_dns(network_type nettype)
   {
     std::vector<std::string> records;
-    return false; //TODO set dns domains for adding checkpoints
 
     // All four ArQ-Net domains have DNSSEC on and valid
     static const std::vector<std::string> dns_urls = {
-        "evolution-project.go.ro/checkpoints"
 	};
 
     static const std::vector<std::string> testnet_dns_urls = {
@@ -269,7 +268,7 @@ ADD_CHECKPOINT(2500, "b8d436665e3605bcecdbaa1259c1994e723b0408592a552cbc8e9dcf76
         std::stringstream ss(record.substr(0, pos));
         if (!(ss >> height))
         {
-    continue;
+          continue;
         }
 
         // parse the second part as crypto::hash,
@@ -277,13 +276,13 @@ ADD_CHECKPOINT(2500, "b8d436665e3605bcecdbaa1259c1994e723b0408592a552cbc8e9dcf76
         std::string hashStr = record.substr(pos + 1);
         if (!epee::string_tools::parse_tpod_from_hex_string(hashStr, hash))
         {
-    continue;
+          continue;
         }
 
         ADD_CHECKPOINT(height, hashStr);
       }
     }
-    return true;
+    return false; // DNS Domains has to be set firstly
   }
 
   bool checkpoints::load_new_checkpoints(const std::string &json_hashfile_fullpath, network_type nettype, bool dns)
