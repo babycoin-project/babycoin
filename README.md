@@ -7,10 +7,10 @@ Portions Copyright (c) 2012-2013 The Cryptonote developers.
 
 ## Development resources
 
-- Web: [http://evolution-project.go.ro/](http://evolution-project.go.ro/)
+- Web: [https://evolutionproject.space/](https://evolutionproject.space/)
 - GitHub: [https://github.com/evolution-project/evolution/](https://github.com/evolution-project/evolution/)
 - Discord: [https://discord.gg/A6Z5mfT](https://discord.gg/A6Z5mfT)
-- Evolution Pool: [https://github.com/evolution-project/pool/](https://github.com/evolution-project/pool/)
+- Evolution Pools: [https://github.com/evolution-project/pool/](https://github.com/evolution-project/pool/)
 
 
 ## Introduction
