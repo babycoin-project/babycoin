@@ -125,7 +125,7 @@ Clone recursively to pull-in needed submodule(s):
 
 If you already have a repo cloned, initialize and update:
 
-`$ cd evolution && git checkout release-v0.1.0.4`    
+`$ cd evolution && git checkout release-v0.1.0.5`    
 `$ git submodule init && git submodule update`    
 
 ### Build instructions
