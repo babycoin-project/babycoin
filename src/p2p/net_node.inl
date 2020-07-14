@@ -461,17 +461,19 @@ namespace nodetool
     std::set<std::string> full_addrs;
     if (nettype == cryptonote::TESTNET)
     {
-      full_addrs.insert("173.249.52.11:53921"); //eu
-      full_addrs.insert("207.180.220.128:53921"); //eu
-      full_addrs.insert("62.171.142.111:53921"); //eu
+      full_addrs.insert("42.202.134.77:52921"); //asia
+      full_addrs.insert("79.143.181.203:53921"); //eu3
+      full_addrs.insert("164.68.127.234:53921"); //eu2
+      full_addrs.insert("62.171.142.111:53921"); //eu1
       full_addrs.insert("evolution-project.go.ro:53921"); //ro
 
     }
     else if (nettype == cryptonote::STAGENET)
     {
-      full_addrs.insert("173.249.52.11:54921"); //eu
-      full_addrs.insert("207.180.220.128:54921"); //eu
-      full_addrs.insert("62.171.142.111:54921"); //eu
+      full_addrs.insert("42.202.134.77:52921"); //asia
+      full_addrs.insert("79.143.181.203:54921"); //eu3
+      full_addrs.insert("164.68.127.234:54921"); //eu2
+      full_addrs.insert("62.171.142.111:54921"); //eu1
       full_addrs.insert("evolution-project.go.ro:54921"); //ro
 
     }
@@ -480,9 +482,10 @@ namespace nodetool
     }
     else
     {
-      full_addrs.insert("173.249.52.11:52921"); //eu
-      full_addrs.insert("207.180.220.128:52921"); //eu
-      full_addrs.insert("62.171.142.111:52921"); //eu
+      full_addrs.insert("42.202.134.77:52921"); //asia
+      full_addrs.insert("79.143.181.203:52921"); //eu3
+      full_addrs.insert("164.68.127.234:52921"); //eu2
+      full_addrs.insert("62.171.142.111:52921"); //eu1
       full_addrs.insert("evolution-project.go.ro:52921"); //ro
 
     }
