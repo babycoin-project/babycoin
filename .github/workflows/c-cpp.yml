@@ -59,4 +59,4 @@ jobs:
       with:
         name: ${{ matrix.toolchain.name }}
         path: |
-          /home/runner/work/evolution-project/evolution/build/${{ matrix.toolchain.host }}/release/bin/evolution*
+          /home/runner/work/evolution/evolution/build/${{ matrix.toolchain.host }}/release/bin/evolution*
