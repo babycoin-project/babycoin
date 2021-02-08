@@ -461,20 +461,22 @@ namespace nodetool
     std::set<std::string> full_addrs;
     if (nettype == cryptonote::TESTNET)
     {
-      full_addrs.insert("42.202.134.77:52921"); //asia
-      full_addrs.insert("79.143.181.203:53921"); //eu3
-      full_addrs.insert("164.68.127.234:53921"); //eu2
-      full_addrs.insert("62.171.142.111:53921"); //eu1
-      full_addrs.insert("evolution-project.go.ro:53921"); //ro
+      full_addrs.insert("68.168.100.206:53921"); //node4-US-Eadrom
+      full_addrs.insert("49.234.122.53:52921"); //node5-China-Jason
+      full_addrs.insert("92.118.188.152:53921"); //node4-US-Jason
+      full_addrs.insert("79.143.181.203:53921"); //node3-GB
+      full_addrs.insert("164.68.127.234:53921"); //node2-GB
+      full_addrs.insert("62.171.142.111:53921"); //node1-GB
 
     }
     else if (nettype == cryptonote::STAGENET)
     {
-      full_addrs.insert("42.202.134.77:52921"); //asia
-      full_addrs.insert("79.143.181.203:54921"); //eu3
-      full_addrs.insert("164.68.127.234:54921"); //eu2
-      full_addrs.insert("62.171.142.111:54921"); //eu1
-      full_addrs.insert("evolution-project.go.ro:54921"); //ro
+      full_addrs.insert("68.168.100.206:53921"); //node4-US-Eadrom
+      full_addrs.insert("49.234.122.53:52921"); //node5-China-Jason
+      full_addrs.insert("92.118.188.152:53921"); //node4-US-Jason
+      full_addrs.insert("79.143.181.203:53921"); //node3-GB
+      full_addrs.insert("164.68.127.234:53921"); //node2-GB
+      full_addrs.insert("62.171.142.111:53921"); //node1-GB
 
     }
     else if (nettype == cryptonote::FAKECHAIN)
@@ -482,11 +484,12 @@ namespace nodetool
     }
     else
     {
-      full_addrs.insert("42.202.134.77:52921"); //asia
-      full_addrs.insert("79.143.181.203:52921"); //eu3
-      full_addrs.insert("164.68.127.234:52921"); //eu2
-      full_addrs.insert("62.171.142.111:52921"); //eu1
-      full_addrs.insert("evolution-project.go.ro:52921"); //ro
+      full_addrs.insert("68.168.100.206:53921"); //node4-US-Eadrom
+      full_addrs.insert("49.234.122.53:52921"); //node5-China-Jason
+      full_addrs.insert("92.118.188.152:53921"); //node4-US-Jason
+      full_addrs.insert("79.143.181.203:53921"); //node3-GB
+      full_addrs.insert("164.68.127.234:53921"); //node2-GB
+      full_addrs.insert("62.171.142.111:53921"); //node1-GB
 
     }
     return full_addrs;
