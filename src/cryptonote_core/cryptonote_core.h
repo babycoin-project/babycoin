@@ -964,7 +964,7 @@ namespace cryptonote
       *
       * @return true
       */
-     bool check_fork_time();
+//     bool check_fork_time();
 
      /**
       * @brief attempts to relay any transactions in the mempool which need it
