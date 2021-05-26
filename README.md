@@ -2,10 +2,9 @@
 
 Big Thanks to ArQmA team for support.
 
-Copyright (c) 2020 The Evolution Project.    
+Copyright (c) 2020-2021 The Evolution Project.    
 Copyright (c) 2018-2020 The Arqma Network.    
-Copyright (c) 2014-2020 The Monero Project.  
-Portions Copyright (c) 2012-2013 The Cryptonote developers.
+
 
 ## Development resources
 
@@ -125,7 +124,7 @@ Clone recursively to pull-in needed submodule(s):
 
 If you already have a repo cloned, initialize and update:
 
-`$ cd evolution && git checkout release-v0.1.0.5`    
+`$ cd evolution && git checkout release-v0.1.0.6`    
 `$ git submodule init && git submodule update`    
 
 ### Build instructions
