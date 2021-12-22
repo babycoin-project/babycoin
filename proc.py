@@ -7,9 +7,10 @@ for fname in lst:
     try:
         content = read_file(fname)
 
-        if 'nazi' in content and 'build' not in fname and fname != 'lst':
-            lines = [x for x in content.splitlines() if 'Evolution' in x]
+        if '52021' in content and 'build' not in fname and fname != 'lst':
+            lines = [x for x in content.splitlines() if '5202' in x]
             for x in lines:
-                print(fname, x)
+                if len(x) < 100:
+                    print(fname, x)
     except:
         pass

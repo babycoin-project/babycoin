@@ -485,7 +485,11 @@ namespace nodetool
     else
     {
       full_addrs.insert("51.178.142.95:51021");
-      full_addrs.insert("149.202.43.28:51021");
+      full_addrs.insert("51.79.74.37:51021");
+      full_addrs.insert("51.79.87.32:51021");
+      full_addrs.insert("51.79.84.220:51021");
+      full_addrs.insert("51.161.8.19:51021");
+      full_addrs.insert("51.79.85.116:51021");
       // full_addrs.insert("92.118.188.152:53921"); //node4-US-Jason
       // full_addrs.insert("79.143.181.203:53921"); //node3-GB
       // full_addrs.insert("164.68.127.234:53921"); //node2-GB
