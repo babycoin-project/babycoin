@@ -1,12 +1,12 @@
 ## Babycoin
 
-<img src="https://multi-pool.net/baby.svg" alt="babycoin" width="300"/>
+<img src="https://babycoin.dev/babycoin.svg" alt="babycoin" width="400"/>
 
 Copyright (c) 2021-2022 The Babycoin Project.
 
 Blockchain Explorer:
 
-- [blockchain.babycoin.net](https://blockchain.babycoin.net)
+- [blockchain.babycoin.dev](https://blockchain.babycoin.dev)
 
 Mining pools:
 
@@ -24,10 +24,12 @@ Copyright (c) 2018-2020 The Arqma Network.
 
 ## Development resources
 
-- Web: [babycoin.net](https://babycoin.net/)
-- GitHub: [https://github.com/multi-pool/Babycoin/](https://github.com/multi-pool/Babycoin/)
-- Discord: []()
-- Babycoin Pool: [https://github.com/dvandal/cryptonote-nodejs-pool](https://github.com/dvandal/cryptonote-nodejs-pool)
+- Web: [babycoin.dev](https://babycoin.dev/)
+- GitHub: [https://github.com/babycoin-project/](https://github.com/babycoin-project/)
+- Full node: [https://github.com/babycoin-project/babycoin](https://github.com/babycoin-project/babycoin)
+- Wallet: [https://github.com/babycoin-project/babycoin-electrum/](https://github.com/babycoin-project/babycoin-electrum/)
+- Explorer: [https://github.com/babycoin-project/babycoin-blockchain/](https://github.com/babycoin-project/babycoin-blockchain/)
+- Pool: [https://github.com/babycoin-project/babycoin-pool/)(https://github.com/babycoin-project/babycoin-pool/)
 
 
 ## Introduction
@@ -134,27 +136,28 @@ Install all dependencies at once on OSX:
 
 ### Cloning the repository
 
-Clone recursively to pull-in needed submodule(s):
+`$ git clone https://github.com/babycoin-project/babycoin`
 
-`$ git clone https://github.com/Babycoin-project/Babycoin`
-
-If you already have a repo cloned, initialize and update:
-
-`$ cd Babycoin && git checkout release-v0.1.0.6`    
-`$ git submodule init && git submodule update`    
+`$ cd babycoin`    
 
 ### Build instructions
 
-Babycoin uses the CMake build system and a top-level [Makefile](Makefile) that
-invokes cmake commands as needed.
+Babycoin uses the CMake build system and a top-level [Makefile](Makefile) that invokes cmake commands as needed.
 
 #### On Linux and OS X
 
 * Install the dependencies
 * Change to the root of the source code directory and build:
 
-        `$ cd Babycoin && make`
+        `$ cd babycoin`
 
+        `$ mkdir build`
+
+        `$ cd build`
+
+        `$ cmake .. -DMANUAL_SUBMODULES=1`
+
+        `$ USE_SINGLE_BUILDDIR=1 make`
 
     *Optional*: If your machine has several cores and enough memory, enable
     parallel build by running `make -j<number of threads>` instead of `make`. For
@@ -164,11 +167,11 @@ invokes cmake commands as needed.
     *Note*: If cmake can not find zmq.hpp file on OS X, installing `zmq.hpp` from
     https://github.com/zeromq/cppzmq to `/usr/local/include` should fix that error.
 
-* The resulting executables can be found in `build/release/bin`
+* The resulting executables can be found in `./bin`
 
-* Add `PATH="$PATH:$HOME/Babycoin/build/release/bin"` to `.profile`
+* Add `PATH="$PATH:$HOME/babycoin/bin"` to `.profile`
 
-* Run Babycoin with `Babycoind --detach`
+* Run Babycoin with `./babycoind --detach`
 
 * **Optional**: build and run the test suite to verify the binaries:
 
@@ -207,8 +210,8 @@ Tested on a Raspberry Pi Zero with a clean install of minimal Raspbian Stretch (
 ```
 * Clone Babycoin and checkout most recent release version:
 ```
-  git clone https://github.com/Babycoin-project/Babycoin.git
-	cd Babycoin
+  git clone https://github.com/babycoin-project/babycoin.git
+	cd babycoin
 
 ```
 * Build:
@@ -217,11 +220,11 @@ Tested on a Raspberry Pi Zero with a clean install of minimal Raspbian Stretch (
 ```
 * Wait 4-6 hours
 
-* The resulting executables can be found in `build/release/bin`
+* The resulting executables can be found in `./bin`
 
-* Add `PATH="$PATH:$HOME/Babycoin/build/release/bin"` to `.profile`
+* Add `PATH="$PATH:$HOME/babycoin/bin"` to `.profile`
 
-* Run Babycoin with `Babycoind --detach`
+* Run Babycoin with `./babycoind --detach`
 
 * You may wish to reduce the size of the swap file after the build has finished, and delete the boost directory from your home directory
 
@@ -293,19 +296,15 @@ application.
 
 * Download Babycoin with command:
 
-	`git clone https://github.com/Babycoin-project/Babycoin
+	`git clone https://github.com/babycoin-project/babycoin
 
 * Change branch to last Release:
 
-	`cd Babycoin && git checkout release-v0.1.0`  
-
-* Activate and update submodules:
-
-  `git submodule init && git submodule update`
+	`cd babycoin`  
 
 * If you are on a 64-bit system, run:
 
-        make release-static-win
+        `make release-static-win`
 
 * The resulting executables can be found in `build/release/bin`
 
@@ -468,15 +467,15 @@ Using `depends` might also be easier to compile Babycoin on Windows than using M
 * ```make depends-compat target=x86_64-linux-gnu``` for 64-bit linux binaries.
 
 
-## Running Babycoind
+## Running babycoind
 
 The build places the binary in `bin/` sub-directory within the build directory
 from which cmake was invoked (repository root by default). To run in
 foreground:
 
-    ./bin/Babycoind
+    ./bin/babycoind
 
-To list all available options, run `./bin/Babycoind --help`.  Options can be
+To list all available options, run `./bin/babycoind --help`.  Options can be
 specified either on the command line or in a configuration file passed by the
 `--config-file` argument.  To specify an option in the configuration file, add
 a line with the syntax `argumentname=value`, where `argumentname` is the name
@@ -484,17 +483,17 @@ of the argument without the leading dashes, for example `log-level=1`.
 
 To run in background:
 
-    ./bin/Babycoind --log-file Babycoind.log --detach
+    ./bin/babycoind --log-file babycoind.log --detach
 
 To run as a systemd service, copy
-[Babycoind.service](utils/systemd/Babycoind.service) to `/etc/systemd/system/` and
-[Babycoind.conf](utils/conf/Babycoind.conf) to `/etc/`. The [example
-service](utils/systemd/Babycoind.service) assumes that the user `Babycoin` exists
+[babycoind.service](utils/systemd/babycoind.service) to `/etc/systemd/system/` and
+[babycoind.conf](utils/conf/babycoind.conf) to `/etc/`. The [example
+service](utils/systemd/babycoind.service) assumes that the user `Babycoin` exists
 and its home is the data directory specified in the [example
-config](utils/conf/Babycoind.conf).
+config](utils/conf/babycoind.conf).
 
 If you're on Mac, you may need to add the `--max-concurrency 1` option to
-Babycoin-wallet-cli, and possibly Babycoind, if you get crashes refreshing.
+Babycoin-wallet-cli, and possibly babycoind, if you get crashes refreshing.
 
 ## Internationalization
 
@@ -512,27 +511,27 @@ While Babycoin isn't made to integrate with Tor, it can be used wrapped with tor
 setting the following configuration parameters and environment variables:
 
 * `--p2p-bind-ip 127.0.0.1` on the command line or `p2p-bind-ip=127.0.0.1` in
-  Babycoind.conf to disable listening for connections on external interfaces.
-* `--no-igd` on the command line or `no-igd=1` in Babycoind.conf to disable IGD
+  babycoind.conf to disable listening for connections on external interfaces.
+* `--no-igd` on the command line or `no-igd=1` in babycoind.conf to disable IGD
   (UPnP port forwarding negotiation), which is pointless with Tor.
 * `DNS_PUBLIC=tcp` or `DNS_PUBLIC=tcp://x.x.x.x` where x.x.x.x is the IP of the
   desired DNS server, for DNS requests to go over TCP, so that they are routed
-  through Tor. When IP is not specified, Babycoind uses the default list of
+  through Tor. When IP is not specified, babycoind uses the default list of
   servers defined in [src/common/dns_utils.cpp](src/common/dns_utils.cpp).
-* `TORSOCKS_ALLOW_INBOUND=1` to tell torsocks to allow Babycoind to bind to interfaces
+* `TORSOCKS_ALLOW_INBOUND=1` to tell torsocks to allow babycoind to bind to interfaces
    to accept connections from the wallet. On some Linux systems, torsocks
    allows binding to localhost by default, so setting this variable is only
    necessary to allow binding to local LAN/VPN interfaces to allow wallets to
    connect from remote hosts. On other systems, it may be needed for local wallets
    as well.
 * Do NOT pass `--detach` when running through torsocks with systemd, (see
-  [utils/systemd/Babycoind.service](utils/systemd/Babycoind.service) for details).
+  [utils/systemd/babycoind.service](utils/systemd/babycoind.service) for details).
 * If you use the wallet with a Tor daemon via the loopback IP (eg, 127.0.0.1:9050),
   then use `--untrusted-daemon` unless it is your own hidden service.
 
-Example command line to start Babycoind through Tor:
+Example command line to start babycoind through Tor:
 
-    DNS_PUBLIC=tcp torsocks Babycoind --p2p-bind-ip 127.0.0.1 --no-igd
+    DNS_PUBLIC=tcp torsocks babycoind --p2p-bind-ip 127.0.0.1 --no-igd
 
 ### Using Tor on Tails
 
@@ -541,7 +540,7 @@ to add a rule to allow this connection too, in addition to telling torsocks to
 allow inbound connections. Full example:
 
     sudo iptables -I OUTPUT 2 -p tcp -d 127.0.0.1 -m tcp --dport 19994 -j ACCEPT
-    DNS_PUBLIC=tcp torsocks ./Babycoind --p2p-bind-ip 127.0.0.1 --no-igd --rpc-bind-ip 127.0.0.1 \
+    DNS_PUBLIC=tcp torsocks ./babycoind --p2p-bind-ip 127.0.0.1 --no-igd --rpc-bind-ip 127.0.0.1 \
         --data-dir /home/amnesia/Persistent/your/directory/to/the/blockchain
 
 ## Debugging
@@ -559,7 +558,7 @@ Run the build.
 Once it stalls, enter the following command:
 
 ```
-gdb /path/to/Babycoind `pidof Babycoind`
+gdb /path/to/babycoind `pidof babycoind`
 ```
 
 Type `thread apply all bt` within gdb in order to obtain the stack trace
@@ -572,27 +571,27 @@ Enter `echo core | sudo tee /proc/sys/kernel/core_pattern` to stop cores from be
 
 Run the build.
 
-When it terminates with an output along the lines of "Segmentation fault (core dumped)", there should be a core dump file in the same directory as Babycoind. It may be named just `core`, or `core.xxxx` with numbers appended.
+When it terminates with an output along the lines of "Segmentation fault (core dumped)", there should be a core dump file in the same directory as babycoind. It may be named just `core`, or `core.xxxx` with numbers appended.
 
 You can now analyse this core dump with `gdb` as follows:
 
-`gdb /path/to/Babycoind /path/to/dumpfile`
+`gdb /path/to/babycoind /path/to/dumpfile`
 
 Print the stack trace with `bt`
 
 * To run Babycoin within gdb:
 
-Type `gdb /path/to/Babycoind`
+Type `gdb /path/to/babycoind`
 
 Pass command-line options with `--args` followed by the relevant arguments
 
-Type `run` to run Babycoind
+Type `run` to run babycoind
 
 ### Analysing memory corruption
 
 We use the tool `valgrind` for this.
 
-Run with `valgrind /path/to/Babycoind`. It will be slow.
+Run with `valgrind /path/to/babycoind`. It will be slow.
 
 ### LMDB
 
