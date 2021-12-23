@@ -1,22 +1,46 @@
-name: CMake
+name: continuous-integration/gh-actions/cli
 
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
-
-env:
-  # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
-  BUILD_TYPE: Release
+on: [push, pull_request]
 
 jobs:
-  build:
-    # The CMake configure and build commands are platform agnostic and should work equally well on Windows or Mac.
-    # You can convert this to a matrix build if you need cross-platform coverage.
-    # See: https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/managing-complex-workflows#using-a-build-matrix
-    runs-on: ubuntu-latest
 
+  build-windows:
+    runs-on: windows-latest
+    env:
+      CCACHE_COMPRESS: 1
+      CCACHE_TEMPDIR: C:\Users\runneradmin\.ccache-temp
+      CCACHE_DIR: C:\Users\runneradmin\.ccache
+      ACTIONS_ALLOW_UNSECURE_COMMANDS: true
+    defaults:
+      run:
+        shell: msys2 {0}
+    steps:
+    - uses: actions/checkout@v1
+      with:
+        submodules: recursive
+    - uses: actions/cache@v2
+      with:
+        path: C:\Users\runneradmin\.ccache
+        key: ccache-windows-build-${{ github.sha }}
+        restore-keys: ccache-windows-build-
+    - uses: eine/setup-msys2@v2
+      with:
+        update: true
+        install: mingw-w64-x86_64-toolchain make mingw-w64-x86_64-cmake mingw-w64-x86_64-openssl mingw-w64-x86_64-zeromq mingw-w64-x86_64-libsodium mingw-w64-x86_64-hidapi mingw-w64-x86_64-libusb mingw-w64-x86_64-libtool binutils git automake autoconf patch mingw-w64-x86_64-ccache
+    - name: boost
+      run: pacman --noconfirm -U https://repo.msys2.org/mingw/x86_64/mingw-w64-x86_64-boost-1.72.0-2-any.pkg.tar.zst
+    - name: build
+      run: |
+        ccache --max-size=150M
+        make release-static-win -j2
+    - name: Upload windows artifacts
+      uses: actions/upload-artifact@master
+      with:
+        name: windows
+        path: 'build/**/**/babycoin*'
+
+  build-ubuntu:
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
       with:
@@ -27,19 +51,56 @@ jobs:
       run: sudo apt update
     - name: install Babycoin dependencies
       run: sudo apt -y install build-essential cmake libboost-all-dev miniupnpc libunbound-dev graphviz doxygen libunwind8-dev pkg-config libssl-dev libzmq3-dev libsodium-dev libhidapi-dev libnorm-dev libusb-1.0-0-dev libpgm-dev
+    - name: build
+      run: make release -j3
+    - name: Upload linux artifacts
+      uses: actions/upload-artifact@master
+      with:
+        name: linux
+        path: 'build/**/**/babycoin*'
 
-    - name: make dir
-      run: mkdir ${{github.workspace}}/build && cd ${{github.workspace}}/build
+  build-ubuntu-depends:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+      with:
+        submodules: recursive
+    - name: set apt conf
+      run: |
+        echo "Acquire::Retries \"3\";" | sudo tee -a /etc/apt/apt.conf.d/80-custom
+        echo "Acquire::http::Timeout \"120\";" | sudo tee -a /etc/apt/apt.conf.d/80-custom
+        echo "Acquire::ftp::Timeout \"120\";" | sudo tee -a /etc/apt/apt.conf.d/80-custom
+    - name: update apt
+      run: sudo apt update
+    - name: install Babycoin dependencies
+      run: sudo apt -y install build-essential cmake libboost-all-dev graphviz doxygen libunwind8-dev pkg-config libssl-dev libsodium-dev libhidapi-dev libusb-1.0-0-dev gperf libreadline-dev
+    - name: build
+      run: make depends target=x86_64-linux-gnu -j2
+    - name: Upload linux artifacts
+      uses: actions/upload-artifact@master
+      with:
+        name: linux-static
+        path: 'build/x86_64-linux-gnu/release/bin/babycoin*'
 
-    - name: Build
-      # Build your program with the given configuration
-      run: cmake .. -DMANUAL_SUBMODULES=1
-
-    - name: make
-      run: make -j3
-
-    - name: Test
-      working-directory: ${{github.workspace}}/build
-      # Execute tests defined by the CMake configuration.
-      # See https://cmake.org/cmake/help/latest/manual/ctest.1.html for more detail
-      run: ctest -C ${{env.BUILD_TYPE}}
+  build-dpends-compat:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+      with:
+        submodules: recursive
+    - name: set apt conf
+      run: |
+        echo "Acquire::Retries \"3\";" | sudo tee -a /etc/apt/apt.conf.d/80-custom
+        echo "Acquire::http::Timeout \"120\";" | sudo tee -a /etc/apt/apt.conf.d/80-custom
+        echo "Acquire::ftp::Timeout \"120\";" | sudo tee -a /etc/apt/apt.conf.d/80-custom
+    - name: update apt
+      run: sudo apt update
+    - name: install Babycoin dependencies
+      run: sudo apt -y install build-essential cmake libboost-all-dev graphviz doxygen libunwind8-dev pkg-config libssl-dev libsodium-dev libhidapi-dev libusb-1.0-0-dev gperf libreadline-dev
+    - name: build
+      run: make depends-compat target=x86_64-linux-gnu -j2
+    - name: Upload linux artifacts
+      uses: actions/upload-artifact@master
+      with:
+        name: linux-compat
+        path: 'build/x86_64-linux-gnu-compat/release/bin/babycoin*'
