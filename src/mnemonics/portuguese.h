@@ -1078,7 +1078,7 @@ namespace Language
         "nascimento",
         "nautilo",
         "navios",
-        "nazista",
+        "babysta",
         "nebuloso",
         "nectarina",
         "nefrologo",

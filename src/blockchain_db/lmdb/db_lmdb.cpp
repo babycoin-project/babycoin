@@ -1388,7 +1388,7 @@ void BlockchainLMDB::open(const std::string& filename, const int db_flags)
 
   lmdb_db_open(txn, LMDB_TXPOOL_META, MDB_CREATE, m_txpool_meta, "Failed to open db handle for m_txpool_meta");
   lmdb_db_open(txn, LMDB_TXPOOL_BLOB, MDB_CREATE, m_txpool_blob, "Failed to open db handle for m_txpool_blob");
-  
+
   lmdb_db_open(txn, LMDB_ALT_BLOCKS, MDB_CREATE, m_alt_blocks, "Failed to open db handle for m_alt_blocks");
 
   // this subdb is dropped on sight, so it may not be present when we open the DB.
@@ -1453,7 +1453,7 @@ void BlockchainLMDB::open(const std::string& filename, const int db_flags)
         mdb_env_close(m_env);
         m_open = false;
         MFATAL("Existing lmdb database needs to be converted, which cannot be done on a read-only database.");
-        MFATAL("Please run evolutiond once to convert the database.");
+        MFATAL("Please run babycoind once to convert the database.");
         return;
       }
       // Note that there was a schema change within version 0 as well.
@@ -3714,7 +3714,7 @@ void BlockchainLMDB::block_wtxn_abort()
     throw0(DB_ERROR_TXN_START((std::string("Attempted to abort write txn when no such txn exists in ")+__FUNCTION__).c_str()));
   if(m_writer != boost::this_thread::get_id())
     throw0(DB_ERROR_TXN_START((std::string("Attempted to abort write txn from the wrong thread in ")+__FUNCTION__).c_str()));
-	
+
   if(!m_batch_active)
   {
     delete m_write_txn;

@@ -1,4 +1,4 @@
-# Contributing to Evolution
+# Contributing to Babycoin
 
 A good way to help is to test, and report bugs. See
 [How to Report Bugs Effectively (by Simon Tatham)](http://www.chiark.greenend.org.uk/~sgtatham/bugs.html)
@@ -12,11 +12,7 @@ of software solid and usable.
 * If modifying code for which Doxygen headers exist, that header must be modified to match.
 * Tests would be nice to have if you're adding functionality.
 
-Patches are preferably to be sent via a Github pull request. If that
-can't be done, patches in "git format-patch" format can be sent
-(eg, posted to fpaste.org with a long enough timeout and a link
-posted to Telegram Evolution Group: https://t.me/joinchat/ILmRXEVOi85CjDGtK8C9zQ).
-
+Patches are preferably to be sent via a Github pull request.
 Patches should be self contained. A good rule of thumb is to have
 one patch per separate issue, feature, or logical change. Also, no
 other changes, such as random whitespace changes or reindentation.
@@ -57,7 +53,7 @@ the previous paragraph is here.
 Copyright (c) 2009-2015 Pieter Hintjens.
 Copyright (c) 2017-2018 The Monero Project.
 Copyright (c) 2018-2019 The Arqma Network.
-Copyright (c) 2020, The Evolution Network
+Copyright (c) 2020, The Babycoin Network
 
 This Specification is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
 
@@ -69,11 +65,9 @@ You should have received a copy of the GNU General Public License along with thi
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in RFC 2119.
 
-The "Evolution Development Team" is defined in this document as the following users:
-- malbit
-- ArqTras
-- SmajeNz0
-- Arg0nator
+The "Babycoin Development Team" is defined in this document as the following users:
+- multi-pool
+- synthaze
 
 ## Goals
 
@@ -117,7 +111,7 @@ C4 is meant to provide a reusable optimal collaboration model for open source so
 - Contributors SHOULD have a Platform account and MAY use their real names or a well-known alias.
 - A patch SHOULD be a minimal and accurate answer to exactly one identified and agreed problem.
 - A patch MUST adhere to the code style guidelines of the project if these are defined.
-- A patch MUST adhere to the "Evolution of Public Contracts" guidelines defined below.
+- A patch MUST adhere to the "Babycoin of Public Contracts" guidelines defined below.
 - A patch SHALL NOT include non-trivial code from other projects unless the Contributor is the original author of that code.
 - A patch MUST compile cleanly and pass project self-tests on at least the principle target platform.
 - A patch commit message SHOULD consist of a single short (less than 50 character) line summarizing the change, optionally followed by a blank line and then a more thorough description.
@@ -129,7 +123,7 @@ C4 is meant to provide a reusable optimal collaboration model for open source so
 - To request changes, a user SHOULD log an issue on the project Platform issue tracker.
 - The user or Contributor SHOULD write the issue by describing the problem they face or observe.
 - The user or Contributor SHOULD seek consensus on the accuracy of their observation, and the value of solving the problem.
-- Users SHALL NOT log feature requests, ideas, or suggestions unrelated to Evolution code or Evolution's dependency code or Evolution's potential/future dependency code or research which successfully implements Evolution.
+- Users SHALL NOT log feature requests, ideas, or suggestions unrelated to Babycoin code or Babycoin's dependency code or Babycoin's potential/future dependency code or research which successfully implements Babycoin.
 - Users SHALL NOT log any solutions to problems (verifiable or hypothetical) of which are not explicitly documented and/or not provable and/or cannot be reasonably proven.
 - Thus, the release history of the project SHALL be a list of meaningful issues logged and solved.
 - To work on an issue, a Contributor SHALL fork the project repository and then work on their forked repository.
@@ -154,7 +148,7 @@ C4 is meant to provide a reusable optimal collaboration model for open source so
 - Forking a project for stabilization MAY be done unilaterally and without agreement of project maintainers.
 - A patch to a stabilization project declared "stable" SHALL be accompanied by a reproducible test case.
 
-### Evolution of public contracts
+### Babycoin of public contracts
 
 - All Public Contracts (APIs or protocols) SHALL be documented.
 - All Public Contracts SHOULD have space for extensibility and experimentation.

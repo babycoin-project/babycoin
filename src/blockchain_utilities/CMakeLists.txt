@@ -150,7 +150,7 @@ endif()
 
 set_property(TARGET blockchain_import
 	PROPERTY
-	OUTPUT_NAME "evolution-blockchain-import")
+	OUTPUT_NAME "babycoin-blockchain-import")
 install(TARGETS blockchain_import DESTINATION bin)
 
 evolution_add_executable(blockchain_export
@@ -171,7 +171,7 @@ target_link_libraries(blockchain_export
 
 set_property(TARGET blockchain_export
 	PROPERTY
-	OUTPUT_NAME "evolution-blockchain-export")
+	OUTPUT_NAME "babycoin-blockchain-export")
 install(TARGETS blockchain_export DESTINATION bin)
 
 evolution_add_executable(blockchain_blackball
@@ -193,7 +193,7 @@ target_link_libraries(blockchain_blackball
 
 set_property(TARGET blockchain_blackball
 	PROPERTY
-	OUTPUT_NAME "evolution-blockchain-mark-spent-outputs")
+	OUTPUT_NAME "babycoin-blockchain-mark-spent-outputs")
 install(TARGETS blockchain_blackball DESTINATION bin)
 
 
@@ -215,7 +215,7 @@ target_link_libraries(blockchain_usage
 
 set_property(TARGET blockchain_usage
 	PROPERTY
-	OUTPUT_NAME "evolution-blockchain-usage")
+	OUTPUT_NAME "babycoin-blockchain-usage")
 install(TARGETS blockchain_usage DESTINATION bin)
 
 evolution_add_executable(blockchain_ancestry
@@ -236,7 +236,7 @@ target_link_libraries(blockchain_ancestry
 
 set_property(TARGET blockchain_ancestry
 	PROPERTY
-	OUTPUT_NAME "evolution-blockchain-ancestry")
+	OUTPUT_NAME "babycoin-blockchain-ancestry")
 install(TARGETS blockchain_ancestry DESTINATION bin)
 
 evolution_add_executable(blockchain_depth
@@ -257,7 +257,7 @@ target_link_libraries(blockchain_depth
 
 set_property(TARGET blockchain_depth
 	PROPERTY
-	OUTPUT_NAME "evolution-blockchain-depth")
+	OUTPUT_NAME "babycoin-blockchain-depth")
 install(TARGETS blockchain_depth DESTINATION bin)
 
 evolution_add_executable(blockchain_prune_known_spent_data
@@ -279,7 +279,7 @@ target_link_libraries(blockchain_prune_known_spent_data
 
 set_property(TARGET blockchain_prune_known_spent_data
 	PROPERTY
-	OUTPUT_NAME "evolution-blockchain-prune-known-spent-data")
+	OUTPUT_NAME "babycoin-blockchain-prune-known-spent-data")
 install(TARGETS blockchain_prune_known_spent_data DESTINATION bin)
 
 evolution_add_executable(blockchain_prune
@@ -288,7 +288,7 @@ evolution_add_executable(blockchain_prune
 
 set_property(TARGET blockchain_prune
 	PROPERTY
-	OUTPUT_NAME "evolution-blockchain-prune")
+	OUTPUT_NAME "babycoin-blockchain-prune")
 install(TARGETS blockchain_prune DESTINATION bin)
 
 target_link_libraries(blockchain_prune

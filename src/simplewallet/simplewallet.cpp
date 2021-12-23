@@ -1,3 +1,4 @@
+// Copyright (c) 2021-2022, The Babycoin Project
 // Copyright (c) 2020, The Evolution Network
 // Copyright (c) 2018-2019, The Arqma Network
 // Copyright (c) 2014-2018, The Monero Project
@@ -40,6 +41,9 @@
 #include <sstream>
 #include <fstream>
 #include <ctype.h>
+
+#include <functional>
+
 #include <boost/lexical_cast.hpp>
 #include <boost/program_options.hpp>
 #include <boost/algorithm/string.hpp>
@@ -430,7 +434,7 @@ namespace
     std::stringstream prompt;
     prompt << sw::tr("For URL: ") << url
            << ", " << dnssec_str << std::endl
-           << sw::tr(" Evolution Address = ") << addresses[0]
+           << sw::tr(" Babycoin Address = ") << addresses[0]
            << std::endl
            << sw::tr("Is this OK?")
     ;
@@ -1487,7 +1491,7 @@ bool simple_wallet::export_raw_multisig(const std::vector<std::string> &args)
     for (auto &ptx: txs.m_ptx)
     {
       const crypto::hash txid = cryptonote::get_transaction_hash(ptx.tx);
-      const std::string filename = std::string("raw_multisig_evolution_tx_") + epee::string_tools::pod_to_hex(txid);
+      const std::string filename = std::string("raw_multisig_babycoin_tx_") + epee::string_tools::pod_to_hex(txid);
       if (!filenames.empty())
         filenames += ", ";
       filenames += filename;
@@ -2002,7 +2006,7 @@ bool simple_wallet::public_nodes(const std::vector<std::string> &args)
         return node0.rpc_credits_per_hash < node1.rpc_credits_per_hash;
       return false;
     });
-    
+
     const uint64_t now = time(NULL);
     message_writer() << boost::format("%32s %12s %16s") % tr("address") % tr("credits/hash") % tr("last_seen");
     for (const auto &node: nodes)
@@ -2025,25 +2029,25 @@ bool simple_wallet::public_nodes(const std::vector<std::string> &args)
 
 bool simple_wallet::welcome(const std::vector<std::string> &args)
 {
-  message_writer() << tr("Welcome to Evolution, the private cryptocurrency.");
+  message_writer() << tr("Welcome to Babycoin, the private cryptocurrency.");
   message_writer() << "";
-  message_writer() << tr("Evolution, like Bitcoin, is a cryptocurrency. That is, it is digital money.");
-  message_writer() << tr("Unlike Bitcoin, your Evolution transactions and balance stay private, and not visible to the world by default.");
+  message_writer() << tr("Babycoin, like Bitcoin, is a cryptocurrency. That is, it is digital money.");
+  message_writer() << tr("Unlike Bitcoin, your Babycoin transactions and balance stay private, and not visible to the world by default.");
   message_writer() << tr("However, you have the option of making those available to select parties, if you choose to.");
   message_writer() << "";
-  message_writer() << tr("Evolution protects your privacy on the blockchain, and while Evolution strives to improve all the time,");
-  message_writer() << tr("no privacy technology can be 100% perfect, Evolution included.");
-  message_writer() << tr("Evolution cannot protect you from malware, and it may not be as effective as we hope against powerful adversaries.");
-  message_writer() << tr("Flaws in Evolution may be discovered in the future, and attacks may be developed to peek under some");
-  message_writer() << tr("of the layers of privacy Evolution provides. Be safe and practice defense in depth.");
+  message_writer() << tr("Babycoin protects your privacy on the blockchain, and while Babycoin strives to improve all the time,");
+  message_writer() << tr("no privacy technology can be 100% perfect, Babycoin included.");
+  message_writer() << tr("Babycoin cannot protect you from malware, and it may not be as effective as we hope against powerful adversaries.");
+  message_writer() << tr("Flaws in Babycoin may be discovered in the future, and attacks may be developed to peek under some");
+  message_writer() << tr("of the layers of privacy Babycoin provides. Be safe and practice defense in depth.");
   message_writer() << "";
-  message_writer() << tr("Welcome to Evolution and financial privacy. For more information, see http://evolution-project.go.ro/");
+  message_writer() << tr("Welcome to Babycoin and financial privacy. For more information, see http://babycoin-project.go.ro/");
   return true;
 }
 
 bool simple_wallet::version(const std::vector<std::string> &args)
 {
-  message_writer() << "Evolution '" << EVOLUTION_RELEASE_NAME << "' (v" << EVOLUTION_VERSION_FULL << ")";
+  message_writer() << "Babycoin '" << EVOLUTION_RELEASE_NAME << "' (v" << EVOLUTION_VERSION_FULL << ")";
   return true;
 }
 
@@ -2626,81 +2630,81 @@ simple_wallet::simple_wallet()
   , m_rpc_payment_hash_rate(-1.0f)
 {
   m_cmd_binder.set_handler("start_mining",
-                           boost::bind(&simple_wallet::start_mining, this, _1),
+                           boost::bind(&simple_wallet::start_mining, this, boost::placeholders::_1),
                            tr(USAGE_START_MINING),
                            tr("Start mining in the daemon (bg_mining and ignore_battery are optional booleans)."));
   m_cmd_binder.set_handler("stop_mining",
-                           boost::bind(&simple_wallet::stop_mining, this, _1),
+                           boost::bind(&simple_wallet::stop_mining, this, boost::placeholders::_1),
                            tr("Stop mining in the daemon."));
   m_cmd_binder.set_handler("set_daemon",
-                           boost::bind(&simple_wallet::set_daemon, this, _1),
+                           boost::bind(&simple_wallet::set_daemon, this, boost::placeholders::_1),
                            tr(USAGE_SET_DAEMON),
                            tr("Set another daemon to connect to."));
   m_cmd_binder.set_handler("save_bc",
-                           boost::bind(&simple_wallet::save_bc, this, _1),
+                           boost::bind(&simple_wallet::save_bc, this, boost::placeholders::_1),
                            tr("Save the current blockchain data."));
   m_cmd_binder.set_handler("refresh",
-                           boost::bind(&simple_wallet::refresh, this, _1),
+                           boost::bind(&simple_wallet::refresh, this, boost::placeholders::_1),
                            tr("Synchronize the transactions and balance."));
   m_cmd_binder.set_handler("balance",
-                           boost::bind(&simple_wallet::show_balance, this, _1),
+                           boost::bind(&simple_wallet::show_balance, this, boost::placeholders::_1),
                            tr(USAGE_SHOW_BALANCE),
                            tr("Show the wallet's balance of the currently selected account."));
   m_cmd_binder.set_handler("incoming_transfers",
-                           boost::bind(&simple_wallet::show_incoming_transfers, this, _1),
+                           boost::bind(&simple_wallet::show_incoming_transfers, this, boost::placeholders::_1),
                            tr(USAGE_INCOMING_TRANSFERS),
                            tr("Show the incoming transfers, all or filtered by availability and address index.\n\n"
                               "Output format:\n"
                               "Amount, Spent(\"T\"|\"F\"), \"locked\"|\"unlocked\", RingCT, Global Index, Transaction Hash, Address Index, [Public Key, Key Image] "));
   m_cmd_binder.set_handler("payments",
-                           boost::bind(&simple_wallet::show_payments, this, _1),
+                           boost::bind(&simple_wallet::show_payments, this, boost::placeholders::_1),
                            tr(USAGE_PAYMENTS),
                            tr("Show the payments for the given payment IDs."));
   m_cmd_binder.set_handler("bc_height",
-                           boost::bind(&simple_wallet::show_blockchain_height, this, _1),
+                           boost::bind(&simple_wallet::show_blockchain_height, this, boost::placeholders::_1),
                            tr("Show the blockchain height."));
-  m_cmd_binder.set_handler("transfer", boost::bind(&simple_wallet::transfer, this, _1),
+  m_cmd_binder.set_handler("transfer", boost::bind(&simple_wallet::transfer, this, boost::placeholders::_1),
                            tr(USAGE_TRANSFER),
                            tr("Transfer <amount> to <address>. If the parameter \"index=<N1>[,<N2>,...]\" is specified, the wallet uses outputs received by addresses of those indices. If omitted, the wallet randomly chooses address indices to be used. In any case, it tries its best not to combine outputs across multiple addresses. <priority> is the priority of the transaction. The higher the priority, the higher the transaction fee. Valid values in priority order (from lowest to highest) are: unimportant, normal, elevated, priority. If omitted, the default value (see the command \"set priority\") is used. <ring_size> is the number of inputs to include for untraceability. Multiple payments can be made at once by adding URI_2 or <address_2> <amount_2> etcetera (before the payment ID, if it's included)"));
   m_cmd_binder.set_handler("locked_transfer",
-                           boost::bind(&simple_wallet::locked_transfer, this, _1),
+                           boost::bind(&simple_wallet::locked_transfer, this, boost::placeholders::_1),
                            tr(USAGE_LOCKED_TRANSFER),
                            tr("Transfer <amount> to <address> and lock it for <lockblocks> (max. 1000000). If the parameter \"index=<N1>[,<N2>,...]\" is specified, the wallet uses outputs received by addresses of those indices. If omitted, the wallet randomly chooses address indices to be used. In any case, it tries its best not to combine outputs across multiple addresses. <priority> is the priority of the transaction. The higher the priority, the higher the transaction fee. Valid values in priority order (from lowest to highest) are: unimportant, normal, elevated, priority. If omitted, the default value (see the command \"set priority\") is used. <ring_size> is the number of inputs to include for untraceability. Multiple payments can be made at once by adding URI_2 or <address_2> <amount_2> etcetera (before the payment ID, if it's included)"));
   m_cmd_binder.set_handler("locked_sweep_all",
-                           boost::bind(&simple_wallet::locked_sweep_all, this, _1),
+                           boost::bind(&simple_wallet::locked_sweep_all, this, boost::placeholders::_1),
                            tr(USAGE_LOCKED_SWEEP_ALL),
                            tr("Send all unlocked balance to an address and lock it for <lockblocks> (max. 1000000). If the parameter \"index<N1>[,<N2>,...]\" is specified, the wallet sweeps outputs received by those address indices. If omitted, the wallet randomly chooses an address index to be used. <priority> is the priority of the sweep. The higher the priority, the higher the transaction fee. Valid values in priority order (from lowest to highest) are: unimportant, normal, elevated, priority. If omitted, the default value (see the command \"set priority\") is used. <ring_size> is the number of inputs to include for untraceability."));
   m_cmd_binder.set_handler("sweep_unmixable",
-                           boost::bind(&simple_wallet::sweep_unmixable, this, _1),
+                           boost::bind(&simple_wallet::sweep_unmixable, this, boost::placeholders::_1),
                            tr("Send all unmixable outputs to yourself with ring_size 1"));
-  m_cmd_binder.set_handler("sweep_all", boost::bind(&simple_wallet::sweep_all, this, _1),
+  m_cmd_binder.set_handler("sweep_all", boost::bind(&simple_wallet::sweep_all, this, boost::placeholders::_1),
                            tr(USAGE_SWEEP_ALL),
                            tr("Send all unlocked balance to an address. If the parameter \"index<N1>[,<N2>,...]\" is specified, the wallet sweeps outputs received by those address indices. If omitted, the wallet randomly chooses an address index to be used. If the parameter \"outputs=<N>\" is specified and  N > 0, wallet splits the transaction into N even outputs."));
   m_cmd_binder.set_handler("sweep_below",
-                           boost::bind(&simple_wallet::sweep_below, this, _1),
+                           boost::bind(&simple_wallet::sweep_below, this, boost::placeholders::_1),
                            tr(USAGE_SWEEP_BELOW),
                            tr("Send all unlocked outputs below the threshold to an address."));
   m_cmd_binder.set_handler("sweep_single",
-                           boost::bind(&simple_wallet::sweep_single, this, _1),
+                           boost::bind(&simple_wallet::sweep_single, this, boost::placeholders::_1),
                            tr(USAGE_SWEEP_SINGLE),
                            tr("Send a single output of the given key image to an address without change."));
   m_cmd_binder.set_handler("donate",
-                           boost::bind(&simple_wallet::donate, this, _1),
+                           boost::bind(&simple_wallet::donate, this, boost::placeholders::_1),
                            tr(USAGE_DONATE),
-                           tr("Donate <amount> to the development team (evolution-project.go.ro/donations)."));
+                           tr("Donate <amount> to the development team (babycoin-project.go.ro/donations)."));
   m_cmd_binder.set_handler("sign_transfer",
-                           boost::bind(&simple_wallet::sign_transfer, this, _1),
+                           boost::bind(&simple_wallet::sign_transfer, this, boost::placeholders::_1),
                            tr(USAGE_SIGN_TRANSFER),
                            tr("Sign a transaction from a file. If the parameter \"export_raw\" is specified, transaction raw hex data suitable for the daemon RPC /sendrawtransaction is exported."));
   m_cmd_binder.set_handler("submit_transfer",
-                           boost::bind(&simple_wallet::submit_transfer, this, _1),
+                           boost::bind(&simple_wallet::submit_transfer, this, boost::placeholders::_1),
                            tr("Submit a signed transaction from a file."));
   m_cmd_binder.set_handler("set_log",
-                           boost::bind(&simple_wallet::set_log, this, _1),
+                           boost::bind(&simple_wallet::set_log, this, boost::placeholders::_1),
                            tr(USAGE_SET_LOG),
                            tr("Change the current log detail (level must be <0-4>)."));
   m_cmd_binder.set_handler("account",
-                           boost::bind(&simple_wallet::account, this, _1),
+                           boost::bind(&simple_wallet::account, this, boost::placeholders::_1),
                            tr(USAGE_ACCOUNT),
                            tr("If no arguments are specified, the wallet shows all the existing accounts along with their balances.\n"
                               "If the \"new\" argument is specified, the wallet creates a new account with its label initialized by the provided label text (which can be empty).\n"
@@ -2710,34 +2714,34 @@ simple_wallet::simple_wallet()
                               "If the \"untag\" argument is specified, the tags assigned to the specified accounts <account_index_1>, <account_index_2> ..., are removed.\n"
                               "If the \"tag_description\" argument is specified, the tag <tag_name> is assigned an arbitrary text <description>."));
   m_cmd_binder.set_handler("address",
-                           boost::bind(&simple_wallet::print_address, this, _1),
+                           boost::bind(&simple_wallet::print_address, this, boost::placeholders::_1),
                            tr(USAGE_ADDRESS),
                            tr("If no arguments are specified or <index> is specified, the wallet shows the default or specified address. If \"all\" is specified, the wallet shows all the existing addresses in the currently selected account. If \"new \" is specified, the wallet creates a new address with the provided label text (which can be empty). If \"label\" is specified, the wallet sets the label of the address specified by <index> to the provided label text."));
   m_cmd_binder.set_handler("integrated_address",
-                           boost::bind(&simple_wallet::print_integrated_address, this, _1),
+                           boost::bind(&simple_wallet::print_integrated_address, this, boost::placeholders::_1),
                            tr(USAGE_INTEGRATED_ADDRESS),
                            tr("Encode a payment ID into an integrated address for the current wallet public address (no argument uses a random payment ID), or decode an integrated address to standard address and payment ID"));
   m_cmd_binder.set_handler("address_book",
-                           boost::bind(&simple_wallet::address_book, this, _1),
+                           boost::bind(&simple_wallet::address_book, this, boost::placeholders::_1),
                            tr(USAGE_ADDRESS_BOOK),
                            tr("Print all entries in the address book, optionally adding/deleting an entry to/from it."));
   m_cmd_binder.set_handler("save",
-                           boost::bind(&simple_wallet::save, this, _1),
+                           boost::bind(&simple_wallet::save, this, boost::placeholders::_1),
                            tr("Save the wallet data."));
   m_cmd_binder.set_handler("save_watch_only",
-                           boost::bind(&simple_wallet::save_watch_only, this, _1),
+                           boost::bind(&simple_wallet::save_watch_only, this, boost::placeholders::_1),
                            tr("Save a watch-only keys file."));
   m_cmd_binder.set_handler("viewkey",
-                           boost::bind(&simple_wallet::viewkey, this, _1),
+                           boost::bind(&simple_wallet::viewkey, this, boost::placeholders::_1),
                            tr("Display the private view key."));
   m_cmd_binder.set_handler("spendkey",
-                           boost::bind(&simple_wallet::spendkey, this, _1),
+                           boost::bind(&simple_wallet::spendkey, this, boost::placeholders::_1),
                            tr("Display the private spend key."));
   m_cmd_binder.set_handler("seed",
-                           boost::bind(&simple_wallet::seed, this, _1),
+                           boost::bind(&simple_wallet::seed, this, boost::placeholders::_1),
                            tr("Display the Electrum-style mnemonic seed"));
   m_cmd_binder.set_handler("set",
-                           boost::bind(&simple_wallet::set_variable, this, _1),
+                           boost::bind(&simple_wallet::set_variable, this, boost::placeholders::_1),
                            tr(USAGE_SET_VARIABLE),
                            tr("Available options:\n "
                                   "seed language\n "
@@ -2758,8 +2762,8 @@ simple_wallet::simple_wallet()
                                   "  Set the fee to default/unimportant/normal/elevated/priority.\n "
                                   "confirm-missing-payment-id <1|0>\n "
                                   "ask-password <0|1|2   (or never|action|decrypt)>\n "
-                                  "unit <evolution|millievo|microevo|nanoevo>\n "
-                                  "  Set the default Evolution (sub-)unit.\n "
+                                  "unit <babycoin|millievo|microevo|nanoevo>\n "
+                                  "  Set the default Babycoin (sub-)unit.\n "
                                   "min-outputs-count [n]\n "
                                   "  Try to keep at least that many outputs of value at least min-outputs-value.\n "
                                   "min-outputs-value [n]\n "
@@ -2775,12 +2779,12 @@ simple_wallet::simple_wallet()
                                   "auto-low-priority <1|0>\n "
                                   "  Whether to automatically use the low priority fee level when it's safe to do so.\n "
                                   "segregate-pre-fork-outputs <1|0>\n "
-                                  "  Set this if you intend to spend outputs on both Evolution AND a key reusing fork.\n "
+                                  "  Set this if you intend to spend outputs on both Babycoin AND a key reusing fork.\n "
                                   "key-reuse-mitigation2 <1|0>\n "
-                                  "  Set this if you are not sure whether you will spend on a key reusing Evolution fork later.\n"
+                                  "  Set this if you are not sure whether you will spend on a key reusing Babycoin fork later.\n"
                                   "subaddress-lookahead <major>:<minor>\n "
                                   "  Set the lookahead sizes for the subaddress hash table.\n "
-                                  "  Set this if you are not sure whether you will spend on a key reusing Evolution fork later.\n "
+                                  "  Set this if you are not sure whether you will spend on a key reusing Babycoin fork later.\n "
                                   "segregation-height <n>\n "
                                   "  Set to the height of a key reusing fork you want to use, 0 to use default.\n"
                                   "persistent-client-id <1|0>\n "
@@ -2790,51 +2794,51 @@ simple_wallet::simple_wallet()
                                   "credits-target <unsigned int>\n"
                                   "  The RPC payment credits balance to target."));
   m_cmd_binder.set_handler("encrypted_seed",
-                           boost::bind(&simple_wallet::encrypted_seed, this, _1),
+                           boost::bind(&simple_wallet::encrypted_seed, this, boost::placeholders::_1),
                            tr("Display the encrypted Electrum-style mnemonic seed."));
   m_cmd_binder.set_handler("rescan_spent",
-                           boost::bind(&simple_wallet::rescan_spent, this, _1),
+                           boost::bind(&simple_wallet::rescan_spent, this, boost::placeholders::_1),
                            tr("Rescan the blockchain for spent outputs."));
   m_cmd_binder.set_handler("get_tx_key",
-                           boost::bind(&simple_wallet::get_tx_key, this, _1),
+                           boost::bind(&simple_wallet::get_tx_key, this, boost::placeholders::_1),
                            tr(USAGE_GET_TX_KEY),
                            tr("Get the transaction key (r) for a given <txid>."));
   m_cmd_binder.set_handler("set_tx_key",
-                           boost::bind(&simple_wallet::set_tx_key, this, _1),
+                           boost::bind(&simple_wallet::set_tx_key, this, boost::placeholders::_1),
                            tr(USAGE_SET_TX_KEY),
                            tr("Set the transaction key (r) for a given <txid> in case the tx was made by some other device or 3rd party wallet."));
   m_cmd_binder.set_handler("check_tx_key",
-                           boost::bind(&simple_wallet::check_tx_key, this, _1),
+                           boost::bind(&simple_wallet::check_tx_key, this, boost::placeholders::_1),
                            tr(USAGE_CHECK_TX_KEY),
                            tr("Check the amount going to <address> in <txid>."));
   m_cmd_binder.set_handler("get_tx_proof",
-                           boost::bind(&simple_wallet::get_tx_proof, this, _1),
+                           boost::bind(&simple_wallet::get_tx_proof, this, boost::placeholders::_1),
                            tr(USAGE_GET_TX_PROOF),
                            tr("Generate a signature proving funds sent to <address> in <txid>, optionally with a challenge string <message>, using either the transaction secret key (when <address> is not your wallet's address) or the view secret key (otherwise), which does not disclose the secret key."));
   m_cmd_binder.set_handler("check_tx_proof",
-                           boost::bind(&simple_wallet::check_tx_proof, this, _1),
+                           boost::bind(&simple_wallet::check_tx_proof, this, boost::placeholders::_1),
                            tr(USAGE_CHECK_TX_PROOF),
                            tr("Check the proof for funds going to <address> in <txid> with the challenge string <message> if any."));
   m_cmd_binder.set_handler("get_spend_proof",
-                           boost::bind(&simple_wallet::get_spend_proof, this, _1),
+                           boost::bind(&simple_wallet::get_spend_proof, this, boost::placeholders::_1),
                            tr(USAGE_GET_SPEND_PROOF),
                            tr("Generate a signature proving that you generated <txid> using the spend secret key, optionally with a challenge string <message>."));
   m_cmd_binder.set_handler("check_spend_proof",
-                           boost::bind(&simple_wallet::check_spend_proof, this, _1),
+                           boost::bind(&simple_wallet::check_spend_proof, this, boost::placeholders::_1),
                            tr(USAGE_CHECK_SPEND_PROOF),
                            tr("Check a signature proving that the signer generated <txid>, optionally with a challenge string <message>."));
   m_cmd_binder.set_handler("get_reserve_proof",
-                           boost::bind(&simple_wallet::get_reserve_proof, this, _1),
+                           boost::bind(&simple_wallet::get_reserve_proof, this, boost::placeholders::_1),
                            tr(USAGE_GET_RESERVE_PROOF),
                            tr("Generate a signature proving that you own at least this much, optionally with a challenge string <message>.\n"
                               "If 'all' is specified, you prove the entire sum of all of your existing accounts' balances.\n"
                               "Otherwise, you prove the reserve of the smallest possible amount above <amount> available in your current account."));
   m_cmd_binder.set_handler("check_reserve_proof",
-                           boost::bind(&simple_wallet::check_reserve_proof, this, _1),
+                           boost::bind(&simple_wallet::check_reserve_proof, this, boost::placeholders::_1),
                            tr(USAGE_CHECK_RESERVE_PROOF),
                            tr("Check a signature proving that the owner of <address> holds at least this much, optionally with a challenge string <message>."));
   m_cmd_binder.set_handler("show_transfers",
-                           boost::bind(&simple_wallet::show_transfers, this, _1),
+                           boost::bind(&simple_wallet::show_transfers, this, boost::placeholders::_1),
                            tr(USAGE_SHOW_TRANSFERS),
                            // Seemingly broken formatting to compensate for the backslash before the quotes.
                            tr("Show the incoming/outgoing transfers within an optional height range.\n\n"
@@ -2846,170 +2850,170 @@ simple_wallet::simple_wallet()
                               "* Excluding change and fee.\n"
                               "** Set of address indices used as inputs in this transfer."));
   m_cmd_binder.set_handler("export_transfers",
-                           boost::bind(&simple_wallet::export_transfers, this, _1),
+                           boost::bind(&simple_wallet::export_transfers, this, boost::placeholders::_1),
                            tr(USAGE_EXPORT_TRANSFERS),
                            tr("Export to CSV the incoming/outgoing transfers within an optional height range."));
   m_cmd_binder.set_handler("unspent_outputs",
-                           boost::bind(&simple_wallet::unspent_outputs, this, _1),
+                           boost::bind(&simple_wallet::unspent_outputs, this, boost::placeholders::_1),
                            tr(USAGE_UNSPENT_OUTPUTS),
                            tr("Show the unspent outputs of a specified address within an optional amount range."));
   m_cmd_binder.set_handler("rescan_bc",
-                           boost::bind(&simple_wallet::rescan_blockchain, this, _1),
+                           boost::bind(&simple_wallet::rescan_blockchain, this, boost::placeholders::_1),
                            tr(USAGE_RESCAN_BC),
                            tr("Rescan the blockchain from scratch. If \"hard\" is specified, you will lose any information which can not be recovered from the blockchain itself."));
   m_cmd_binder.set_handler("set_tx_note",
-                           boost::bind(&simple_wallet::set_tx_note, this, _1),
+                           boost::bind(&simple_wallet::set_tx_note, this, boost::placeholders::_1),
                            tr(USAGE_SET_TX_NOTE),
                            tr("Set an arbitrary string note for a <txid>."));
   m_cmd_binder.set_handler("get_tx_note",
-                           boost::bind(&simple_wallet::get_tx_note, this, _1),
+                           boost::bind(&simple_wallet::get_tx_note, this, boost::placeholders::_1),
                            tr(USAGE_GET_TX_NOTE),
                            tr("Get a string note for a txid."));
   m_cmd_binder.set_handler("set_description",
-                           boost::bind(&simple_wallet::set_description, this, _1),
+                           boost::bind(&simple_wallet::set_description, this, boost::placeholders::_1),
                            tr(USAGE_SET_DESCRIPTION),
                            tr("Set an arbitrary description for the wallet."));
   m_cmd_binder.set_handler("get_description",
-                           boost::bind(&simple_wallet::get_description, this, _1),
+                           boost::bind(&simple_wallet::get_description, this, boost::placeholders::_1),
                            tr(USAGE_GET_DESCRIPTION),
                            tr("Get the description of the wallet."));
   m_cmd_binder.set_handler("status",
-                           boost::bind(&simple_wallet::status, this, _1),
+                           boost::bind(&simple_wallet::status, this, boost::placeholders::_1),
                            tr("Show the wallet's status."));
   m_cmd_binder.set_handler("wallet_info",
-                           boost::bind(&simple_wallet::wallet_info, this, _1),
+                           boost::bind(&simple_wallet::wallet_info, this, boost::placeholders::_1),
                            tr("Show the wallet's information."));
   m_cmd_binder.set_handler("sign",
-                           boost::bind(&simple_wallet::sign, this, _1),
+                           boost::bind(&simple_wallet::sign, this, boost::placeholders::_1),
                            tr(USAGE_SIGN),
                            tr("Sign the contents of a file."));
   m_cmd_binder.set_handler("verify",
-                           boost::bind(&simple_wallet::verify, this, _1),
+                           boost::bind(&simple_wallet::verify, this, boost::placeholders::_1),
                            tr(USAGE_VERIFY),
                            tr("Verify a signature on the contents of a file."));
   m_cmd_binder.set_handler("export_key_images",
-                           boost::bind(&simple_wallet::export_key_images, this, _1),
+                           boost::bind(&simple_wallet::export_key_images, this, boost::placeholders::_1),
                            tr(USAGE_EXPORT_KEY_IMAGES),
                            tr("Export a signed set of key images to a <filename>."));
   m_cmd_binder.set_handler("import_key_images",
-                           boost::bind(&simple_wallet::import_key_images, this, _1),
+                           boost::bind(&simple_wallet::import_key_images, this, boost::placeholders::_1),
                            tr(USAGE_IMPORT_KEY_IMAGES),
                            tr("Import a signed key images list and verify their spent status."));
   m_cmd_binder.set_handler("hw_reconnect",
-                           boost::bind(&simple_wallet::hw_reconnect, this, _1),
+                           boost::bind(&simple_wallet::hw_reconnect, this, boost::placeholders::_1),
                            tr(USAGE_HW_RECONNECT),
                            tr("Attempts to reconnect HW wallet."));
   m_cmd_binder.set_handler("export_outputs",
-                           boost::bind(&simple_wallet::export_outputs, this, _1),
+                           boost::bind(&simple_wallet::export_outputs, this, boost::placeholders::_1),
                            tr(USAGE_EXPORT_OUTPUTS),
                            tr("Export a set of outputs owned by this wallet."));
   m_cmd_binder.set_handler("import_outputs",
-                           boost::bind(&simple_wallet::import_outputs, this, _1),
+                           boost::bind(&simple_wallet::import_outputs, this, boost::placeholders::_1),
                            tr(USAGE_IMPORT_OUTPUTS),
                            tr("Import a set of outputs owned by this wallet."));
   m_cmd_binder.set_handler("show_transfer",
-                           boost::bind(&simple_wallet::show_transfer, this, _1),
+                           boost::bind(&simple_wallet::show_transfer, this, boost::placeholders::_1),
                            tr(USAGE_SHOW_TRANSFER),
                            tr("Show information about a transfer to/from this address."));
   m_cmd_binder.set_handler("password",
-                           boost::bind(&simple_wallet::change_password, this, _1),
+                           boost::bind(&simple_wallet::change_password, this, boost::placeholders::_1),
                            tr("Change the wallet's password."));
   m_cmd_binder.set_handler("payment_id",
-                           boost::bind(&simple_wallet::payment_id, this, _1),
+                           boost::bind(&simple_wallet::payment_id, this, boost::placeholders::_1),
                            tr(USAGE_PAYMENT_ID),
                            tr("Generate a new random full size payment id. These will be unencrypted on the blockchain, see integrated_address for encrypted short payment ids."));
   m_cmd_binder.set_handler("fee",
-                           boost::bind(&simple_wallet::print_fee_info, this, _1),
+                           boost::bind(&simple_wallet::print_fee_info, this, boost::placeholders::_1),
                            tr("Print the information about the current fee and transaction backlog."));
-  m_cmd_binder.set_handler("prepare_multisig", boost::bind(&simple_wallet::prepare_multisig, this, _1),
+  m_cmd_binder.set_handler("prepare_multisig", boost::bind(&simple_wallet::prepare_multisig, this, boost::placeholders::_1),
                            tr("Export data needed to create a multisig wallet"));
-  m_cmd_binder.set_handler("make_multisig", boost::bind(&simple_wallet::make_multisig, this, _1),
+  m_cmd_binder.set_handler("make_multisig", boost::bind(&simple_wallet::make_multisig, this, boost::placeholders::_1),
                            tr(USAGE_MAKE_MULTISIG),
                            tr("Turn this wallet into a multisig wallet"));
   m_cmd_binder.set_handler("finalize_multisig",
-                           boost::bind(&simple_wallet::finalize_multisig, this, _1),
+                           boost::bind(&simple_wallet::finalize_multisig, this, boost::placeholders::_1),
                            tr(USAGE_FINALIZE_MULTISIG),
                            tr("Turn this wallet into a multisig wallet, extra step for N-1/N wallets"));
   m_cmd_binder.set_handler("exchange_multisig_keys",
-                           boost::bind(&simple_wallet::exchange_multisig_keys, this, _1),
+                           boost::bind(&simple_wallet::exchange_multisig_keys, this, boost::placeholders::_1),
                            tr(USAGE_EXCHANGE_MULTISIG_KEYS),
                            tr("Performs extra multisig keys exchange rounds. Needed for arbitrary M/N multisig wallets"));
   m_cmd_binder.set_handler("export_multisig_info",
-                           boost::bind(&simple_wallet::export_multisig, this, _1),
+                           boost::bind(&simple_wallet::export_multisig, this, boost::placeholders::_1),
                            tr(USAGE_EXPORT_MULTISIG_INFO),
                            tr("Export multisig info for other participants"));
   m_cmd_binder.set_handler("import_multisig_info",
-                           boost::bind(&simple_wallet::import_multisig, this, _1),
+                           boost::bind(&simple_wallet::import_multisig, this, boost::placeholders::_1),
                            tr(USAGE_IMPORT_MULTISIG_INFO),
                            tr("Import multisig info from other participants"));
   m_cmd_binder.set_handler("sign_multisig",
-                           boost::bind(&simple_wallet::sign_multisig, this, _1),
+                           boost::bind(&simple_wallet::sign_multisig, this, boost::placeholders::_1),
                            tr(USAGE_SIGN_MULTISIG),
                            tr("Sign a multisig transaction from a file"));
   m_cmd_binder.set_handler("submit_multisig",
-                           boost::bind(&simple_wallet::submit_multisig, this, _1),
+                           boost::bind(&simple_wallet::submit_multisig, this, boost::placeholders::_1),
                            tr(USAGE_SUBMIT_MULTISIG),
                            tr("Submit a signed multisig transaction from a file"));
   m_cmd_binder.set_handler("export_raw_multisig_tx",
-                           boost::bind(&simple_wallet::export_raw_multisig, this, _1),
+                           boost::bind(&simple_wallet::export_raw_multisig, this, boost::placeholders::_1),
                            tr(USAGE_EXPORT_RAW_MULTISIG_TX),
                            tr("Export a signed multisig transaction to a file"));
   m_cmd_binder.set_handler("print_ring",
-                           boost::bind(&simple_wallet::print_ring, this, _1),
+                           boost::bind(&simple_wallet::print_ring, this, boost::placeholders::_1),
                            tr(USAGE_PRINT_RING),
                            tr("Print the ring(s) used to spend a given key image or transaction (if the ring size is > 1)\n\n"
                               "Output format:\n"
                               "Key Image, \"absolute\", list of rings"));
   m_cmd_binder.set_handler("set_ring",
-                           boost::bind(&simple_wallet::set_ring, this, _1),
+                           boost::bind(&simple_wallet::set_ring, this, boost::placeholders::_1),
                            tr(USAGE_SET_RING),
                            tr("Set the ring used for a given key image, so it can be reused in a fork"));
   m_cmd_binder.set_handler("save_known_rings",
-                           boost::bind(&simple_wallet::save_known_rings, this, _1),
+                           boost::bind(&simple_wallet::save_known_rings, this, boost::placeholders::_1),
                            tr(USAGE_SAVE_KNOWN_RINGS),
                            tr("Save known rings to the shared rings database"));
   m_cmd_binder.set_handler("mark_output_spent",
-                           boost::bind(&simple_wallet::blackball, this, _1),
+                           boost::bind(&simple_wallet::blackball, this, boost::placeholders::_1),
                            tr(USAGE_MARK_OUTPUT_SPENT),
                            tr("Mark output(s) as spent so they never get selected as fake outputs in a ring"));
   m_cmd_binder.set_handler("mark_output_unspent",
-                           boost::bind(&simple_wallet::unblackball, this, _1),
+                           boost::bind(&simple_wallet::unblackball, this, boost::placeholders::_1),
                            tr(USAGE_MARK_OUTPUT_UNSPENT),
                            tr("Mark an output as unspent so it may get selected as a fake output in a ring"));
   m_cmd_binder.set_handler("is_output_spent",
-                           boost::bind(&simple_wallet::blackballed, this, _1),
+                           boost::bind(&simple_wallet::blackballed, this, boost::placeholders::_1),
                            tr(USAGE_IS_OUTPUT_SPENT),
                            tr("Checks whether an output is marked as spent"));
   m_cmd_binder.set_handler("public_nodes",
-                           boost::bind(&simple_wallet::public_nodes, this, _1),
+                           boost::bind(&simple_wallet::public_nodes, this, boost::placeholders::_1),
                            tr(USAGE_PUBLIC_NODES),
                            tr("Lists known public nodes"));
   m_cmd_binder.set_handler("net_stats",
-                           boost::bind(&simple_wallet::net_stats, this, _1),
+                           boost::bind(&simple_wallet::net_stats, this, boost::placeholders::_1),
                            tr(USAGE_NET_STATS),
                            tr("Prints simple network stats"));
   m_cmd_binder.set_handler("welcome",
-                           boost::bind(&simple_wallet::welcome, this, _1),
+                           boost::bind(&simple_wallet::welcome, this, boost::placeholders::_1),
                            tr(USAGE_WELCOME),
-                           tr("Prints basic info about Evolution for first time users"));
+                           tr("Prints basic info about Babycoin for first time users"));
   m_cmd_binder.set_handler("version",
-                           boost::bind(&simple_wallet::version, this, _1),
+                           boost::bind(&simple_wallet::version, this, boost::placeholders::_1),
                            tr(USAGE_VERSION),
                            tr("Returns version information"));
   m_cmd_binder.set_handler("rpc_payment_info",
-                           boost::bind(&simple_wallet::rpc_payment_info, this, _1),
+                           boost::bind(&simple_wallet::rpc_payment_info, this, boost::placeholders::_1),
                            tr(USAGE_RPC_PAYMENT_INFO),
                            tr("Get info about RPC payments to current node"));
   m_cmd_binder.set_handler("start_mining_for_rpc",
-                           boost::bind(&simple_wallet::start_mining_for_rpc, this, _1),
+                           boost::bind(&simple_wallet::start_mining_for_rpc, this, boost::placeholders::_1),
                            tr(USAGE_START_MINING_FOR_RPC),
                            tr("Start mining to pay for RPC access"));
   m_cmd_binder.set_handler("stop_mining_for_rpc",
-                           boost::bind(&simple_wallet::stop_mining_for_rpc, this, _1),
+                           boost::bind(&simple_wallet::stop_mining_for_rpc, this, boost::placeholders::_1),
                            tr(USAGE_STOP_MINING_FOR_RPC),
                            tr("Stop mining to pay for RPC access"));
   m_cmd_binder.set_handler("help",
-                           boost::bind(&simple_wallet::help, this, _1),
+                           boost::bind(&simple_wallet::help, this, boost::placeholders::_1),
                            tr(USAGE_HELP),
                            tr("Show the help section or the documentation about a <command>."));
 }
@@ -3870,7 +3874,7 @@ bool simple_wallet::init(const boost::program_options::variables_map& vm)
   m_wallet->callback(this);
 
   if (welcome)
-    message_writer(console_color_yellow, true) << tr("If you are new to Evolution, type \"welcome\" for a brief overview.");
+    message_writer(console_color_yellow, true) << tr("If you are new to Babycoin, type \"welcome\" for a brief overview.");
 
   return true;
 }
@@ -4076,7 +4080,7 @@ boost::optional<epee::wipeable_string> simple_wallet::new_wallet(const boost::pr
     "To start synchronizing with the daemon, use the \"refresh\" command.\n"
     "Use the \"help\" command to see the list of available commands.\n"
     "Use \"help <command>\" to see a command's documentation.\n"
-    "Always use the \"exit\" command when closing evolution-wallet-cli to save \n"
+    "Always use the \"exit\" command when closing babycoin-wallet-cli to save \n"
     "your current session's state. Otherwise, you might need to synchronize \n"
     "your wallet again (your wallet keys are NOT at risk in any case).\n")
   ;
@@ -4722,14 +4726,14 @@ bool simple_wallet::refresh_main(uint64_t start_height, enum ResetType reset, bo
     return true;
 
   LOCK_IDLE_SCOPE();
-  
+
   crypto::hash transfer_hash_pre{};
   uint64_t height_pre = 0, height_post;
   if(reset != ResetNone)
   {
     if(reset == ResetSoftKeepKI)
       height_pre = m_wallet->hash_m_transfers(-1, transfer_hash_pre);
-    
+
     m_wallet->rescan_blockchain(reset == ResetHard, false, reset == ResetSoftKeepKI);
   }
 
@@ -4747,18 +4751,18 @@ bool simple_wallet::refresh_main(uint64_t start_height, enum ResetType reset, bo
     m_in_manual_refresh.store(true, std::memory_order_relaxed);
     epee::misc_utils::auto_scope_leave_caller scope_exit_handler = epee::misc_utils::create_scope_leave_handler([&](){m_in_manual_refresh.store(false, std::memory_order_relaxed);});
     m_wallet->refresh(m_wallet->is_trusted_daemon(), start_height, fetched_blocks);
-    
+
     if(reset == ResetSoftKeepKI)
     {
       m_wallet->finish_rescan_bc_keep_key_images(height_pre, transfer_hash_pre);
-      
+
       height_post = m_wallet->get_num_transfer_details();
       if (height_pre != height_post)
       {
         message_writer() << tr("New transfer received since rescan was started. Key images are incomplete.");
       }
     }
-    
+
     ok = true;
     // Clear line "Height xxx of xxx"
     std::cout << "\r                                                                \r";
@@ -5352,7 +5356,7 @@ bool simple_wallet::transfer_main(int transfer_type, const std::vector<std::stri
     fail_msg_writer() << (boost::format(tr("ring size %u is too small, minimum is %u")) % (fake_outs_count+1) % (adjusted_fake_outs_count+1)).str();
     return true;
   }
-  
+
   const size_t min_args = (transfer_type == TransferLocked) ? 2 : 1;
   if(local_args.size() < min_args)
   {
@@ -5460,7 +5464,7 @@ bool simple_wallet::transfer_main(int transfer_type, const std::vector<std::stri
     }
     else
     {
-      if (boost::starts_with(local_args[i], "evolution:"))
+      if (boost::starts_with(local_args[i], "babycoin:"))
         fail_msg_writer() << tr("Invalid last argument: ") << local_args.back() << ": " << error;
       else
         fail_msg_writer() << tr("Invalid last argument: ") << local_args.back();
@@ -5705,26 +5709,26 @@ bool simple_wallet::transfer_main(int transfer_type, const std::vector<std::stri
     // actually commit the transactions
     if (m_wallet->multisig())
     {
-      bool r = m_wallet->save_multisig_tx(ptx_vector, "multisig_evolution_tx");
+      bool r = m_wallet->save_multisig_tx(ptx_vector, "multisig_babycoin_tx");
       if (!r)
       {
         fail_msg_writer() << tr("Failed to write transaction(s) to file");
       }
       else
       {
-        success_msg_writer(true) << tr("Unsigned transaction(s) successfully written to file: ") << "multisig_evolution_tx";
+        success_msg_writer(true) << tr("Unsigned transaction(s) successfully written to file: ") << "multisig_babycoin_tx";
       }
     }
     else if (m_wallet->watch_only())
     {
-      bool r = m_wallet->save_tx(ptx_vector, "unsigned_evolution_tx");
+      bool r = m_wallet->save_tx(ptx_vector, "unsigned_babycoin_tx");
       if (!r)
       {
         fail_msg_writer() << tr("Failed to write transaction(s) to file");
       }
       else
       {
-        success_msg_writer(true) << tr("Unsigned transaction(s) successfully written to file: ") << "unsigned_evolution_tx";
+        success_msg_writer(true) << tr("Unsigned transaction(s) successfully written to file: ") << "unsigned_babycoin_tx";
       }
     }
     else
@@ -5814,26 +5818,26 @@ bool simple_wallet::sweep_unmixable(const std::vector<std::string> &args_)
     // actually commit the transactions
     if (m_wallet->multisig())
     {
-      bool r = m_wallet->save_multisig_tx(ptx_vector, "multisig_evolution_tx");
+      bool r = m_wallet->save_multisig_tx(ptx_vector, "multisig_babycoin_tx");
       if (!r)
       {
         fail_msg_writer() << tr("Failed to write transaction(s) to file");
       }
       else
       {
-        success_msg_writer(true) << tr("Unsigned transaction(s) successfully written to file: ") << "multisig_evolution_tx";
+        success_msg_writer(true) << tr("Unsigned transaction(s) successfully written to file: ") << "multisig_babycoin_tx";
       }
     }
     else if (m_wallet->watch_only())
     {
-      bool r = m_wallet->save_tx(ptx_vector, "unsigned_evolution_tx");
+      bool r = m_wallet->save_tx(ptx_vector, "unsigned_babycoin_tx");
       if (!r)
       {
         fail_msg_writer() << tr("Failed to write transaction(s) to file");
       }
       else
       {
-        success_msg_writer(true) << tr("Unsigned transaction(s) successfully written to file: ") << "unsigned_evolution_tx";
+        success_msg_writer(true) << tr("Unsigned transaction(s) successfully written to file: ") << "unsigned_babycoin_tx";
       }
     }
     else
@@ -5936,7 +5940,7 @@ bool simple_wallet::sweep_main(uint64_t below, bool locked, const std::vector<st
     fail_msg_writer() << (boost::format(tr("ring size %u is too small, minimum is %u")) % (fake_outs_count+1) % (adjusted_fake_outs_count+1)).str();
     return true;
   }
-  
+
   uint64_t unlock_block = 0;
   if (locked) {
     uint64_t locked_blocks = 0;
@@ -6136,26 +6140,26 @@ bool simple_wallet::sweep_main(uint64_t below, bool locked, const std::vector<st
     // actually commit the transactions
     if (m_wallet->multisig())
     {
-      bool r = m_wallet->save_multisig_tx(ptx_vector, "multisig_evolution_tx");
+      bool r = m_wallet->save_multisig_tx(ptx_vector, "multisig_babycoin_tx");
       if (!r)
       {
         fail_msg_writer() << tr("Failed to write transaction(s) to file");
       }
       else
       {
-        success_msg_writer(true) << tr("Unsigned transaction(s) successfully written to file: ") << "multisig_evolution_tx";
+        success_msg_writer(true) << tr("Unsigned transaction(s) successfully written to file: ") << "multisig_babycoin_tx";
       }
     }
     else if (m_wallet->watch_only())
     {
-      bool r = m_wallet->save_tx(ptx_vector, "unsigned_evolution_tx");
+      bool r = m_wallet->save_tx(ptx_vector, "unsigned_babycoin_tx");
       if (!r)
       {
         fail_msg_writer() << tr("Failed to write transaction(s) to file");
       }
       else
       {
-        success_msg_writer(true) << tr("Unsigned transaction(s) successfully written to file: ") << "unsigned_evolution_tx";
+        success_msg_writer(true) << tr("Unsigned transaction(s) successfully written to file: ") << "unsigned_babycoin_tx";
       }
     }
     else
@@ -6355,26 +6359,26 @@ bool simple_wallet::sweep_single(const std::vector<std::string> &args_)
     // actually commit the transactions
     if (m_wallet->multisig())
     {
-      bool r = m_wallet->save_multisig_tx(ptx_vector, "multisig_evolution_tx");
+      bool r = m_wallet->save_multisig_tx(ptx_vector, "multisig_babycoin_tx");
       if (!r)
       {
         fail_msg_writer() << tr("Failed to write transaction(s) to file");
       }
       else
       {
-        success_msg_writer(true) << tr("Unsigned transaction(s) successfully written to file: ") << "multisig_evolution_tx";
+        success_msg_writer(true) << tr("Unsigned transaction(s) successfully written to file: ") << "multisig_babycoin_tx";
       }
     }
     else if (m_wallet->watch_only())
     {
-      bool r = m_wallet->save_tx(ptx_vector, "unsigned_evolution_tx");
+      bool r = m_wallet->save_tx(ptx_vector, "unsigned_babycoin_tx");
       if (!r)
       {
         fail_msg_writer() << tr("Failed to write transaction(s) to file");
       }
       else
       {
-        success_msg_writer(true) << tr("Unsigned transaction(s) successfully written to file: ") << "unsigned_evolution_tx";
+        success_msg_writer(true) << tr("Unsigned transaction(s) successfully written to file: ") << "unsigned_babycoin_tx";
       }
     }
     else
@@ -6453,7 +6457,7 @@ bool simple_wallet::donate(const std::vector<std::string> &args_)
   local_args.push_back(amount_str);
   if (!payment_id_str.empty())
     local_args.push_back(payment_id_str);
-  message_writer() << (boost::format(tr("Donating %s %s to The Evolution Network (evolution-project.go.ro/donations or %s).")) % amount_str % cryptonote::get_unit(cryptonote::get_default_decimal_point()) % EVOLUTION_DONATION_ADDR).str();
+  message_writer() << (boost::format(tr("Donating %s %s to The Babycoin Network (babycoin-project.go.ro/donations or %s).")) % amount_str % cryptonote::get_unit(cryptonote::get_default_decimal_point()) % EVOLUTION_DONATION_ADDR).str();
   transfer(local_args);
   return true;
 }
@@ -6635,7 +6639,7 @@ bool simple_wallet::sign_transfer(const std::vector<std::string> &args_)
   std::vector<tools::wallet2::pending_tx> ptx;
   try
   {
-    bool r = m_wallet->sign_tx("unsigned_evolution_tx", "signed_evolution_tx", ptx, [&](const tools::wallet2::unsigned_tx_set &tx){ return accept_loaded_tx(tx); }, export_raw);
+    bool r = m_wallet->sign_tx("unsigned_babycoin_tx", "signed_babycoin_tx", ptx, [&](const tools::wallet2::unsigned_tx_set &tx){ return accept_loaded_tx(tx); }, export_raw);
     if (!r)
     {
       fail_msg_writer() << tr("Failed to sign transaction");
@@ -6655,7 +6659,7 @@ bool simple_wallet::sign_transfer(const std::vector<std::string> &args_)
       txids_as_text += (", ");
     txids_as_text += epee::string_tools::pod_to_hex(get_transaction_hash(t.tx));
   }
-  success_msg_writer(true) << tr("Transaction successfully signed to file ") << "signed_evolution_tx" << ", txid " << txids_as_text;
+  success_msg_writer(true) << tr("Transaction successfully signed to file ") << "signed_babycoin_tx" << ", txid " << txids_as_text;
   if (export_raw)
   {
     std::string rawfiles_as_text;
@@ -6663,7 +6667,7 @@ bool simple_wallet::sign_transfer(const std::vector<std::string> &args_)
     {
       if (i > 0)
         rawfiles_as_text += ", ";
-      rawfiles_as_text += "signed_evolution_tx_raw" + (ptx.size() == 1 ? "" : ("_" + std::to_string(i)));
+      rawfiles_as_text += "signed_babycoin_tx_raw" + (ptx.size() == 1 ? "" : ("_" + std::to_string(i)));
     }
     success_msg_writer(true) << tr("Transaction raw hex data exported to ") << rawfiles_as_text;
   }
@@ -6683,7 +6687,7 @@ bool simple_wallet::submit_transfer(const std::vector<std::string> &args_)
   try
   {
     std::vector<tools::wallet2::pending_tx> ptx_vector;
-    bool r = m_wallet->load_tx("signed_evolution_tx", ptx_vector, [&](const tools::wallet2::signed_tx_set &tx){ return accept_loaded_tx(tx); });
+    bool r = m_wallet->load_tx("signed_babycoin_tx", ptx_vector, [&](const tools::wallet2::signed_tx_set &tx){ return accept_loaded_tx(tx); });
     if (!r)
     {
       fail_msg_writer() << tr("Failed to load transaction from file");
@@ -6836,7 +6840,7 @@ bool simple_wallet::get_tx_proof(const std::vector<std::string> &args)
   try
   {
     std::string sig_str = m_wallet->get_tx_proof(txid, info.address, info.is_subaddress, args.size() == 3 ? args[2] : "");
-    const std::string filename = "evolution_tx_proof";
+    const std::string filename = "babycoin_tx_proof";
     if (epee::file_io_utils::save_string_to_file(filename, sig_str))
       success_msg_writer() << tr("signature file saved to: ") << filename;
     else
@@ -7051,7 +7055,7 @@ bool simple_wallet::get_spend_proof(const std::vector<std::string> &args)
   try
   {
     const std::string sig_str = m_wallet->get_spend_proof(txid, args.size() == 2 ? args[1] : "");
-    const std::string filename = "evolution_spend_proof";
+    const std::string filename = "babycoin_spend_proof";
     if (epee::file_io_utils::save_string_to_file(filename, sig_str))
       success_msg_writer() << tr("signature file saved to: ") << filename;
     else
@@ -7146,7 +7150,7 @@ bool simple_wallet::get_reserve_proof(const std::vector<std::string> &args)
   try
   {
     const std::string sig_str = m_wallet->get_reserve_proof(account_minreserve, args.size() == 2 ? args[1] : "");
-    const std::string filename = "evolution_reserve_proof";
+    const std::string filename = "babycoin_reserve_proof";
     if (epee::file_io_utils::save_string_to_file(filename, sig_str))
       success_msg_writer() << tr("signature file saved to: ") << filename;
     else
@@ -7317,7 +7321,7 @@ bool simple_wallet::get_transfers(std::vector<std::string>& local_args, std::vec
     }
     local_args.erase(local_args.begin());
   }
-  
+
   const uint64_t last_block_height = m_wallet->get_blockchain_current_height();
 
   if(in || coinbase) {
@@ -7778,7 +7782,7 @@ bool simple_wallet::rescan_blockchain(const std::vector<std::string> &args_)
 {
   uint64_t start_height = 0;
   ResetType reset_type = ResetSoft;
-  
+
   if(!args_.empty())
   {
     if(args_[0] == "hard")
@@ -7798,7 +7802,7 @@ bool simple_wallet::rescan_blockchain(const std::vector<std::string> &args_)
       PRINT_USAGE(USAGE_RESCAN_BC);
       return true;
     }
-    
+
     if(args_.size() > 1)
     {
       try
@@ -7811,7 +7815,7 @@ bool simple_wallet::rescan_blockchain(const std::vector<std::string> &args_)
       }
     }
   }
-  
+
   if(reset_type == ResetHard)
   {
     message_writer() << tr("Warning: this will lose any information which can not be recovered from the blockchain.");
@@ -7823,7 +7827,7 @@ bool simple_wallet::rescan_blockchain(const std::vector<std::string> &args_)
         return true;
     }
   }
-  
+
   const uint64_t wallet_from_height = m_wallet->get_refresh_from_block_height();
   if (start_height > wallet_from_height)
   {
@@ -8972,7 +8976,7 @@ void simple_wallet::commit_or_save(std::vector<tools::wallet2::pending_tx>& ptx_
       cryptonote::blobdata blob;
       tx_to_blob(ptx.tx, blob);
       const std::string blob_hex = epee::string_tools::buff_to_hex_nodelimer(blob);
-      const std::string filename = "raw_evolution_tx" + (ptx_vector.size() == 1 ? "" : ("_" + std::to_string(i++)));
+      const std::string filename = "raw_babycoin_tx" + (ptx_vector.size() == 1 ? "" : ("_" + std::to_string(i++)));
       if (epee::file_io_utils::save_string_to_file(filename, blob_hex))
         success_msg_writer(true) << tr("Transaction successfully saved to ") << filename << tr(", txid ") << txid;
       else
@@ -9031,12 +9035,12 @@ int main(int argc, char* argv[])
   bool should_terminate = false;
   std::tie(vm, should_terminate) = wallet_args::main(
    argc, argv,
-   "evolution-wallet-cli [--wallet-file=<filename>|--generate-new-wallet=<filename>] [<COMMAND>]",
-    sw::tr("This is the command line evolution wallet. It needs to connect to a evolution\ndaemon to work correctly.\nWARNING: Do not reuse your Evolution keys on an another fork, UNLESS this fork has key reuse mitigations built in. Doing so will harm your privacy."),
+   "babycoin-wallet-cli [--wallet-file=<filename>|--generate-new-wallet=<filename>] [<COMMAND>]",
+    sw::tr("This is the command line babycoin wallet. It needs to connect to a babycoin\ndaemon to work correctly.\nWARNING: Do not reuse your Babycoin keys on an another fork, UNLESS this fork has key reuse mitigations built in. Doing so will harm your privacy."),
     desc_params,
     positional_options,
     [](const std::string &s, bool emphasis){ tools::scoped_message_writer(emphasis ? epee::console_color_white : epee::console_color_default, true) << s; },
-    "evolution-wallet-cli.log"
+    "babycoin-wallet-cli.log"
   );
 
   if (!vm)

@@ -1,3 +1,4 @@
+# Copyright (c) 2020-2021, The Babycoin Project
 # Copyright (c) 2020, The Evolution Network
 # Copyright (c) 2018-2019, The Arqma Network
 # Copyright (c) 2017-2018, The Monero Project

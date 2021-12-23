@@ -1,4 +1,4 @@
-// Copyright (c) 2020 The Evolution Project
+// Copyright (c) 2020 The Babycoin Project
 // Copyright (c) 2018-2019, The Arqma Network
 // Copyright (c) 2014-2018, The Monero Project
 //
@@ -480,7 +480,7 @@ bool Blockchain::init(BlockchainDB* db, const network_type nettype, bool offline
     }
     catch( const std::exception &e)
     {
-      MERROR(std::string("Failed to construct evolution notifier ") + e.what());
+      MERROR(std::string("Failed to construct babycoin notifier ") + e.what());
     }
  }
 
@@ -628,7 +628,7 @@ block Blockchain::pop_block_from_blockchain()
   block popped_block;
   std::vector<transaction> popped_txs;
 
-  CHECK_AND_ASSERT_THROW_MES(m_db->height() > 1, "It is forbidden to remove Evolution Genesis Block.");
+  CHECK_AND_ASSERT_THROW_MES(m_db->height() > 1, "It is forbidden to remove Babycoin Genesis Block.");
 
   try
   {
@@ -2104,7 +2104,7 @@ void Blockchain::get_output_key_mask_unlocked(const uint64_t& amount, const uint
 bool Blockchain::get_output_distribution(uint64_t amount, uint64_t from_height, uint64_t to_height, uint64_t &start_height, std::vector<uint64_t> &distribution, uint64_t &base) const
 {
   // rct outputs don't exist before v4
-  // Evolution did start from v7 at blockheight 1 so our start is always 0
+  // Babycoin did start from v7 at blockheight 1 so our start is always 0
 
   start_height = 0;
   base = 0;
@@ -3654,7 +3654,7 @@ leave:
     const el::Level level = el::Level::Warning;
     MCLOG_RED(level, "global", "**********************************************************************");
     MCLOG_RED(level, "global", "A block was seen on the network with a version higher than the last");
-    MCLOG_RED(level, "global", "known one. This may be an old version of the Evolution daemon, and a software");
+    MCLOG_RED(level, "global", "known one. This may be an old version of the Babycoin daemon, and a software");
     MCLOG_RED(level, "global", "update may be required to sync further. ");
     MCLOG_RED(level, "global", "**********************************************************************");
   }
@@ -3994,7 +3994,7 @@ leave:
     }
     catch( const std::exception &e)
     {
-      MERROR(std::string("Failed to construct evolution block producer") + e.what());
+      MERROR(std::string("Failed to construct babycoin block producer") + e.what());
     }
   }
 

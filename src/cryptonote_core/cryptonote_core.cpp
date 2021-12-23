@@ -1,4 +1,4 @@
-// Copyright (c) 2020, The Evolution Network
+// Copyright (c) 2020, The Babycoin Network
 // Copyright (c) 2018-2019, The Arqma Network
 // Copyright (c) 2014-2018, The Monero Project
 //
@@ -35,7 +35,7 @@
 #include "string_tools.h"
 using namespace epee;
 
-#include "evolution_mq/evolutionMQ.h"
+#include "evolution_mq/babycoinMQ.h"
 
 #include <unordered_set>
 #include "cryptonote_core.h"
@@ -160,7 +160,7 @@ namespace cryptonote
   };
   static const command_line::arg_descriptor<std::string> arg_check_updates = {
     "check-updates"
-  , "Check for new versions of evolution: [disabled|notify|download|update]"
+  , "Check for new versions of babycoin: [disabled|notify|download|update]"
   , "notify"
   };
   static const command_line::arg_descriptor<bool> arg_fluffy_blocks = {
@@ -470,8 +470,8 @@ namespace cryptonote
       if (boost::filesystem::exists(old_files / "blockchain.bin"))
       {
         MWARNING("Found old-style blockchain.bin in " << old_files.string());
-        MWARNING("Evolution now uses a new format. You can either remove blockchain.bin to start syncing");
-        MWARNING("the blockchain anew, or use evolution-blockchain-export and evolution-blockchain-import to");
+        MWARNING("Babycoin now uses a new format. You can either remove blockchain.bin to start syncing");
+        MWARNING("the blockchain anew, or use babycoin-blockchain-export and babycoin-blockchain-import to");
         MWARNING("convert your existing blockchain.bin to the new format. See README.md for instructions.");
         return false;
       }
@@ -1656,12 +1656,12 @@ namespace cryptonote
         main_message = "The daemon will start synchronizing with the network. This may take a long time to complete.";
       MGINFO_CYAN(ENDL <<
       "\n \n"
-"███████╗██╗   ██╗ ██████╗ ██╗  ██╗ \n"
-"██╔════╝██║   ██║██╔═══██╗╚██╗██╔╝ \n"
-"█████╗  ██║   ██║██║   ██║ ╚███╔╝  \n"
-"██╔══╝  ╚██╗ ██╔╝██║   ██║ ██╔██╗  \n"
-"███████╗ ╚████╔╝ ╚██████╔╝██╔╝ ██╗ \n"
-"╚══════╝  ╚═══╝   ╚═════╝ ╚═╝  ╚═╝ " << ENDL);
+"d8888b.  .d8b.  d8888b. db    db  .o88b.  .d88b.  d888888b d8b   db \n"
+"88  `8D d8' `8b 88  `8D `8b  d8' d8P  Y8 .8P  Y8.   `88'   888o  88 \n"
+"88oooY' 88ooo88 88oooY'  `8bd8'  8P      88    88    88    88V8o 88 \n"
+"88~~~b. 88~~~88 88~~~b.    88    8b      88    88    88    88 V8o88 \n"
+"88   8D 88   88 88   8D    88    Y8b  d8 `8b  d8'   .88.   88  V888 \n"
+"Y8888P' YP   YP Y8888P'    YP     `Y88P'  `Y88P'  Y888888P VP   V8P " << ENDL);
       MGINFO_YELLOW(ENDL << "**********************************************************************" << ENDL
         << main_message << ENDL
         << ENDL
@@ -1729,7 +1729,7 @@ namespace cryptonote
   //-----------------------------------------------------------------------------------------------
   bool core::check_updates()
   {
-    static const char software[] = "evolution";
+    static const char software[] = "babycoin";
 #ifdef BUILD_TAG
     static const char buildtag[] = BOOST_PP_STRINGIZE(BUILD_TAG);
 //    static const char subdir[] = "cli"; // because it can never be simple

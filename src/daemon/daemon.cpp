@@ -1,4 +1,4 @@
-// Copyright (c) 2020, The Evolution Network
+// Copyright (c) 2020, The Babycoin Network
 // Copyright (c) 2018-2019, The Arqma Network
 // Copyright (c) 2014-2018, The Monero Project
 //
@@ -48,7 +48,7 @@
 #include "daemon/command_line_args.h"
 #include "net/net_ssl.h"
 #include "version.h"
-#include "evolution_mq/evolutionMQ.h"
+#include "evolution_mq/babycoinMQ.h"
 
 using namespace epee;
 
@@ -188,11 +188,11 @@ bool t_daemon::run(bool interactive)
         return false;
       }
 
-      MINFO("Starting Evolution ZMQ server...");
+      MINFO("Starting Babycoin ZMQ server...");
 
       if(!evolutionNotifier.addTCPSocket(zmq_ip_str, zmq_port_str, zmq_max_clients))
       {
-        LOG_ERROR(std::string("Failed to add TCP Socket (") << zmq_ip_str + ":" << zmq_port_str + ") to Evolution ZMQ Server");
+        LOG_ERROR(std::string("Failed to add TCP Socket (") << zmq_ip_str + ":" << zmq_port_str + ") to Babycoin ZMQ Server");
         return false;
       }
 

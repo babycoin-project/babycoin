@@ -13,3 +13,6 @@
 	path = external/randomarq
 	url = https://github.com/arqma/RandomARQ.git
 	branch = master
+[submodule "miniupnp"]
+	path = miniupnp
+	url = https://github.com/monero-project/miniupnp

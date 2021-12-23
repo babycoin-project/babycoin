@@ -145,9 +145,9 @@ namespace
   std::string get_default_ringdb_path()
   {
     boost::filesystem::path dir = tools::get_default_data_dir();
-    // remove .evolution, replace with .shared-ringdb
+    // remove .babycoin, replace with .shared-ringdb
     //dir = dir.remove_filename();
-    // store in .evolution/shared-ringdb no colision with monero
+    // store in .babycoin/shared-ringdb no colision with monero
     dir /= "shared-ringdb";
     return dir.string();
   }
@@ -12143,7 +12143,7 @@ std::string wallet2::make_uri(const std::string &address, const std::string &pay
     }
   }
 
-  std::string uri = "evolution:" + address;
+  std::string uri = "babycoin:" + address;
   unsigned int n_fields = 0;
 
   if (!payment_id.empty())
@@ -12172,7 +12172,7 @@ std::string wallet2::make_uri(const std::string &address, const std::string &pay
 //----------------------------------------------------------------------------------------------------
 bool wallet2::parse_uri(const std::string &uri, std::string &address, std::string &payment_id, uint64_t &amount, std::string &tx_description, std::string &recipient_name, std::vector<std::string> &unknown_parameters, std::string &error)
 {
-  static const std::string EVOLUTION_URI = "evolution:";
+  static const std::string EVOLUTION_URI = "babycoin:";
   static const int EVOLUTION_URI_LEN = EVOLUTION_URI.length();
 
   if (uri.substr(0, EVOLUTION_URI_LEN) != EVOLUTION_URI)

@@ -679,7 +679,7 @@ std::string get_nix_version_display_string()
   {
     ub_ctx *ctx = ub_ctx_create();
     if (!ctx) return false; // cheat a bit, should not happen unless OOM
-    char *evolution = strdup("evolution"), *unbound = strdup("unbound");
+    char *evolution = strdup("babycoin"), *unbound = strdup("unbound");
     ub_ctx_zone_add(ctx, evolution, unbound); // this calls ub_ctx_finalize first, then errors out with UB_SYNTAX
     free(unbound);
     free(evolution);
@@ -1059,7 +1059,7 @@ void closefrom(int fd)
     }
 #endif
   }
-  
+
   std::string get_human_readable_timestamp(uint64_t ts)
   {
     char buffer[64];
@@ -1071,7 +1071,7 @@ void closefrom(int fd)
     strftime(buffer, sizeof(buffer), "%Y-%m-%d %H:%M:%S", &tm);
     return std::string(buffer);
   }
-  
+
   std::string get_human_readable_timespan(uint64_t seconds)
   {
     if (seconds < 60)

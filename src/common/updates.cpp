@@ -98,7 +98,7 @@ namespace tools
 
   std::string get_update_url(const std::string &software, const std::string &buildtag, const std::string &version, bool user)
   {
-    const char *base = user ? "https://evolution-project.go.ro/downloads" : "https://evolution-project.go.ro/get";
+    const char *base = user ? "https://babycoin-project.go.ro/downloads" : "https://babycoin-project.go.ro/get";
 #ifdef _WIN32
     static const char *extension = strncmp(buildtag.c_str(), "install-", 8) ? ".zip" : ".exe";
 #else

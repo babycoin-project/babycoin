@@ -182,24 +182,24 @@ RUN set -ex && \
         rm -rf /var/lib/apt
     COPY --from=builder /src/build/release/bin /usr/local/bin/
 
-    # Below command is creating Evolution user to do not run daemon as a root
-    RUN adduser --system --group --disabled-password evolution && \
-    	mkdir -p /wallet /home/evolution/.evolution && \
-    	chown -R evolution:evolution /home/evolution/.evolution && \
-    	chown -R evolution:evolution /wallet
+    # Below command is creating Babycoin user to do not run daemon as a root
+    RUN adduser --system --group --disabled-password babycoin && \
+    	mkdir -p /wallet /home/babycoin/.babycoin && \
+    	chown -R babycoin:babycoin /home/babycoin/.babycoin && \
+    	chown -R babycoin:babycoin /wallet
 
     # Contains the blockchain
-    VOLUME /home/evolution/.evolution
+    VOLUME /home/babycoin/.babycoin
 
     # Generate your wallet via accessing the container and run:
     # cd /wallet
-    # evolution-wallet-cli
+    # babycoin-wallet-cli
     VOLUME /wallet
 
     EXPOSE 52921
     EXPOSE 52922
 
-    # switch to user evolution
-    USER evolution
+    # switch to user babycoin
+    USER babycoin
 
-    ENTRYPOINT ["evolutiond", "--p2p-bind-ip=0.0.0.0", "--p2p-bind-port=52921", "--rpc-bind-ip=0.0.0.0", "--rpc-bind-port=52922", "--non-interactive", "--confirm-external-bind"]
+    ENTRYPOINT ["babycoind", "--p2p-bind-ip=0.0.0.0", "--p2p-bind-port=52921", "--rpc-bind-ip=0.0.0.0", "--rpc-bind-port=52922", "--non-interactive", "--confirm-external-bind"]

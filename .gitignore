@@ -1,9 +1,11 @@
+/generate_translations_header-prefix
+/static-assert
 .DS_Store
 /doc
 /build
 /tags
 log/
-
+/bin
 # vim swap files
 *.swp
 *.swo

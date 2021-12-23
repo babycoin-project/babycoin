@@ -361,7 +361,7 @@ namespace cryptonote
       << " [Your node is " << abs_diff << " blocks (" << (abs_diff / (24 * 60 * 60 / DIFFICULTY_TARGET_V11)) << " days) "
       << (0 <= diff ? std::string("behind") : std::string("ahead"))
       << "] " << ENDL << "SYNCHRONIZATION started");
-      
+
       if (m_core.get_target_blockchain_height() == 0) // only when sync starts
       {
         m_sync_timer.resume();
@@ -945,7 +945,7 @@ namespace cryptonote
       auto time_from_epoh = point.time_since_epoch();
       auto sec = duration_cast< seconds >( time_from_epoh ).count();*/
 
-    //epee::net_utils::network_throttle_manager::get_global_throttle_inreq().logger_handle_net("log/dr-evolution/net/req-all.data", sec, get_avg_block_size());
+    //epee::net_utils::network_throttle_manager::get_global_throttle_inreq().logger_handle_net("log/dr-babycoin/net/req-all.data", sec, get_avg_block_size());
 
     if(context.m_last_response_height > arg.current_blockchain_height)
     {
@@ -1790,7 +1790,11 @@ skip:
       if (span.second == 0)
       {
         MDEBUG(context << " span size is 0");
-        if (context.m_last_response_height + 1 < context.m_needed_objects.size())
+        if (context.m_last_response_height == 18446744073709551615)
+        {
+          context.m_last_response_height = context.m_needed_objects.size();
+        }
+        else if (context.m_last_response_height + 1 < context.m_needed_objects.size())
         {
           MERROR(context << " ERROR: inconsistent context: lrh " << context.m_last_response_height << ", nos " << context.m_needed_objects.size());
           context.m_needed_objects.clear();
@@ -1868,7 +1872,7 @@ skip:
         context.m_last_request_time = boost::posix_time::microsec_clock::universal_time();
         MLOG_P2P_MESSAGE("-->>NOTIFY_REQUEST_GET_OBJECTS: blocks.size()=" << req.blocks.size() << ", txs.size()=" << req.txs.size()
             << "requested blocks count=" << count << " / " << count_limit << " from " << span.first << ", first hash " << req.blocks.front());
-        //epee::net_utils::network_throttle_manager::get_global_throttle_inreq().logger_handle_net("log/dr-evolution/net/req-all.data", sec, get_avg_block_size());
+        //epee::net_utils::network_throttle_manager::get_global_throttle_inreq().logger_handle_net("log/dr-babycoin/net/req-all.data", sec, get_avg_block_size());
 
         post_notify<NOTIFY_REQUEST_GET_OBJECTS>(req, context);
         MLOG_PEER_STATE("requesting objects");
@@ -1945,7 +1949,7 @@ skip:
 
       //std::string blob; // for calculate size of request
       //epee::serialization::store_t_to_binary(r, blob);
-      //epee::net_utils::network_throttle_manager::get_global_throttle_inreq().logger_handle_net("log/dr-evolution/net/req-all.data", sec, get_avg_block_size());
+      //epee::net_utils::network_throttle_manager::get_global_throttle_inreq().logger_handle_net("log/dr-babycoin/net/req-all.data", sec, get_avg_block_size());
       //LOG_PRINT_CCONTEXT_L1("r = " << 200);
 
       context.m_last_request_time = boost::posix_time::microsec_clock::universal_time();
@@ -1987,7 +1991,7 @@ skip:
     if(m_synchronized.compare_exchange_strong(val_expected, true))
     {
       MGINFO_YELLOW(ENDL << "**********************************************************************" << ENDL
-        << "You are now synchronized with the network. You may now start evolution-wallet-cli." << ENDL
+        << "You are now synchronized with the network. You may now start babycoin-wallet-cli." << ENDL
         << ENDL
         << "Use the \"help\" command to see the list of available commands." << ENDL
         << "**********************************************************************");
@@ -2070,9 +2074,9 @@ skip:
     uint64_t n_use_blocks = m_core.prevalidate_block_hashes(arg.start_height, arg.m_block_ids);
     if (n_use_blocks + HASH_OF_HASHES_STEP <= arg.m_block_ids.size())
     {
-      LOG_ERROR_CCONTEXT("Most blocks are invalid, dropping connection");
-      drop_connection(context, true, false);
-      return 1;
+      LOG_ERROR_CCONTEXT("Most blocks are invalid, dropping connection " << " " << n_use_blocks << " " << context.m_remote_blockchain_height << " " << context.m_last_response_height << " " << arg.start_height << " " << arg.m_block_ids.size());
+      //drop_connection(context, true, false);
+      //return 1;
     }
 
     context.m_needed_objects.clear();

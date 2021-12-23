@@ -149,7 +149,7 @@
 
 #define ALLOW_DEBUG_COMMANDS
 
-#define CRYPTONOTE_NAME                                 "evolution"
+#define CRYPTONOTE_NAME                                 "babycoin"
 #define CRYPTONOTE_POOLDATA_FILENAME                    "poolstate.bin"
 #define CRYPTONOTE_BLOCKCHAINDATA_FILENAME              "data.mdb"
 #define CRYPTONOTE_BLOCKCHAINDATA_LOCK_FILENAME         "lock.mdb"
@@ -197,41 +197,41 @@ namespace config
    uint64_t const BASE_REWARD_CLAMP_THRESHOLD = ((uint64_t)100000);
    std::string const P2P_REMOTE_DEBUG_TRUSTED_PUB_KEY = "0000000000000000000000000000000000000000000000000000000000000000";
 
-   uint64_t const CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX = 0x6362; // Wallet prefix: ev... // decimal prefix: ......
-   uint64_t const CRYPTONOTE_PUBLIC_INTEGRATED_ADDRESS_BASE58_PREFIX = 0x60e2; // Wallet prefix: evo... // decimal prefix: .....
-   uint64_t const CRYPTONOTE_PUBLIC_SUBADDRESS_BASE58_PREFIX = 0x5e62; // Wallet prefix: evc... // decimal prefix: ......
-   uint16_t const P2P_DEFAULT_PORT = 52921;
-   uint16_t const RPC_DEFAULT_PORT = 52922;
-   uint16_t const ZMQ_DEFAULT_PORT = 52923;
+   uint64_t const CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX = 0x231e4e; // Wallet prefix: baby... // decimal prefix: ......
+   uint64_t const CRYPTONOTE_PUBLIC_INTEGRATED_ADDRESS_BASE58_PREFIX = 0x1c31e4e; // Wallet prefix: babyx... // decimal prefix: .....
+   uint64_t const CRYPTONOTE_PUBLIC_SUBADDRESS_BASE58_PREFIX = 0x4031e4e; // Wallet prefix: babyz... // decimal prefix: ......
+   uint16_t const P2P_DEFAULT_PORT = 51021;
+   uint16_t const RPC_DEFAULT_PORT = 51022;
+   uint16_t const ZMQ_DEFAULT_PORT = 51023;
    boost::uuids::uuid const NETWORK_ID = { {
-       0x11, 0x11, 0x11, 0x11, 0xFF, 0xFF, 0xFF, 0x11, 0x66, 0x11, 0xFF, 0xFF, 0xFF, 0x88, 0x11, 0x1F
+       0x10, 0x11, 0x00, 0x11, 0xFF, 0x01, 0x11, 0xFF, 0x66, 0x11, 0xFF, 0xFF, 0xFF, 0x84, 0x00, 0x1F
      } }; // Bender's nightmare
    std::string const GENESIS_TX = "011201ff00011e026bc5c7db8a664f652d78adb587ac4d759c6757258b64ef9cba3c0354e64fb2e42101abca6a39c561d0897be183eb0143990eba201aa7d2c652ab0555d28bb4b70728";
-   uint32_t const GENESIS_NONCE = 52921;
+   uint32_t const GENESIS_NONCE = 110100;
 
    namespace testnet
    {
-     uint64_t const CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX = 0x7de2; // Wallet prefix: ex... // decimal prefix: 21450
-     uint64_t const CRYPTONOTE_PUBLIC_INTEGRATED_ADDRESS_BASE58_PREFIX = 0x7c62; // Wallet prefix: ext... // decimal prefix: 20554
-     uint64_t const CRYPTONOTE_PUBLIC_SUBADDRESS_BASE58_PREFIX = 0x198762; // Wallet prefix: ett... // decimal prefix: 21066
-     uint16_t const P2P_DEFAULT_PORT = 53921;
-     uint16_t const RPC_DEFAULT_PORT = 53922;
-     uint16_t const ZMQ_DEFAULT_PORT = 53923;
+     uint64_t const CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX = 0x239e4e; // Wallet prefix:
+     uint64_t const CRYPTONOTE_PUBLIC_INTEGRATED_ADDRESS_BASE58_PREFIX = 0x2039e4e; // Wallet prefix:
+     uint64_t const CRYPTONOTE_PUBLIC_SUBADDRESS_BASE58_PREFIX = 0x3239e4e; // Wallet prefix: ett... // decimal prefix: 21066
+     uint16_t const P2P_DEFAULT_PORT = 51121;
+     uint16_t const RPC_DEFAULT_PORT = 51122;
+     uint16_t const ZMQ_DEFAULT_PORT = 51123;
      boost::uuids::uuid const NETWORK_ID = { {
-       0x11, 0x11, 0x11, 0x11, 0xFF, 0xFF, 0xFF, 0x11, 0x66, 0x11, 0xFF, 0xFF, 0xFF, 0x88, 0x11, 0x1B
+       0x10, 0x11, 0x00, 0x11, 0xFF, 0x01, 0x11, 0xFF, 0x66, 0x00, 0xFF, 0xFF, 0xFF, 0x84, 0x11, 0x1B
        } }; // Bender's daydream
    }
 
    namespace stagenet
    {
-     uint64_t const CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX = 0x361; // Wallet prefix: ee... // decimal prefix: 14794
-     uint64_t const CRYPTONOTE_PUBLIC_INTEGRATED_ADDRESS_BASE58_PREFIX = 0x62e2; // Wallet prefix: evx... // decimal prefix: 1524426
-     uint64_t const CRYPTONOTE_PUBLIC_SUBADDRESS_BASE58_PREFIX = 0x5a262; // Wallet prefix: evv... // decimal prefix: 1934538
-     uint16_t const P2P_DEFAULT_PORT = 54921;
-     uint16_t const RPC_DEFAULT_PORT = 54922;
-     uint16_t const ZMQ_DEFAULT_PORT = 54923;
+     uint64_t const CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX = 0x1b5e4e; // Wallet prefix:
+     uint64_t const CRYPTONOTE_PUBLIC_INTEGRATED_ADDRESS_BASE58_PREFIX = 0x229e4e; // Wallet prefix:
+     uint64_t const CRYPTONOTE_PUBLIC_SUBADDRESS_BASE58_PREFIX = 0x239e4e; // Wallet prefix:
+     uint16_t const P2P_DEFAULT_PORT = 51221;
+     uint16_t const RPC_DEFAULT_PORT = 51222;
+     uint16_t const ZMQ_DEFAULT_PORT = 51223;
      boost::uuids::uuid const NETWORK_ID = { {
-       0x11, 0x11, 0x11, 0x11, 0xFF, 0xFF, 0xFF, 0x11, 0x66, 0x11, 0xFF, 0xFF, 0xFF, 0x88, 0x11, 0x1C
+       0x10, 0x11, 0x00, 0x11, 0xFF, 0x01, 0x11, 0xFF, 0x66, 0x00, 0xFF, 0xFF, 0xFF, 0x84, 0x11, 0x1C
        } }; // Bender's daydream
    }
 

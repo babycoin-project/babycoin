@@ -1,4 +1,4 @@
-// Copyright (c) 2020, The Evolution Network
+// Copyright (c) 2020, The Babycoin Network
 // Copyright (c) 2018-2019, The Arqma Network
 // Copyright (c) 2014-2018, The Monero Project
 //
@@ -46,7 +46,7 @@
 #include "rpc/core_rpc_server.h"
 #include "rpc/rpc_args.h"
 #include "daemon/command_line_args.h"
-#include "evolution_mq/evolutionMQ.h"
+#include "evolution_mq/babycoinMQ.h"
 #include "blockchain_db/db_types.h"
 #include "version.h"
 
@@ -230,16 +230,16 @@ int main(int argc, char const * argv[])
 
     if (command_line::get_arg(vm, command_line::arg_help))
     {
-      std::cout << "Evolution '" << EVOLUTION_RELEASE_NAME << "' (v" << EVOLUTION_VERSION_FULL << ")" << ENDL << ENDL;
+      std::cout << "Babycoin '" << EVOLUTION_RELEASE_NAME << "' (v" << EVOLUTION_VERSION_FULL << ")" << ENDL << ENDL;
       std::cout << "Usage: " + std::string{argv[0]} + " [options|settings] [daemon_command...]" << std::endl << std::endl;
       std::cout << visible_options << std::endl;
       return 0;
     }
 
-    // Evolution Version
+    // Babycoin Version
     if (command_line::get_arg(vm, command_line::arg_version))
     {
-      std::cout << "Evolution '" << EVOLUTION_RELEASE_NAME << "' (v" << EVOLUTION_VERSION_FULL << ")" << ENDL;
+      std::cout << "Babycoin '" << EVOLUTION_RELEASE_NAME << "' (v" << EVOLUTION_VERSION_FULL << ")" << ENDL;
       return 0;
     }
 
@@ -316,7 +316,7 @@ int main(int argc, char const * argv[])
     }
 
     // data_dir
-    //   default: e.g. ~/.evolution/ or ~/.evolution/testnet
+    //   default: e.g. ~/.babycoin/ or ~/.babycoin/testnet
     //   if data-dir argument given:
     //     absolute path
     //     relative path: relative to cwd
@@ -359,7 +359,7 @@ int main(int argc, char const * argv[])
 	  tools::set_max_concurrency(command_line::get_arg(vm, daemon_args::arg_max_concurrency));
 
 	// logging is now set up
-	MGINFO("Evolution '" << EVOLUTION_RELEASE_NAME << "' (v" << EVOLUTION_VERSION_FULL << ")");
+	MGINFO("Babycoin '" << EVOLUTION_RELEASE_NAME << "' (v" << EVOLUTION_VERSION_FULL << ")");
 
 
     // If there are positional options, we're running a daemon command

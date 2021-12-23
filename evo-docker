@@ -14,7 +14,7 @@ RUN curl -s -O https://dl.google.com/android/repository/android-ndk-r${ANDROID_N
     && unzip android-ndk-r${ANDROID_NDK_REVISION}-linux-x86_64.zip \
     && rm -f android-ndk-r${ANDROID_NDK_REVISION}-linux-x86_64.zip \
     && ln -s android-ndk-r${ANDROID_NDK_REVISION} ndk
-    
+
 
 ## Installing toolchains
 RUN ndk/build/tools/make_standalone_toolchain.py --api 21 --stl=libc++ --arch arm --install-dir /opt/android/tool/arm \
@@ -68,10 +68,10 @@ RUN cd boost_${BOOST_VERSION} \
     && ln -sf ../include /opt/android/build/boost/x86 \
     && ln -sf ../include /opt/android/build/boost/x86_64
 
-# Building Evolution from the latest commit on Android branch, this should be kept up to date with master
+# Building Babycoin from the latest commit on Android branch, this should be kept up to date with master
 # with the necessary fixes by malbit and m2049r to build for mobile.
 RUN cd /opt/android \
-    && git clone https://github.com/evolution-project/evolution.git --recursive --depth=1 \
-    && cd evolution \
+    && git clone https://github.com/multi-pool/babycoin.git --recursive --depth=1 \
+    && cd babycoin \
     && mkdir -p build/release \
     && ./build-all-arch.sh

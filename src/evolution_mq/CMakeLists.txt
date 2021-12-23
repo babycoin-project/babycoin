@@ -43,13 +43,13 @@
 # THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 set(evolution_mq_sources
-  evolutionMQ.cpp
+  babycoinMQ.cpp
   zmq_handler.cpp)
 
 set(evolution_mq_headers)
 
 set(evolution_mq_private_headers
-    evolutionMQ.h
+    babycoinMQ.h
     INotifier.h
 	zmq_handler.h)
 
@@ -76,5 +76,3 @@ target_link_libraries(evolution_mq
 
 add_dependencies(evolution_mq
   version)
-
-

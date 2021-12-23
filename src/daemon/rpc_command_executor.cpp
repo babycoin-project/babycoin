@@ -1,4 +1,4 @@
-// Copyright (c) 2020, The Evolution Network
+// Copyright (c) 2020, The Babycoin Network
 // Copyright (c) 2018-2019, The Arqma Network
 // Copyright (c) 2014-2018, The Monero Project
 //
@@ -1220,8 +1220,8 @@ bool t_rpc_command_executor::stop_daemon()
 //# ifdef WIN32
 //    // Stop via service API
 //    // TODO - this is only temporary!  Get rid of hard-coded constants!
-//    bool ok = windows::stop_service("Evolution Daemon");
-//    ok = windows::uninstall_service("Evolution Daemon");
+//    bool ok = windows::stop_service("Babycoin Daemon");
+//    ok = windows::uninstall_service("Babycoin Daemon");
 //    //bool ok = windows::stop_service(SERVICE_NAME);
 //    //ok = windows::uninstall_service(SERVICE_NAME);
 //    if (ok)
@@ -1265,10 +1265,10 @@ bool t_rpc_command_executor::print_status()
   bool daemon_is_alive = m_rpc_client->check_connection();
 
   if(daemon_is_alive) {
-    tools::success_msg_writer() << "evolutiond is running";
+    tools::success_msg_writer() << "babycoind is running";
   }
   else {
-    tools::fail_msg_writer() << "evolutiond is NOT running";
+    tools::fail_msg_writer() << "babycoind is NOT running";
   }
 
   return true;
@@ -1391,14 +1391,14 @@ bool t_rpc_command_executor::out_peers(bool set, uint32_t limit)
 {
   cryptonote::COMMAND_RPC_OUT_PEERS::request req;
   cryptonote::COMMAND_RPC_OUT_PEERS::response res;
-  
+
   epee::json_rpc::error error_resp;
-  
+
   req.set = set;
   req.out_peers = limit;
-  
+
   std::string fail_message = "Unsuccessful";
-  
+
   if(m_is_rpc)
   {
     if(!m_rpc_client->rpc_request(req, res, "/out_peers", fail_message.c_str()))
@@ -1414,10 +1414,10 @@ bool t_rpc_command_executor::out_peers(bool set, uint32_t limit)
       return true;
     }
   }
-  
+
   const std::string s = res.out_peers == (uint32_t)-1 ? "unlimited" : std::to_string(res.out_peers);
   tools::msg_writer() << "Maximum number of out peers is set to: " << s << std::endl;
-  
+
   return true;
 }
 

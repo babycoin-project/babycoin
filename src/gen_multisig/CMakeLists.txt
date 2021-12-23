@@ -52,5 +52,5 @@ add_dependencies(gen_multisig
   version)
 set_property(TARGET gen_multisig
   PROPERTY
-    OUTPUT_NAME "evolution-gen-trusted-multisig")
+    OUTPUT_NAME "babycoin-gen-trusted-multisig")
 install(TARGETS gen_multisig DESTINATION bin)

@@ -134,9 +134,9 @@ static bool parse_db_sync_mode(std::string db_sync_mode)
 static std::string get_default_db_path()
 {
   boost::filesystem::path dir = tools::get_default_data_dir();
-  // remove .evolution, replace with .shared-ringdb
+  // remove .babycoin, replace with .shared-ringdb
   //dir = dir.remove_filename();
-  // store in .evolution/shared-ringdb no colision with monero 
+  // store in .babycoin/shared-ringdb no colision with monero
   dir /= "shared-ringdb";
   return dir.string();
 }
@@ -1077,7 +1077,7 @@ int main(int argc, char* argv[])
     return 1;
   }
 
-  mlog_configure(mlog_get_default_log_path("evolution-blockchain-find-spent-outputs.log"), true);
+  mlog_configure(mlog_get_default_log_path("babycoin-blockchain-find-spent-outputs.log"), true);
   if (!command_line::is_arg_defaulted(vm, arg_log_level))
     mlog_set_log(command_line::get_arg(vm, arg_log_level).c_str());
   else

@@ -1,3 +1,4 @@
+// Copyright (c) 2021-2022, The Babycoin Project
 // Copyright (c) 2020, The Evolution Network
 // Copyright (c) 2018-2019, The Arqma Network
 // Copyright (c) 2014-2018, The Monero Project
@@ -214,12 +215,12 @@ t_command_server::t_command_server(
     m_command_lookup.set_handler(
       "start_save_graph"
     , std::bind(&t_command_parser_executor::start_save_graph, &m_parser, p::_1)
-    , "Start saving data for dr Evolution."
+    , "Start saving data for dr Babycoin."
     );
     m_command_lookup.set_handler(
       "stop_save_graph"
     , std::bind(&t_command_parser_executor::stop_save_graph, &m_parser, p::_1)
-    , "Stop saving data for dr Evolution."
+    , "Stop saving data for dr Babycoin."
     );
     m_command_lookup.set_handler(
       "hard_fork_info"
@@ -365,7 +366,7 @@ bool t_command_server::help(const std::vector<std::string>& args)
 std::string t_command_server::get_commands_str()
 {
   std::stringstream ss;
-  ss << "Evolution '" << EVOLUTION_RELEASE_NAME << "' (v" << EVOLUTION_VERSION_FULL << ")" << std::endl;
+  ss << "Babycoin '" << EVOLUTION_RELEASE_NAME << "' (v" << EVOLUTION_VERSION_FULL << ")" << std::endl;
   ss << "Commands: " << std::endl;
   std::string usage = m_command_lookup.get_usage();
   boost::replace_all(usage, "\n", "\n  ");

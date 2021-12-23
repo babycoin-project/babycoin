@@ -461,22 +461,22 @@ namespace nodetool
     std::set<std::string> full_addrs;
     if (nettype == cryptonote::TESTNET)
     {
-      full_addrs.insert("68.168.100.206:53921"); //node4-US-Eadrom
-      full_addrs.insert("49.234.122.53:52921"); //node5-China-Jason
-      full_addrs.insert("92.118.188.152:53921"); //node4-US-Jason
-      full_addrs.insert("79.143.181.203:53921"); //node3-GB
-      full_addrs.insert("164.68.127.234:53921"); //node2-GB
-      full_addrs.insert("62.171.142.111:53921"); //node1-GB
+      // full_addrs.insert("68.168.100.206:53921"); //node4-US-Eadrom
+      // full_addrs.insert("49.234.122.53:52921"); //node5-China-Jason
+      // full_addrs.insert("92.118.188.152:53921"); //node4-US-Jason
+      // full_addrs.insert("79.143.181.203:53921"); //node3-GB
+      // full_addrs.insert("164.68.127.234:53921"); //node2-GB
+      // full_addrs.insert("62.171.142.111:53921"); //node1-GB
 
     }
     else if (nettype == cryptonote::STAGENET)
     {
-      full_addrs.insert("68.168.100.206:53921"); //node4-US-Eadrom
-      full_addrs.insert("49.234.122.53:52921"); //node5-China-Jason
-      full_addrs.insert("92.118.188.152:53921"); //node4-US-Jason
-      full_addrs.insert("79.143.181.203:53921"); //node3-GB
-      full_addrs.insert("164.68.127.234:53921"); //node2-GB
-      full_addrs.insert("62.171.142.111:53921"); //node1-GB
+      // full_addrs.insert("68.168.100.206:53921"); //node4-US-Eadrom
+      // full_addrs.insert("49.234.122.53:52921"); //node5-China-Jason
+      // full_addrs.insert("92.118.188.152:53921"); //node4-US-Jason
+      // full_addrs.insert("79.143.181.203:53921"); //node3-GB
+      // full_addrs.insert("164.68.127.234:53921"); //node2-GB
+      // full_addrs.insert("62.171.142.111:53921"); //node1-GB
 
     }
     else if (nettype == cryptonote::FAKECHAIN)
@@ -484,12 +484,13 @@ namespace nodetool
     }
     else
     {
-      full_addrs.insert("68.168.100.206:53921"); //node4-US-Eadrom
-      full_addrs.insert("49.234.122.53:52921"); //node5-China-Jason
-      full_addrs.insert("92.118.188.152:53921"); //node4-US-Jason
-      full_addrs.insert("79.143.181.203:53921"); //node3-GB
-      full_addrs.insert("164.68.127.234:53921"); //node2-GB
-      full_addrs.insert("62.171.142.111:53921"); //node1-GB
+      full_addrs.insert("51.178.142.95:51021");
+      full_addrs.insert("51.79.74.37:51021");
+
+      // full_addrs.insert("92.118.188.152:53921"); //node4-US-Jason
+      // full_addrs.insert("79.143.181.203:53921"); //node3-GB
+      // full_addrs.insert("164.68.127.234:53921"); //node2-GB
+      // full_addrs.insert("62.171.142.111:53921"); //node1-GB
 
     }
     return full_addrs;

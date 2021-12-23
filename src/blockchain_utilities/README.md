@@ -1,5 +1,6 @@
-# Evolution Blockchain Utilities
+# Babycoin Blockchain Utilities
 
+Copyright (c) 2021, The Babycoin Project
 Copyright (c) 2020, The Evolution Project
 Copyright (c) 2018-2019, The Arqma Project
 Copyright (c) 2014-2018, The Monero Project
@@ -14,16 +15,16 @@ See also each utility's "--help" option.
 
 ### Export an existing blockchain database
 
-`$ evolution-blockchain-export`
+`$ babycoin-blockchain-export`
 
 This loads the existing blockchain and exports it to `$EVOLUTION_DATA_DIR/export/blockchain.raw`
 
 ### Import the exported file
 
-`$ evolution-blockchain-import`
+`$ babycoin-blockchain-import`
 
 This imports blocks from `$EVOLUTION_DATA_DIR/export/blockchain.raw` (exported using the
-`evolution-blockchain-export` tool as described above) into the current database.
+`babycoin-blockchain-export` tool as described above) into the current database.
 
 Defaults: `--batch on`, `--batch size 20000`, `--verify on`
 
@@ -32,14 +33,14 @@ Batch size refers to number of blocks and can be adjusted for performance based 
 Verification should only be turned off if importing from a trusted blockchain.
 
 If you encounter an error like "resizing not supported in batch mode", you can just re-run
-the `evolution-blockchain-import` command again, and it will restart from where it left off.
+the `babycoin-blockchain-import` command again, and it will restart from where it left off.
 
 ```bash
 ## use default settings to import blockchain.raw into database
-$ evolution-blockchain-import
+$ babycoin-blockchain-import
 
 ## fast import with large batch size, database mode "fastest", verification off
-$ evolution-blockchain-import --batch-size 20000 --database lmdb#fastest --verify off
+$ babycoin-blockchain-import --batch-size 20000 --database lmdb#fastest --verify off
 
 ```
 
@@ -82,9 +83,9 @@ LMDB flags (more than one may be specified):
 ## Examples:
 
 ```
-$ evolution-blockchain-import --database lmdb#fastest
+$ babycoin-blockchain-import --database lmdb#fastest
 
-$ evolution-blockchain-import --database lmdb#nosync
+$ babycoin-blockchain-import --database lmdb#nosync
 
-$ evolution-blockchain-import --database lmdb#nosync,nometasync
+$ babycoin-blockchain-import --database lmdb#nosync,nometasync
 ```
