@@ -138,7 +138,7 @@ void wipeable_string::operator+=(char c)
 void wipeable_string::append(const char *ptr, size_t len)
 {
   const size_t orgsz = size();
-  CHECK_AND_ASSERT_THROW_MES(orgsz < std::numeric_limits<size_t>::max() - len, "Appended data too large");
+  CHECK_AND_ASSERT_THROW_MES(orgsz < std::numeric_limits<size_t>std::max() - len, "Appended data too large");
   grow(orgsz + len);
   if (len > 0)
     memcpy(data() + orgsz, ptr, len);
