@@ -34,6 +34,7 @@
 #include <string>
 #include <map>
 #include "file_io_utils.h"
+#include <algorithm>
 #include "common/i18n.h"
 #include "translation_files.h"
 
