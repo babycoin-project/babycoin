@@ -29,7 +29,7 @@ Copyright (c) 2018-2020 The Arqma Network.
 - Full node: [https://github.com/babycoin-project/babycoin](https://github.com/babycoin-project/babycoin)
 - Wallet: [https://github.com/babycoin-project/babycoin-electrum/](https://github.com/babycoin-project/babycoin-electrum/)
 - Explorer: [https://github.com/babycoin-project/babycoin-blockchain/](https://github.com/babycoin-project/babycoin-blockchain/)
-- Pool: [https://github.com/babycoin-project/babycoin-pool/)(https://github.com/babycoin-project/babycoin-pool/)
+- Pool: [https://github.com/babycoin-project/babycoin-pool/](https://github.com/babycoin-project/babycoin-pool/)
 
 
 ## Introduction
