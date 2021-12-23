@@ -42,7 +42,7 @@ void buffer::append(const void *data, size_t sz)
   const size_t capacity = storage.capacity();
   const size_t avail = capacity - storage.size();
 
-  CHECK_AND_ASSERT_THROW_MES(storage.size() < std::numeric_limits<size_t>::max() - sz, "Too much data to append");
+  CHECK_AND_ASSERT_THROW_MES(storage.size() < std::numeric_limits<size_t>std::max() - sz, "Too much data to append");
 
   // decide when to move
   if (sz > avail)
