@@ -28,6 +28,8 @@
 
 #include <string.h>
 #include "net/buffer.h"
+#include <stdexcept>
+#include <limits>
 
 #undef ARQMA_DEFAULT_LOG_CATEGORY
 #define ARQMA_DEFAULT_LOG_CATEGORY "net.buffer"
