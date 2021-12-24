@@ -204,7 +204,7 @@ namespace epee
     }
     //---------------------------------------------------------------------------------------------------------------
     template<class to_type>
-    struct get_value_visitor: boost::static_visitor<void>
+    struct get_value_visitor: boost::static_visitor<>
     {
       to_type& m_target;
       get_value_visitor(to_type& target):m_target(target){}
