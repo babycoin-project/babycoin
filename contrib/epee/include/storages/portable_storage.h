@@ -209,7 +209,7 @@ namespace epee
       to_type& m_target;
       get_value_visitor(to_type& target):m_target(target){}
       template<class from_type>
-      NULL operator()(const from_type& v){convert_t(v, m_target);}
+      void operator()(const from_type& v){convert_t(v, m_target);}
     };
 
     template<class t_value>
