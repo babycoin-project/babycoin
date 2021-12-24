@@ -204,12 +204,12 @@ namespace epee
     }
     //---------------------------------------------------------------------------------------------------------------
     template<class to_type>
-    struct get_value_visitor: boost::static_visitor<>
+    struct get_value_visitor: boost::static_visitor<void>
     {
       to_type& m_target;
       get_value_visitor(to_type& target):m_target(target){}
       template<class from_type>
-      void operator()(const from_type& v){convert_t(v, m_target);}
+      NULL operator()(const from_type& v){convert_t(v, m_target);}
     };
 
     template<class t_value>
