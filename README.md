@@ -1,26 +1,49 @@
 ## BabyCoin
 
+BabyCoin (BABY) is a state-of-the-art cryptocurrency based on Arqma and Evolution projects. BabyCoin is well suited for CPU mining based on the randomARQ hash algorithm.
+
 <img src="https://babycoin.dev/babycoin.svg" alt="BabyCoin" width="400"/>
 
 Copyright (c) 2021-2022 The BabyCoin Project.
 
-Blockchain Explorer:
+## Install
 
-- [blockchain.babycoin.dev](https://blockchain.babycoin.dev)
+### Release
 
-Mining pools:
+Go to [github.com/babycoin-project/babycoin/releases/latest](https://github.com/babycoin-project/babycoin/releases/latest) and download the relevant archive for your system.
 
-- [babycoin.multi-pool.net](https://babycoin.multi-pool.net)
+### From source
 
-## Rationale
+Dependencies for Debien / Ubuntu:
 
-## Credits
+    sudo apt update && sudo apt install sudo apt -y install build-essential cmake libboost-all-dev miniupnpc libunbound-dev graphviz doxygen libunwind8-dev pkg-config libssl-dev libzmq3-dev libsodium-dev libhidapi-dev libnorm-dev libusb-1.0-0-dev libpgm-dev
 
-BabyCoin is a fork of Arqma and Evolution projects:
 
-Copyright (c) 2020-2021 The Evolution Project.    
-Copyright (c) 2018-2020 The Arqma Network.    
+Clone the babycoin git repository and compile on your own system:
 
+    git clone https://github.com/babycoin-project/babycoin
+
+    cd babycoin
+
+    make
+
+## Use
+
+To run a full node:
+
+    ./babycoind --detach
+
+To create and manage a wallet:
+
+    ./babycoin-wallet-cli
+
+## Mining
+
+We recommend xmrig mining software.
+
+BABY can be typically mined with:
+
+    ./xmrig --url babycoin.multi-pool.net:3333 --user your_babycoin_address --algo rx/arq
 
 ## Development resources
 
@@ -31,6 +54,11 @@ Copyright (c) 2018-2020 The Arqma Network.
 - Explorer: [https://github.com/babycoin-project/babycoin-blockchain/](https://github.com/babycoin-project/babycoin-blockchain/)
 - Pool: [https://github.com/babycoin-project/babycoin-pool/](https://github.com/babycoin-project/babycoin-pool/)
 
+
+<details>
+    <summary>More</summary>
+
+## Rationale
 
 ## Introduction
 
@@ -600,3 +628,13 @@ The output of `mdb_stat -ea <path to blockchain dir>` will indicate inconsistenc
 The output of `mdb_dump -s blocks <path to blockchain dir>` and `mdb_dump -s block_info <path to blockchain dir>` is useful for indicating whether blocks and block_info contain the same keys.
 
 These records are dumped as hex data, where the first line is the key and the second line is the data.
+
+## Credits
+
+BabyCoin is a fork of Arqma and Evolution projects:
+
+Copyright (c) 2020-2021 The Evolution Project.    
+Copyright (c) 2018-2020 The Arqma Network.
+```
+
+</details>
