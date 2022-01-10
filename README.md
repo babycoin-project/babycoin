@@ -57,6 +57,8 @@ BABY can be typically mined with:
 - Reddit: [r/babycoin](https://www.reddit.com/r/babycoin)
 - BitcoinTalk: [babycoin-bitcointalk](https://bitcointalk.org/index.php?topic=5378676.0)
 
+- Blockchain explorer: [blockchain.babycoin.dev](https://blockchain.babycoin.dev)
+
 ### Development resources
 
 - Full node: [babycoin-project/babycoin](https://github.com/babycoin-project/babycoin)
