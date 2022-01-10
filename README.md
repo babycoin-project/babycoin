@@ -45,15 +45,33 @@ BABY can be typically mined with:
 
     ./xmrig --url babycoin.multi-pool.net:3333 --user your_babycoin_address --algo rx/arq
 
-## Development resources
+## Resources
+
+### General and social:
 
 - Web: [babycoin.dev](https://babycoin.dev/)
-- GitHub: [https://github.com/babycoin-project/](https://github.com/babycoin-project/)
-- Full node: [https://github.com/babycoin-project/babycoin](https://github.com/babycoin-project/babycoin)
-- Wallet: [https://github.com/babycoin-project/babycoin-electrum/](https://github.com/babycoin-project/babycoin-electrum/)
-- Explorer: [https://github.com/babycoin-project/babycoin-blockchain/](https://github.com/babycoin-project/babycoin-blockchain/)
-- Pool: [https://github.com/babycoin-project/babycoin-pool/](https://github.com/babycoin-project/babycoin-pool/)
+- GitHub: [babycoin-project](https://github.com/babycoin-project/)
+- Discord: [babycoin-discord](https://discord.gg/pJdQsqjSU3)
+- Telegram: [babycoin-telegram](https://t.me/+MsCJxVm33dw0ZjE0)
+- Twitter: [@babycoin_dev](https://twitter.com/babycoin_dev)
+- Reddit: [r/babycoin](https://www.reddit.com/r/babycoin)
+- BitcoinTalk: [babycoin-bitcointalk](https://bitcointalk.org/index.php?topic=5378676.0)
 
+### Development resources
+
+- Full node: [babycoin-project/babycoin](https://github.com/babycoin-project/babycoin)
+- Wallet: [babycoin-project/babycoin-electrum/](https://github.com/babycoin-project/babycoin-electrum/)
+- Explorer: [babycoin-project/babycoin-blockchain/](https://github.com/babycoin-project/babycoin-blockchain/)
+- Pool: [babycoin-project/babycoin-pool/](https://github.com/babycoin-project/babycoin-pool/)
+
+### Mining pools
+
+- Pool 1: [https://babycoin.multi-pool.net](https://babycoin.multi-pool.net)
+- Pool 2: [https://pool.babycoin.dev](https://pool.babycoin.dev)
+
+### Others
+
+- Ref. 1: [miningpoolstats](https://miningpoolstats.stream/babycoin)
 
 <details>
     <summary>More</summary>
