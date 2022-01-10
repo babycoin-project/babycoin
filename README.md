@@ -58,6 +58,11 @@ BABY can be typically mined with:
 - BitcoinTalk: [babycoin-bitcointalk](https://bitcointalk.org/index.php?topic=5378676.0)
 - Blockchain explorer: [blockchain.babycoin.dev](https://blockchain.babycoin.dev)
 
+### Binaries
+
+- Daemon + CLI: [babycoin-latest](https://github.com/babycoin-project/babycoin/releases/latest)
+- Wallet GUI: [babycoin-electrum-latest](https://github.com/babycoin-project/babycoin-electrum/releases/latest)
+
 ### Development resources
 
 - Full node: [babycoin-project/babycoin](https://github.com/babycoin-project/babycoin)
