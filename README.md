@@ -74,6 +74,7 @@ BABY can be typically mined with:
 
 - Pool 1: [https://babycoin.multi-pool.net](https://babycoin.multi-pool.net)
 - Pool 2: [https://pool.babycoin.dev](https://pool.babycoin.dev)
+- Ref. 3: [cointomine](https://cointomine.today/calculator/coin/BABY-RANDOMARQ/)
 
 ### Others
 
