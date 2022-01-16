@@ -45,6 +45,11 @@ BABY can be typically mined with:
 
     ./xmrig --url babycoin.multi-pool.net:3333 --user your_babycoin_address --algo rx/arq
 
+- Pool 1: [https://babycoin.multi-pool.net](https://babycoin.multi-pool.net)
+- Pool 2: [https://pool.babycoin.dev](https://pool.babycoin.dev)
+
+See [miningpoolstats](https://miningpoolstats.stream/babycoin) for more pools.
+
 ## Resources
 
 ### General and social:
@@ -56,6 +61,7 @@ BABY can be typically mined with:
 - Twitter: [@babycoin_dev](https://twitter.com/babycoin_dev)
 - Reddit: [r/babycoin](https://www.reddit.com/r/babycoin)
 - BitcoinTalk: [babycoin-bitcointalk](https://bitcointalk.org/index.php?topic=5378676.0)
+
 - Blockchain explorer: [blockchain.babycoin.dev](https://blockchain.babycoin.dev)
 
 ### Binaries
@@ -74,11 +80,12 @@ BABY can be typically mined with:
 
 - Pool 1: [https://babycoin.multi-pool.net](https://babycoin.multi-pool.net)
 - Pool 2: [https://pool.babycoin.dev](https://pool.babycoin.dev)
-- Ref. 3: [cointomine](https://cointomine.today/calculator/coin/BABY-RANDOMARQ/)
 
 ### Others
 
 - Ref. 1: [miningpoolstats](https://miningpoolstats.stream/babycoin)
+- Ref. 2: [coinsniper](https://coinsniper.net/coin/24286)
+- Ref. 3: [cointomine](https://cointomine.today/calculator/coin/BABY-RANDOMARQ/)
 
 <details>
     <summary>More</summary>
