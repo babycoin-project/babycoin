@@ -90,6 +90,11 @@ See [miningpoolstats](https://miningpoolstats.stream/babycoin) for more pools.
 - Explorer: [babycoin-project/babycoin-blockchain/](https://github.com/babycoin-project/babycoin-blockchain/)
 - Pool: [babycoin-project/babycoin-pool/](https://github.com/babycoin-project/babycoin-pool/)
 
+### Exchanges
+
+- Exbitron: [BABY/USDT](https://www.exbitron.com/trading/babyusdt)
+- Exbitron: [BABY/BTC](https://www.exbitron.com/trading/babybtc)
+
 ### Mining pools
 
 - Pool 1: [https://babycoin.multi-pool.net](https://babycoin.multi-pool.net)
