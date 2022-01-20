@@ -37,6 +37,8 @@ Alternatively:
     
     cmake .. -DMANUAL_SUBMODULES=1
     
+    cd ..
+    
     make
 
 ## Use
