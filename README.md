@@ -26,6 +26,18 @@ Clone the babycoin git repository and compile on your own system:
     cd babycoin
 
     make
+    
+Alternatively:
+
+    git clone https://github.com/babycoin-project/babycoin
+    
+    cd babycoin
+    
+    mkdir build && mv build
+    
+    cmake .. -DMANUAL_SUBMODULES=1
+    
+    make
 
 ## Use
 
