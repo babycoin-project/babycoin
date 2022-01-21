@@ -1,6 +1,6 @@
 name: babycoin-build
 
-- on: [push]
+on: [push]
 
 jobs:
   build-windows:
