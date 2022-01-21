@@ -118,12 +118,12 @@
 #define CRYPTONOTE_MEMPOOL_TX_LIVETIME                  (86400*3) //seconds, three days
 #define CRYPTONOTE_MEMPOOL_TX_FROM_ALT_BLOCK_LIVETIME   604800 //seconds, one week
 
-#define COMMAND_RPC_GET_BLOCKS_FAST_MAX_COUNT           100
+#define COMMAND_RPC_GET_BLOCKS_FAST_MAX_COUNT           1000
 
 #define P2P_LOCAL_WHITE_PEERLIST_LIMIT                  1000
 #define P2P_LOCAL_GRAY_PEERLIST_LIMIT                   5000
 
-#define P2P_DEFAULT_CONNECTIONS_COUNT                   8
+#define P2P_DEFAULT_CONNECTIONS_COUNT                   6
 #define P2P_DEFAULT_HANDSHAKE_INTERVAL                  60         // secondes
 #define P2P_DEFAULT_PACKET_MAX_SIZE                     50000000   // 50000000 bytes maximum packet size
 #define P2P_DEFAULT_PEERS_IN_HANDSHAKE                  250
