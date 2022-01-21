@@ -1,7 +1,5 @@
 name: babycoin-build
 
-on: [push]
-
 jobs:
   build-windows:
     runs-on: windows-latest
