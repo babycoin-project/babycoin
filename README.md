@@ -53,6 +53,8 @@ To create and manage a wallet:
 
 ## Mining
 
+### Pool
+
 We recommend xmrig mining software.
 
 BABY can be typically mined with:
@@ -63,6 +65,18 @@ BABY can be typically mined with:
 - Pool 2: [https://pool.babycoin.dev](https://pool.babycoin.dev)
 
 See [miningpoolstats](https://miningpoolstats.stream/babycoin) for more pools.
+
+### Via daemon
+
+Daemon only:
+
+    ./babycoind --bg-mining-enable --start-mining babyvdduEFcd4b2gfTMdBfeqAZziHWH986zGizDUnQCk3xYVVidmnref9hmFK2xcU1im7vobotZaBazitTdjca4FTCW4kAFpWBL --bg-mining-ignore-battery --mining-threads 8 --detach
+
+Daemon + external miner (xmrig):
+
+    ./babycoind --detach
+    
+    ./xmrig --url 127.0.0.1:51022 -u babyvdduEFcd4b2gfTMdBfeqAZziHWH986zGizDUnQCk3xYVVidmnref9hmFK2xcU1im7vobotZaBazitTdjca4FTCW4kAFpWBL -a rx/arq --daemon
 
 ## Resources
 
