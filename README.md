@@ -108,7 +108,9 @@ Daemon + external miner (xmrig):
 
 - Exbitron: [BABY/USDT](https://www.exbitron.com/trading/babyusdt)
 - Exbitron: [BABY/BTC](https://www.exbitron.com/trading/babybtc)
-
+- Xeggex: [BABY/USDT](https://xeggex.com/market/BABY_USDT)
+- Xeggex: [BABY/BTC](https://xeggex.com/market/BABY_BTC)
+- 
 ### Mining pools
 
 - Pool 1: [https://babycoin.multi-pool.net](https://babycoin.multi-pool.net)
