@@ -122,6 +122,7 @@ Daemon + external miner (xmrig):
 - Ref. 2: [coinsniper](https://coinsniper.net/coin/24286)
 - Ref. 3: [cointomine](https://cointomine.today/calculator/coin/BABY-RANDOMARQ/)
 - Ref. 4: [coinpaprika](https://coinpaprika.com/coin/baby-babycoin/)
+- Ref. 5: [Bitcourier](https://bitcourier.co.uk/news/babycoin-interview)
 
 <details>
     <summary>More</summary>
