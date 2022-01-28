@@ -110,7 +110,7 @@ Daemon + external miner (xmrig):
 - Exbitron: [BABY/BTC](https://www.exbitron.com/trading/babybtc)
 - Xeggex: [BABY/USDT](https://xeggex.com/market/BABY_USDT)
 - Xeggex: [BABY/BTC](https://xeggex.com/market/BABY_BTC)
-- 
+
 ### Mining pools
 
 - Pool 1: [https://babycoin.multi-pool.net](https://babycoin.multi-pool.net)
@@ -122,7 +122,8 @@ Daemon + external miner (xmrig):
 - Ref. 2: [coinsniper](https://coinsniper.net/coin/24286)
 - Ref. 3: [cointomine](https://cointomine.today/calculator/coin/BABY-RANDOMARQ/)
 - Ref. 4: [coinpaprika](https://coinpaprika.com/coin/baby-babycoin/)
-- Ref. 5: [Bitcourier](https://bitcourier.co.uk/news/babycoin-interview)
+- Ref. 5: [coinpare](https://coinpare.io/coin/baby-babycoin)
+- Ref. 6: [Bitcourier](https://bitcourier.co.uk/news/babycoin-interview)
 
 <details>
     <summary>More</summary>
