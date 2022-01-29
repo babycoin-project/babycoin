@@ -115,7 +115,7 @@ Daemon + external miner (xmrig):
 
 - Pool 1: [multi-pool.net](https://babycoin.multi-pool.net) (developer pool)
 - Pool 2: [babycoin.dev](https://pool.babycoin.dev) (developer pool)
-- Pool 3: [baby.walemo.cc](https://baby.walemo.cc/)
+- Pool 3: [walemo.cc](https://baby.walemo.cc/)
 - Pool 4: [foxpool.ru](https://foxpool.ru/#baby)
 - Pool 5: [e4pool.com](http://baby.e4pool.com/)
 
