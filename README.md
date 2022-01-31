@@ -16,7 +16,7 @@ Go to [github.com/babycoin-project/babycoin/releases/latest](https://github.com/
 
 Dependencies for Debian / Ubuntu:
 
-    sudo apt update && sudo apt install sudo apt -y install build-essential cmake libboost-all-dev miniupnpc libunbound-dev graphviz doxygen libunwind8-dev pkg-config libssl-dev libzmq3-dev libsodium-dev libhidapi-dev libnorm-dev libusb-1.0-0-dev libpgm-dev
+    sudo apt update && sudo apt -y install build-essential cmake libboost-all-dev miniupnpc libunbound-dev graphviz doxygen libunwind8-dev pkg-config libssl-dev libzmq3-dev libsodium-dev libhidapi-dev libnorm-dev libusb-1.0-0-dev libpgm-dev
 
 
 Clone the babycoin git repository and compile on your own system:
