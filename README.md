@@ -83,7 +83,6 @@ Daemon + external miner (xmrig):
 ### General and social:
 
 - Web: [babycoin.dev](https://babycoin.dev/)
-- Wallet WEB: [wallet.babycoin.dev](https://wallet.babycoin.dev)
 - GitHub: [babycoin-project](https://github.com/babycoin-project/)
 - Discord: [babycoin-discord](https://discord.gg/pJdQsqjSU3)
 - Telegram: [babycoin-telegram](https://t.me/+MsCJxVm33dw0ZjE0)
