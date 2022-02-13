@@ -2,7 +2,7 @@
 
 BabyCoin (BABY) is a state-of-the-art cryptocurrency based on Arqma and Evolution projects. BabyCoin is well suited for CPU mining based on the randomARQ hash algorithm.
 
-<img src="https://babycoin.dev/babycoin.svg" alt="BabyCoin" width="400"/>
+<img src="https://babycoin.dev/babycoin_logo_label-modified.png" alt="BabyCoin" width="400"/>
 
 Copyright (c) 2021-2022 The BabyCoin Project.
 
